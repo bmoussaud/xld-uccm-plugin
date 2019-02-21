@@ -24,6 +24,10 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         <order>62</order>
         <description expression="true">"Wait for Deployement {} to be deployed on {}".format(deployed.name, deployed.container.name)</description>
         <script>uccm/kubernetes/deployment/wait_for.py</script>
+        <jython-context>
+          <target_host expression="true">deployed.container.container.kubectlHost</target_host>
+          <attempts>10</attempts>
+        </jython-context>
       </jython>
     </steps>
   </rule>
@@ -49,7 +53,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
 
 
 
-  <rule name="uccm.container_service" scope="deployed">
+  <rule name="uccm.container_service_create" scope="deployed">
     <conditions>
       <type>uccm.Container</type>
       <operation>CREATE</operation>
@@ -57,6 +61,17 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
     </conditions>
     <planning-script-path>uccm/kubernetes/service/planningScripts/create.py</planning-script-path>
   </rule>
+
+<rule name="uccm.container_service_remove" scope="deployed">
+    <conditions>
+      <type>uccm.Container</type>
+      <operation>DESTROY</operation>
+      <operation>MODIFY</operation>
+    </conditions>
+    <planning-script-path>uccm/kubernetes/service/planningScripts/destroy.py</planning-script-path>
+  </rule>
+
+
 
   <rule name="uccm.container_ingress" scope="deployed">
     <conditions>
@@ -66,6 +81,11 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
     </conditions>
     <planning-script-path>uccm/kubernetes/ingress/planningScripts/create.py</planning-script-path>
   </rule>
+
+   <rule name="dump.DeltaSpecification" scope="plan">
+    <planning-script-path>delta_specification.py</planning-script-path>
+  </rule>
+
 
 
 </rules>

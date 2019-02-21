@@ -11,6 +11,7 @@ Note: If you modify this file, you must restart the XL Deploy server.
   <type type="uccm.Container" extends="udm.BaseDeployed" deployable-type="uccm.ContainerSpec" container-type="k8s.Namespace">
     <generate-deployable type="uccm.ContainerSpec" extends="udm.BaseDeployable"/>
     <property name="image"/>
+    <property name="replicas" kind="integer" default="1"/>
     <property name="ports" required="false" kind="set_of_ci"
       referenced-type="uccm.ContainerPort" as-containment="true" description="List of ports to expose from the container."/> 
   </type>

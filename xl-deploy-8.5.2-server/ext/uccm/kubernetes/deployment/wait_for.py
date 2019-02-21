@@ -29,13 +29,13 @@ def get_available_replicas(data):
         return -1
 
 
-attempts = 10
+#attempts = 10
 deployment_name = "{0}-depl".format(deployed.name)
-command_line = "{2} get deployment {0} --namespace={1} -o=json".format(deployment_name, deployed.namespace, 'kubectl')
+command_line = "{2} get deployment {0} --namespace={1} -o=json".format(deployment_name, deployed.container.name, 'kubectl')
 print command_line
 
+session = OverthereHostSession(target_host)
 try:
-    session = OverthereHostSession(deployed.container.host)
     response = session.execute(command_line)
     data = json.loads(" ".join(response.stdout))
 
@@ -46,7 +46,7 @@ try:
 
     if condition['status'] == "True":
         print "Status Ok"
-    elif availableReplicas == 1
+    elif availableReplicas == deployed.replicas:
         print "DONE replicas"
     else:
         inc_context()
