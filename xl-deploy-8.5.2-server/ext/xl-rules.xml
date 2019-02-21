@@ -69,7 +69,6 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
     </steps>
   </step-macro>
 
-
   <rule name="uccm.container.apply" scope="deployed">
     <conditions>
       <type>uccm.Container</type>
@@ -109,8 +108,6 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
     </steps>
   </rule>
 
-
-
   <rule name="uccm.container_service_create" scope="deployed">
     <conditions>
       <type>uccm.Container</type>
@@ -129,8 +126,6 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
     <planning-script-path>uccm/kubernetes/service/planningScripts/destroy.py</planning-script-path>
   </rule>
 
-
-
   <rule name="uccm.container_ingress" scope="deployed">
     <conditions>
       <type>uccm.Container</type>
@@ -148,9 +143,6 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
     </conditions>
     <planning-script-path>uccm/kubernetes/ingress/planningScripts/destroy.py</planning-script-path>
   </rule>
-
-
-
 
   <rule name="dump.DeltaSpecification" scope="plan">
     <planning-script-path>delta_specification.py</planning-script-path>
