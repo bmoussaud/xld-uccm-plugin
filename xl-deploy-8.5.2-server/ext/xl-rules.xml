@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!--
+Note: If you modify this file and automatic reloading is disabled in `planner.conf`, you must restart the XL Deploy server.
+-->
+<rules xmlns="http://www.xebialabs.com/xl-deploy/xl-rules">
+  <rule name="uccm.container.apply" scope="deployed">
+    <conditions>
+      <type>uccm.Container</type>
+      <operation>CREATE</operation>
+      <operation>MODIFY</operation>
+    </conditions>
+    <steps>
+      <os-script>
+        <description expression="true">"Deploy {0} as kubernetes deployment to {1} namespace".format(deployed.name, deployed.container.name)</description>
+        <order>60</order>
+        <script>uccm/kubernetes/deployment/apply</script>
+        <target-host expression="true">deployed.container.container.kubectlHost</target-host>
+        <freemarker-context>
+          <application expression="true">deployedApplication.name</application>
+          <version expression="true">deployedApplication.version.name</version>
+        </freemarker-context>
+      </os-script>
+      <jython>
+        <order>62</order>
+        <description expression="true">"Wait for Deployement {} to be deployed on {}".format(deployed.name, deployed.container.name)</description>
+        <script>uccm/kubernetes/deployment/wait_for.py</script>
+      </jython>
+    </steps>
+  </rule>
+
+  <rule name="uccm.container.delete" scope="deployed">
+    <conditions>
+      <type>uccm.Container</type>
+      <operation>DESTROY</operation>
+    </conditions>
+    <steps>
+      <os-script>
+        <description expression="true">"Delete {0} as kubernetes deployment to {1} namespace".format(previousDeployed.name, previousDeployed.container.name)</description>
+        <order>40</order>
+        <script>uccm/kubernetes/deployment/delete</script>
+        <target-host expression="true">previousDeployed.container.container.kubectlHost</target-host>
+      </os-script>
+      <noop>
+        <description expression="true">"Wait for Deployement {} to be deleted on {}".format(previousDeployed.name, previousDeployed.container.name)</description>
+        <order>41</order>
+      </noop>
+    </steps>
+  </rule>
+
+
+
+  <rule name="uccm.container_service" scope="deployed">
+    <conditions>
+      <type>uccm.Container</type>
+      <operation>CREATE</operation>
+      <operation>MODIFY</operation>
+    </conditions>
+    <planning-script-path>uccm/kubernetes/service/planningScripts/create.py</planning-script-path>
+  </rule>
+
+  <rule name="uccm.container_ingress" scope="deployed">
+    <conditions>
+      <type>uccm.Container</type>
+      <operation>CREATE</operation>
+      <operation>MODIFY</operation>
+    </conditions>
+    <planning-script-path>uccm/kubernetes/ingress/planningScripts/create.py</planning-script-path>
+  </rule>
+
+
+</rules>
