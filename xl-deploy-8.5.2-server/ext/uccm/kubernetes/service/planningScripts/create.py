@@ -1,8 +1,6 @@
 
 def step_parameters(port,deployed):
-    data = { 'description': 'Configure Service {1}/{0} on {2}'.format(port.name,deployed.name, deployed.container.name),
-            'order': 63}
-    return data
+    return { 'resource':'service', 'order': 63, 'ci': port}
 
 def wait_parameters(port,deployed):
     data = { 'description': 'Wait for Service {1}/{0} ready on {2}'.format(port.name,deployed.name, deployed.container.name),
@@ -11,5 +9,5 @@ def wait_parameters(port,deployed):
 
 for port in deployed.ports:
     if port.exposeAsService:
-        context.addStepWithCheckpoint(steps.noop(**step_parameters(port, deployed)), delta)
+        context.addStepWithCheckpoint(steps.kubectlApply(**step_parameters(port, deployed)), delta)
         context.addStep(steps.noop(**wait_parameters(port, deployed)))

@@ -3,6 +3,28 @@
 Note: If you modify this file and automatic reloading is disabled in `planner.conf`, you must restart the XL Deploy server.
 -->
 <rules xmlns="http://www.xebialabs.com/xl-deploy/xl-rules">
+
+  <step-macro name="kubectlApply">
+    <parameters>
+      <parameter name="resource" type="string" />
+      <parameter name="order" type="integer"/>
+      <parameter name="ci" type="ci"/>
+    </parameters>
+    <steps>
+      <os-script>
+        <order expression="true">macro['order']</order>
+        <description expression="true">"Deploy {0} as kubernetes {2} to {1} namespace".format(deployed.name, deployed.container.name,macro['resource'])</description>
+        <script expression="true">"uccm/kubernetes/{0}/apply".format(macro['resource'])</script>
+        <target-host expression="true">deployed.container.container.kubectlHost</target-host>
+        <freemarker-context>
+          <application expression="true">deployedApplication.name</application>
+          <version expression="true">deployedApplication.version.name</version>
+          <containername expression="true">deployed.name</containername>
+          <ci expression="true">macro['ci']</ci>
+        </freemarker-context>
+      </os-script>
+    </steps>
+  </step-macro>
   <rule name="uccm.container.apply" scope="deployed">
     <conditions>
       <type>uccm.Container</type>
@@ -10,16 +32,11 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
       <operation>MODIFY</operation>
     </conditions>
     <steps>
-      <os-script>
-        <description expression="true">"Deploy {0} as kubernetes deployment to {1} namespace".format(deployed.name, deployed.container.name)</description>
+      <kubectlApply>
+        <resource>deployment</resource>
         <order>60</order>
-        <script>uccm/kubernetes/deployment/apply</script>
-        <target-host expression="true">deployed.container.container.kubectlHost</target-host>
-        <freemarker-context>
-          <application expression="true">deployedApplication.name</application>
-          <version expression="true">deployedApplication.version.name</version>
-        </freemarker-context>
-      </os-script>
+        <ci expression="true">deployed</ci>
+      </kubectlApply>
       <jython>
         <order>62</order>
         <description expression="true">"Wait for Deployement {} to be deployed on {}".format(deployed.name, deployed.container.name)</description>
@@ -62,7 +79,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
     <planning-script-path>uccm/kubernetes/service/planningScripts/create.py</planning-script-path>
   </rule>
 
-<rule name="uccm.container_service_remove" scope="deployed">
+  <rule name="uccm.container_service_remove" scope="deployed">
     <conditions>
       <type>uccm.Container</type>
       <operation>DESTROY</operation>
@@ -82,7 +99,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
     <planning-script-path>uccm/kubernetes/ingress/planningScripts/create.py</planning-script-path>
   </rule>
 
-   <rule name="dump.DeltaSpecification" scope="plan">
+  <rule name="dump.DeltaSpecification" scope="plan">
     <planning-script-path>delta_specification.py</planning-script-path>
   </rule>
 
