@@ -1,6 +1,6 @@
 
 def step_parameters(port,deployed):
-    return {'resource':'service', 'resourceName':'{0}-{1}-service'.format(deployed.name,port.name), 'order': 43}
+    return {'resource':'ingress', 'resourceName':'{0}-{1}-ingress'.format(deployed.name,port.name), 'order': 43}
 
 def wait_parameters(port,deployed):
     data = { 'description': 'Wait for Service {1}/{0} deleted on {2}'.format(port.name,deployed.name, deployed.container.name),

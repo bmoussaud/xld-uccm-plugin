@@ -25,6 +25,28 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
       </os-script>
     </steps>
   </step-macro>
+
+  <step-macro name="kubectlDelete">
+    <parameters>
+      <parameter name="resource" type="string" />
+      <parameter name="resourceName" type="string" />
+      <parameter name="order" type="integer"/>
+    </parameters>
+    <steps>
+      <os-script>
+        <order expression="true">macro['order']</order>
+        <description expression="true">"Delete {0} kubernetes {2} from {1} namespace".format(previousDeployed.name, previousDeployed.container.name,macro['resource'])</description>
+        <script expression="true">"uccm/kubernetes/{0}/delete".format(macro['resource'])</script>
+        <target-host expression="true">previousDeployed.container.container.kubectlHost</target-host>
+        <freemarker-context>
+          <resource expression="true">macro['resource']</resource>
+          <resourceName expression="true">macro['resourceName']</resourceName>
+        </freemarker-context>
+      </os-script>
+    </steps>
+  </step-macro>
+
+
   <rule name="uccm.container.apply" scope="deployed">
     <conditions>
       <type>uccm.Container</type>
@@ -55,12 +77,11 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
       <operation>DESTROY</operation>
     </conditions>
     <steps>
-      <os-script>
-        <description expression="true">"Delete {0} as kubernetes deployment to {1} namespace".format(previousDeployed.name, previousDeployed.container.name)</description>
+      <kubectlDelete>
         <order>40</order>
-        <script>uccm/kubernetes/deployment/delete</script>
-        <target-host expression="true">previousDeployed.container.container.kubectlHost</target-host>
-      </os-script>
+        <resource>Deployment</resource>
+        <resourceName expression="true">"{0}-depl".format(previousDeployed.name)</resourceName>
+      </kubectlDelete>
       <noop>
         <description expression="true">"Wait for Deployement {} to be deleted on {}".format(previousDeployed.name, previousDeployed.container.name)</description>
         <order>41</order>
@@ -98,6 +119,18 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
     </conditions>
     <planning-script-path>uccm/kubernetes/ingress/planningScripts/create.py</planning-script-path>
   </rule>
+
+  <rule name="uccm.container_ingress_remove" scope="deployed">
+    <conditions>
+      <type>uccm.Container</type>
+      <operation>DESTROY</operation>
+      <operation>MODIFY</operation>
+    </conditions>
+    <planning-script-path>uccm/kubernetes/ingress/planningScripts/destroy.py</planning-script-path>
+  </rule>
+
+
+
 
   <rule name="dump.DeltaSpecification" scope="plan">
     <planning-script-path>delta_specification.py</planning-script-path>
