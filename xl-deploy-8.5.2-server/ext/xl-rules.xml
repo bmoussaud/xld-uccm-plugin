@@ -46,6 +46,29 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
     </steps>
   </step-macro>
 
+  <step-macro name="waitResourceUp">
+    <parameters>
+      <parameter name="resource" type="string" />
+      <parameter name="resourceName" type="string" />
+      <parameter name="ci" type="ci"/>
+      <parameter name="order" type="integer"/>
+    </parameters>
+    <steps>
+      <jython>
+        <order expression="true">macro['order']</order>
+        <description expression="true">"Wait for {2} {0} to be deployed on {1}".format(deployed.name, deployed.container.name, macro['resource'])</description>
+        <script expression="true">"uccm/kubernetes/{0}/wait_for_up.py".format(macro['resource'])</script>
+        <jython-context>
+          <target_host expression="true">deployed.container.container.kubectlHost</target_host>
+          <resource expression="true">macro['resource']</resource>
+          <resourceName expression="true">macro['resourceName']</resourceName>
+          <ci expression="true">macro['ci']</ci>
+          <attempts>10</attempts>
+        </jython-context>
+      </jython>
+    </steps>
+  </step-macro>
+
 
   <rule name="uccm.container.apply" scope="deployed">
     <conditions>
@@ -59,15 +82,12 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         <order>60</order>
         <ci expression="true">deployed</ci>
       </kubectlApply>
-      <jython>
+      <waitResourceUp>
         <order>62</order>
-        <description expression="true">"Wait for Deployement {} to be deployed on {}".format(deployed.name, deployed.container.name)</description>
-        <script>uccm/kubernetes/deployment/wait_for.py</script>
-        <jython-context>
-          <target_host expression="true">deployed.container.container.kubectlHost</target_host>
-          <attempts>10</attempts>
-        </jython-context>
-      </jython>
+        <resource>deployment</resource>
+        <resourceName expression="true">"{0}-depl".format(deployed.name)</resourceName>
+        <ci expression="true">deployed</ci>
+      </waitResourceUp>
     </steps>
   </rule>
 
