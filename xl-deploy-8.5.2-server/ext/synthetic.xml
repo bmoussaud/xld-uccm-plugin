@@ -44,6 +44,8 @@ Note: If you modify this file, you must restart the XL Deploy server.
       description="Name of the service port."/>
     <property name="exposeAsIngress" required="true" kind="boolean" default="false" category="Exposed Service"
       description="Whether to expose the service port as an ingress"/>
+    <property name="serviceBlueprintName" default="default_service" category="Blueprint"/>
+    <property name="ingressBlueprintName" default="default_ingress" category="Blueprint"/>
   </type>
 
 
