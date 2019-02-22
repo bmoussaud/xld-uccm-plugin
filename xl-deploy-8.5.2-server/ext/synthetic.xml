@@ -48,11 +48,21 @@ Note: If you modify this file, you must restart the XL Deploy server.
     <property name="ingressBlueprintName" default="default_ingress" category="Blueprint"/>
   </type>
 
-
-  <type type="uccm.MountedVolume"  deployable-type="uccm.MountedVolumeSpec" container-type="uccm.Container" 
+  <type type="uccm.MountedVolume"  deployable-type="uccm.MountedVolumeSpec" container-type="uccm.Container"
     extends="udm.BaseEmbeddedDeployed" description="MountedVolume Management">
     <generate-deployable type="uccm.MountedVolumeSpec" extends="udm.BaseEmbeddedDeployable" />
     <property name="path" />
     <property name="isSensitive" required="false" kind="boolean" default="true" description="is it a sensitive data?"/>
   </type>
+
+  <type type="uccm.BlueprintDictionary" extends="udm.BaseConfigurationItem" root="Environments">
+    <property name="entries" kind="map_string_string" description="The dictionary entries" required="false"/>
+    <property name="encryptedEntries" kind="map_string_string" description="The encrypted dictionary entries" required="false" password="true"/>
+  </type>
+
+  <type-modification type="udm.Environment">
+    <property name="blueprintDictionaries" kind="list_of_ci" referenced-type="uccm.BlueprintDictionary" required="false"
+              description="The dictionaries providing blueprint values. If the same entry exists in multiple dictionaries, the first one in the list is taken"/>
+  </type-modification>
+
 </synthetic>

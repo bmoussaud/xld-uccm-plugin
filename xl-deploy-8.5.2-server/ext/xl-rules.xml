@@ -23,6 +23,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
           <containername expression="true">deployed.name</containername>
           <ci expression="true">macro['ci']</ci>
           <blueprint expression="true">"/uccm_templates/%s.json.ftl" % macro['blueprint']</blueprint>
+          <dictionaries expression="true">deployedApplication.environment.blueprintDictionaries</dictionaries>
         </freemarker-context>
       </os-script>
     </steps>
@@ -150,7 +151,5 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
   <rule name="dump.DeltaSpecification" scope="plan">
     <planning-script-path>delta_specification.py</planning-script-path>
   </rule>
-
-
 
 </rules>
