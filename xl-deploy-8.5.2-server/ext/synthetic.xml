@@ -4,6 +4,8 @@ Note: If you modify this file, you must restart the XL Deploy server.
 -->
 <synthetic xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd" xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
+  <!-- Kubernetes Profile Support -->
+
   <type-modification type="k8s.Master">
     <property name="kubectlHost" required="false" category="uccm" kind="ci" referenced-type="overthere.Host"/>
   </type-modification>
@@ -16,6 +18,7 @@ Note: If you modify this file, you must restart the XL Deploy server.
       referenced-type="uccm.ContainerPort" as-containment="true" description="List of ports to expose from the container."/>
     <property name="mountedVolumes" kind="set_of_ci" referenced-type="uccm.MountedVolume" as-containment="true" description="mounted volumes"/>
     <property name="blueprintName" default="default" category="Blueprint"/>
+    <property name="profileName" default="default" category="Deployment Profile"/>
   </type>
 
   <type-modification type="uccm.ContainerSpec">
@@ -44,9 +47,11 @@ Note: If you modify this file, you must restart the XL Deploy server.
       description="Name of the service port."/>
     <property name="exposeAsIngress" required="true" kind="boolean" default="false" category="Exposed Service"
       description="Whether to expose the service port as an ingress"/>
-    <property name="serviceBlueprintName" default="default_service" category="Blueprint"/>
-    <property name="ingressBlueprintName" default="default_ingress" category="Blueprint"/>
+    <property name="serviceProfileName" default="default_service" category="Deployment Profile"/>
+    <property name="ingressProfileName" default="default_ingress" category="Deployment Profile"/>
   </type>
+  
+  <!-- Profile Dictionary Support -->
 
   <type type="uccm.MountedVolume"  deployable-type="uccm.MountedVolumeSpec" container-type="uccm.Container"
     extends="udm.BaseEmbeddedDeployed" description="MountedVolume Management">
@@ -55,14 +60,14 @@ Note: If you modify this file, you must restart the XL Deploy server.
     <property name="isSensitive" required="false" kind="boolean" default="true" description="is it a sensitive data?"/>
   </type>
 
-  <type type="uccm.BlueprintDictionary" extends="udm.BaseConfigurationItem" root="Environments">
+  <type type="uccm.ProfileDictionary" extends="udm.BaseConfigurationItem" root="Environments">
     <property name="entries" kind="map_string_string" description="The dictionary entries" required="false"/>
     <property name="encryptedEntries" kind="map_string_string" description="The encrypted dictionary entries" required="false" password="true"/>
   </type>
 
   <type-modification type="udm.Environment">
-    <property name="blueprintDictionaries" kind="list_of_ci" referenced-type="uccm.BlueprintDictionary" required="false"
-              description="The dictionaries providing blueprint values. If the same entry exists in multiple dictionaries, the first one in the list is taken"/>
+    <property name="profileDictionaries" kind="list_of_ci" referenced-type="uccm.ProfileDictionary" required="false"
+              description="The dictionaries providing profile values. If the same entry exists in multiple dictionaries, the first one in the list is taken"/>
   </type-modification>
 
 </synthetic>

@@ -1,6 +1,6 @@
 
 def step_parameters(port,deployed):
-    return { 'resource':'ingress', 'order': 65, 'ci': port, 'blueprint': port.ingressBlueprintName}
+    return { 'resource':'ingress', 'order': 65, 'ci': port, 'profile': port.ingressProfileName}
 
 def wait_parameters(port,deployed):
     return { 'resource': 'ingress', 'resourceName':'{0}-{1}-ingress'.format(deployed.name,port.name), 'ci':port, 'order': 65}

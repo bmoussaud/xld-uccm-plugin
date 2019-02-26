@@ -9,7 +9,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
       <parameter name="resource" type="string" />
       <parameter name="order" type="integer"/>
       <parameter name="ci" type="ci"/>
-      <parameter name="blueprint" type="string"/>
+      <parameter name="profile" type="string"/>
     </parameters>
     <steps>
       <os-script>
@@ -22,8 +22,8 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
           <version expression="true">deployedApplication.version.name</version>
           <containername expression="true">deployed.name</containername>
           <ci expression="true">macro['ci']</ci>
-          <blueprint expression="true">"/uccm_templates/%s.json.ftl" % macro['blueprint']</blueprint>
-          <dictionaries expression="true">deployedApplication.environment.blueprintDictionaries</dictionaries>
+          <profile expression="true">"/uccm_templates/%s.json.ftl" % macro['profile']</profile>
+          <dictionaries expression="true">deployedApplication.environment.profileDictionaries</dictionaries>
         </freemarker-context>
       </os-script>
     </steps>
@@ -83,7 +83,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         <resource>deployment</resource>
         <order>60</order>
         <ci expression="true">deployed</ci>
-        <blueprint expression="true">deployed.blueprintName</blueprint>
+        <profile expression="true">deployed.profileName</profile>
       </kubectlApply>
       <waitResourceUp>
         <order>62</order>

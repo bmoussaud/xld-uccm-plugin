@@ -1,6 +1,6 @@
 
 def step_parameters(port,deployed):
-    return { 'resource':'service', 'order': 63, 'ci': port, 'blueprint':  port.serviceBlueprintName}
+    return { 'resource':'service', 'order': 63, 'ci': port, 'profile':  port.serviceProfileName}
 
 def wait_parameters(port,deployed):
     return { 'resource': 'service', 'resourceName':'{0}-{1}-service'.format(deployed.name,port.name), 'ci':port, 'order': 64}

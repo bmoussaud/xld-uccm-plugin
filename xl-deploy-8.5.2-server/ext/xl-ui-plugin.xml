@@ -5,6 +5,6 @@
 
     <!-- you define what custom tabs you want to add in XL Deploy UI here. Here, a new menu tab "Demo" is being added.
      You can add multiple menu items, and they will appear on the UI in the order of "weight" specified here-->
-    <menu id="uccm.configuration_variance" label="UCCM Blueprints" uri="/uccm/index.html" weight="15" />
+    <menu id="uccm.configuration_variance" label="UCCM Profiles" uri="/uccm/index.html" weight="15" />
 
 </plugin>
