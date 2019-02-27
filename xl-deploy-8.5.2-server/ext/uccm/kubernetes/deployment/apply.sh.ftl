@@ -26,6 +26,17 @@ echo '
         }
       },
       "spec": {
+        "volumes": [
+        <#list deployed.mountedVolumes as vol>
+          {
+            "name": "${vol.name}-volume",
+            "configMap": {
+              "name": "${vol.name}",
+              "defaultMode": 420
+            }
+          }
+        ],
+        </#list>
         "containers": [
           {
             "name": "${deployed.name}",
@@ -38,6 +49,14 @@ echo '
               }
               </#list>
             ],
+            "volumeMounts": [
+            <#list deployed.mountedVolumes as vol>
+               {
+                  "name": "${vol.name}-volume",
+                  "mountPath": "${vol.path}"
+              }
+            </#list>
+             ],
             "terminationMessagePath": "/dev/termination-log",
             "terminationMessagePolicy": "File",
             "imagePullPolicy": "IfNotPresent"

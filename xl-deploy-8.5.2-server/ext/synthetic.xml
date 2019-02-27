@@ -13,12 +13,14 @@ Note: If you modify this file, you must restart the XL Deploy server.
     <property name="image"/>
     <property name="replicas" kind="integer" default="1"/>
     <property name="ports" required="false" kind="set_of_ci"
-      referenced-type="uccm.ContainerPort" as-containment="true" description="List of ports to expose from the container."/> 
+      referenced-type="uccm.ContainerPort" as-containment="true" description="List of ports to expose from the container."/>
+    <property name="mountedVolumes" kind="set_of_ci" referenced-type="uccm.MountedVolume" as-containment="true" description="mounted volumes"/>
   </type>
 
   <type-modification type="uccm.ContainerSpec">
     <property name="ports" required="false" kind="set_of_ci"
       referenced-type="uccm.ContainerPortSpec" as-containment="true" description="List of ports to expose from the container."/>
+    <property name="mountedVolumes" kind="set_of_ci" referenced-type="uccm.MountedVolumeSpec" as-containment="true" description="mounted volumes"/>
   </type-modification>
 
 
@@ -41,5 +43,13 @@ Note: If you modify this file, you must restart the XL Deploy server.
       description="Name of the service port."/>
     <property name="exposeAsIngress" required="true" kind="boolean" default="false" category="Exposed Service"
       description="Whether to expose the service port as an ingress"/>
+  </type>
+
+
+  <type type="uccm.MountedVolume"  deployable-type="uccm.MountedVolumeSpec" container-type="uccm.Container" 
+    extends="udm.BaseEmbeddedDeployed" description="MountedVolume Management">
+    <generate-deployable type="uccm.MountedVolumeSpec" extends="udm.BaseEmbeddedDeployable" />
+    <property name="path" />
+    <property name="isSensitive" required="false" kind="boolean" default="true" description="is it a sensitive data?"/>
   </type>
 </synthetic>
