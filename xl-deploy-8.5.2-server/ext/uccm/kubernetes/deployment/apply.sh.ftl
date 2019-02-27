@@ -28,6 +28,14 @@ echo '
       "spec": {
         "volumes": [
         <#list deployed.mountedVolumes as vol>
+          <#if vol.isSensitive>
+          {
+            "name": "${vol.name}-volume",
+            "secret": {
+              "secretName": "${vol.name}"
+            }
+          }
+          <#else>
           {
             "name": "${vol.name}-volume",
             "configMap": {
@@ -35,8 +43,10 @@ echo '
               "defaultMode": 420
             }
           }
-        ],
+          </#if>
+          <#sep>,
         </#list>
+        ],
         "containers": [
           {
             "name": "${deployed.name}",
@@ -47,15 +57,18 @@ echo '
                 "containerPort": ${port.containerPort},
                 "protocol": "TCP"
               }
+              <#sep>,
               </#list>
             ],
             "volumeMounts": [
             <#list deployed.mountedVolumes as vol>
-               {
+              {
                   "name": "${vol.name}-volume",
+                  "readOnly": true,
                   "mountPath": "${vol.path}"
               }
-            </#list>
+              <#sep>,
+             </#list>
              ],
             "terminationMessagePath": "/dev/termination-log",
             "terminationMessagePolicy": "File",
