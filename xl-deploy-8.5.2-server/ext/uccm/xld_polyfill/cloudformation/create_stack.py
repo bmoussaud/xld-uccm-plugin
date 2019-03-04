@@ -1,4 +1,4 @@
-from uccm.cloudformation.utils.cfclient_proxy import CFClientUccmProxy
+from uccm.xld_polyfill.cloudformation.utils.cfclient_proxy import CFClientUccmProxy
 
 
 def process(task_vars):

@@ -3,6 +3,7 @@ from botocore.exceptions import ClientError
 from cloudformation.utils.cf_client import CFClient
 import json
 
+
 class CFClientUccmProxy(object):
     def __init__(self, deployed, environment):
         self.environment = environment
