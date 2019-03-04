@@ -38,9 +38,10 @@ class ProfileProcessor(object):
             data = json.loads(raw_data)
         return data
 
-    def process(self):
+    def process(self, template=None):
         profile_name = self.deployed.profileName
-        template = self.read_template()
+        if not template:
+            template = self.read_template()
         return ProcessorChain([profile_name]).process(template, self.profile_dictionary)
 
 

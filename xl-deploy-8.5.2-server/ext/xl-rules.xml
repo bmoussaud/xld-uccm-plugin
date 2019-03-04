@@ -199,4 +199,32 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
     </steps>
   </rule>
 
+  <!-- Polyfill for the default XLD K8s plugin -->
+
+  <disable-rule name="k8s.Resources.CREATE" />
+  <disable-rule name="k8s.Resources.MODIFY" />
+  <disable-rule name="k8s.Resources.DESTROY" />
+
+  <rule name="uccm.k8s.Resources.CREATE" scope="deployed">
+    <conditions>
+      <type>k8s.AbstractResources</type>
+      <operation>CREATE</operation>
+    </conditions>
+    <planning-script-path>uccm/xld_polyfill/kubernetes/planning/create.py</planning-script-path>
+  </rule>
+  <rule name="uccm.k8s.Resources.MODIFY" scope="deployed">
+    <conditions>
+      <type>k8s.AbstractResources</type>
+      <operation>MODIFY</operation>
+    </conditions>
+    <planning-script-path>uccm/xld_polyfill/kubernetes/planning/modify.py</planning-script-path>
+  </rule>
+  <rule name="uccm.k8s.Resources.DELETE" scope="deployed">
+    <conditions>
+      <type>k8s.AbstractResources</type>
+      <operation>DESTROY</operation>
+    </conditions>
+    <planning-script-path>uccm/xld_polyfill/kubernetes/planning/destroy.py</planning-script-path>
+  </rule>
+
 </rules>

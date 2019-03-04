@@ -57,6 +57,11 @@ Note: If you modify this file, you must restart the XL Deploy server.
   <type-modification type="aws.cloudformation.DeployedTemplate">
     <property name="profileName" default="default" category="Deployment Profile"/>
   </type-modification>
+
+  <!-- K8s Yaml File Profile Support -->
+  <type-modification type="k8s.Resources">
+    <property name="profileName" default="default" category="Deployment Profile"/>
+  </type-modification>
   <!-- Profile Dictionary Support -->
 
   <type type="uccm.MountedVolume"  deployable-type="uccm.MountedVolumeSpec" container-type="uccm.Container"
