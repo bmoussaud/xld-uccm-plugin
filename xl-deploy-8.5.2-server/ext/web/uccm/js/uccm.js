@@ -6,6 +6,12 @@ angular
             $scope.view_mode = "list";
             $scope.currentTemplate = {type: 'py'};
             $scope.templateNames = [];
+
+            $scope.ftlTemplateNames = [];
+            $scope.awsPyProcessorNames = [];
+            $scope.k8sPyProcessorNames = [];
+            $scope.genericPyProcessorNames = [];
+
             $scope.aceOption = {
                 mode: 'ftl',
                 theme: 'twilight'
@@ -48,11 +54,30 @@ angular
             $scope.loadTemplateNames = function() {
                 $http.get('/api/extension/uccm/templates').
                 then(function(data) {
-                    $scope.templateNames = data.data.entity;
-                },
+                        $scope.templateNames = data.data.entity;
+                        let ftlTemplateNames = [];
+                        let awsPyProcessorNames = [];
+                        let k8sPyProcessorNames = [];
+                        let genericPyProcessorNames = [];
+                        angular.forEach(data.data.entity, function(value) {
+                            if (value.type == 'ftl') {
+                                ftlTemplateNames.push(value);
+                            } else if (value.name.endsWith("_aws")) {
+                                awsPyProcessorNames.push(value);
+                            } else if (value.name.endsWith("_k8s")) {
+                                k8sPyProcessorNames.push(value);
+                            } else {
+                                genericPyProcessorNames.push(value);
+                            }
+                        });
+                        $scope.ftlTemplateNames = ftlTemplateNames;
+                        $scope.awsPyProcessorNames = awsPyProcessorNames;
+                        $scope.k8sPyProcessorNames = k8sPyProcessorNames;
+                        $scope.genericPyProcessorNames = genericPyProcessorNames;
+                    },
                 function(data) {
-                    console.log(data)
-                });
+                        console.log(data)
+                    });
             };
 
             $scope.cancelEdit = function() {
