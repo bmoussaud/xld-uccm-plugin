@@ -1,4 +1,4 @@
-<#import "/uccm/ftl/dictionary.ftl" as dict>
+<#import "/uccm/utils/ftl/dictionary.ftl" as dict>
 {
     "kind": "Deployment",
     "apiVersion": "extensions/v1beta1",
