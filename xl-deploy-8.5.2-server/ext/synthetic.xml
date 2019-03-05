@@ -17,7 +17,6 @@ Note: If you modify this file, you must restart the XL Deploy server.
     <property name="ports" required="false" kind="set_of_ci"
       referenced-type="uccm.ContainerPort" as-containment="true" description="List of ports to expose from the container."/>
     <property name="mountedVolumes" kind="set_of_ci" referenced-type="uccm.MountedVolume" as-containment="true" description="mounted volumes"/>
-    <property name="blueprintName" default="default" category="Blueprint"/>
     <property name="profileName" default="default" category="Deployment Profile"/>
   </type>
 
