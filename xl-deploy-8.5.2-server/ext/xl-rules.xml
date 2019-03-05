@@ -171,7 +171,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         <preview-script>uccm/xld_polyfill/cloudformation/stack_preview.py</preview-script>
         <jython-context>
           <deployed expression="true">deployed</deployed>
-          <environment expression="true">deployedApplication.environment</environment>
+          <deployedApplication expression="true">deployedApplication</deployedApplication>
         </jython-context>
       </jython>
       <jython>
@@ -180,7 +180,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         <preview-script>uccm/xld_polyfill/cloudformation/stack_preview.py</preview-script>
         <jython-context>
           <deployed expression="true">deployed</deployed>
-          <environment expression="true">deployedApplication.environment</environment>
+          <deployedApplication expression="true">deployedApplication</deployedApplication>
         </jython-context>
       </jython>
       <checkpoint/>

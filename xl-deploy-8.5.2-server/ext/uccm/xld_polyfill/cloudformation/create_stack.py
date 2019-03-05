@@ -3,8 +3,8 @@ from uccm.xld_polyfill.cloudformation.utils.cfclient_proxy import CFClientUccmPr
 
 def process(task_vars):
     deployed = task_vars['deployed']
-    environment = task_vars['environment']
-    client = CFClientUccmProxy(deployed,  environment)
+    deployed_application = task_vars['deployedApplication']
+    client = CFClientUccmProxy(deployed,  deployed_application)
     if client.create_stack():
         print("Stack '%s' created successfully." % deployed.name)
     else:

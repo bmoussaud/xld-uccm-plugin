@@ -29,8 +29,8 @@ angular
                 };
 
                 if (type_name == 'py') {
-                    template.template = "def process(cf_template, profile_dictionary):\n" +
-                                        "    return cf_template";
+                    template.template = "def process(template, profile_dictionary, deployed, deployed_application):\n" +
+                                        "    return template";
                 } else {
                     template.template = '<#import "/uccm/utils/ftl/dictionary.ftl" as dict>\n' +
                         '{\n' +

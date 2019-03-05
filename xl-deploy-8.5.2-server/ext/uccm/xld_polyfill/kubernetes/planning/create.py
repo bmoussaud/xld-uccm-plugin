@@ -9,7 +9,7 @@ from uccm.xld_polyfill.kubernetes.planning.preview_aware_generators import Previ
 from xld.kubernetes.resource.planningScripts.generator import CreatePlanGenerator
 
 if deployed.type != 'openshift.TemplateResources':
-    steps_generator = PreviewAwareStepsGenerator(context=context, steps=steps, delta=delta)
+    steps_generator = PreviewAwareStepsGenerator(context, steps, delta, deployed, deployedApplication)
     plan_generator = CreatePlanGenerator(deployed, steps_generator)
-    plan_generator.__resource_helper = ProfileResourceHelper(deployed, deployedApplication.environment)
+    plan_generator.__resource_helper = ProfileResourceHelper(deployed, deployedApplication)
     plan_generator.generate()

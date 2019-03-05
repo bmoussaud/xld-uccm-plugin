@@ -5,8 +5,9 @@ import json
 
 
 class CFClientUccmProxy(object):
-    def __init__(self, deployed, environment):
-        self.environment = environment
+    def __init__(self, deployed, deployed_application):
+        self.deployed_application = deployed_application
+        self.environment = deployed_application.environment
         self.deployed = deployed
         self.client = CFClient.new_instance(deployed.container)
         self.cf_client = self.client.cf_client
@@ -40,7 +41,7 @@ class CFClientUccmProxy(object):
         self.cf_client.update_stack(StackName=stackname, TemplateBody=template, Parameters=parameters, Capabilities=capabilities)
 
     def read_stack_file(self):
-        processor = ProfileProcessor(self.deployed, self.environment)
+        processor = ProfileProcessor(self.deployed, self.deployed_application)
         template = processor.process()
         parameters = []
         for k in self.deployed.inputVariables:

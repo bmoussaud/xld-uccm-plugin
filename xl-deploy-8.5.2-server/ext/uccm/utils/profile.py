@@ -5,23 +5,26 @@ from uccm.utils.cfyaml_loader import CfnYamlLoader
 
 
 class ProcessorChain(object):
-    def __init__(self, processors):
+    def __init__(self, processors, deployed, deployed_application):
+        self.deployed = deployed
+        self.deployed_application = deployed_application
+        self.profile_dictionary = ProfileDictionary(deployed_application.environment.profileDictionaries)
         self.processors = processors
 
-    def process(self, template, profile_dictionary):
+    def process(self, template):
         fcn_to_call = 'process'
         for p in self.processors:
             mod_name = "uccm_processors.%s" % p
             mod = __import__(mod_name, fromlist=["process"])
             func = getattr(mod, fcn_to_call)
-            template = func(template, profile_dictionary)
+            template = func(template, self.profile_dictionary, self.deployed, self.deployed_application)
         return template
 
 
 class ProfileProcessor(object):
 
-    def __init__(self, deployed, environment):
-        self.profile_dictionary = ProfileDictionary(environment.profileDictionaries)
+    def __init__(self, deployed, deployed_application):
+        self.deployed_application = deployed_application
         self.deployed = deployed
 
     @staticmethod
@@ -42,7 +45,7 @@ class ProfileProcessor(object):
         profile_name = self.deployed.profileName
         if not template:
             template = self.read_template()
-        return ProcessorChain([profile_name]).process(template, self.profile_dictionary)
+        return ProcessorChain([profile_name], self.deployed, self.deployed_application).process(template)
 
 
 class ProfileDictionary(object):
