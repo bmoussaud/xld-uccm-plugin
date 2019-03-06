@@ -1,4 +1,4 @@
-echo "kubectl describe ${resource} ${resourceName} -n ${previousDeployed.container.name}"
-kubectl describe ${resource} ${resourceName} -n ${previousDeployed.container.name}
+echo "kubectl describe ${resource} ${resourceName} -n ${deployed.container.name}"
+kubectl describe ${resource} ${resourceName} -n ${deployed.container.name}
 
 

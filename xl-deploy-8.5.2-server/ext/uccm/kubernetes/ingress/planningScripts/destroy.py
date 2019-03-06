@@ -8,6 +8,6 @@ def wait_parameters(port,deployed):
     return data
 
 for port in previousDeployed.ports:
-    if port.exposeAsService:
+    if port.exposeAsService and port.exposeAsIngress:
         context.addStepWithCheckpoint(steps.kubectlDelete(**step_parameters(port, previousDeployed)), delta)
         context.addStep(steps.noop(**wait_parameters(port, previousDeployed)))

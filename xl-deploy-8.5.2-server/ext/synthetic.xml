@@ -2,54 +2,63 @@
 <!--
 Note: If you modify this file, you must restart the XL Deploy server.
 -->
-<synthetic xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd" xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<synthetic xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd"
+           xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-  <type-modification type="k8s.Master">
-    <property name="kubectlHost" required="false" category="uccm" kind="ci" referenced-type="overthere.Host"/>
-  </type-modification>
+    <type-modification type="k8s.Master">
+        <property name="kubectlHost" required="false" category="uccm" kind="ci" referenced-type="overthere.Host"/>
+    </type-modification>
 
-  <type type="uccm.Container" extends="udm.BaseDeployed" deployable-type="uccm.ContainerSpec" container-type="k8s.Namespace">
-    <generate-deployable type="uccm.ContainerSpec" extends="udm.BaseDeployable"/>
-    <property name="image"/>
-    <property name="replicas" kind="integer" default="1"/>
-    <property name="ports" required="false" kind="set_of_ci"
-      referenced-type="uccm.ContainerPort" as-containment="true" description="List of ports to expose from the container."/>
-    <property name="mountedVolumes" kind="set_of_ci" referenced-type="uccm.MountedVolume" as-containment="true" description="mounted volumes"/>
-  </type>
+    <type type="uccm.Container" extends="udm.BaseDeployed" deployable-type="uccm.ContainerSpec"
+          container-type="k8s.Namespace">
+        <generate-deployable type="uccm.ContainerSpec" extends="udm.BaseDeployable"/>
+        <property name="image"/>
+        <property name="replicas" kind="integer" default="1"/>
+        <property name="ports" required="false" kind="set_of_ci"
+                  referenced-type="uccm.ContainerPort" as-containment="true"
+                  description="List of ports to expose from the container."/>
+        <property name="mountedVolumes" kind="set_of_ci" referenced-type="uccm.MountedVolume" as-containment="true"
+                  description="mounted volumes"/>
+    </type>
 
-  <type-modification type="uccm.ContainerSpec">
-    <property name="ports" required="false" kind="set_of_ci"
-      referenced-type="uccm.ContainerPortSpec" as-containment="true" description="List of ports to expose from the container."/>
-    <property name="mountedVolumes" kind="set_of_ci" referenced-type="uccm.MountedVolumeSpec" as-containment="true" description="mounted volumes"/>
-  </type-modification>
-
-
-  <type type="uccm.ContainerPort" deployable-type="uccm.ContainerPortSpec"
-    container-type="uccm.Container" extends="udm.BaseEmbeddedDeployed" description="Port binding.">
-    <generate-deployable type="uccm.ContainerPortSpec" extends="udm.BaseEmbeddedDeployable"
-      description="Specification for a Kubernetes container port binding."/>
-    <property name="containerPort" required="true" kind="integer"
-      description="Number of port to expose on the Pod’s IP address"/>
-    <property name="exposeAsService" required="true" kind="boolean" default="false" category="Exposed Service"
-      description="Whether to expose the container port as service."/>
-    <property name="serviceType" category="Exposed Service" kind="enum" hidden="true" default="NodePort" required="false" description="Specifies the service type to be created.">
-      <enum-values>
-        <value>NodePort</value>
-        <value>LoadBalancer</value>
-        <value>ClusterIP</value>
-      </enum-values>
-    </property>
-    <property name="servicePort" required="false" kind="string" category="Exposed Service"
-      description="Name of the service port."/>
-    <property name="exposeAsIngress" required="true" kind="boolean" default="false" category="Exposed Service"
-      description="Whether to expose the service port as an ingress"/>
-  </type>
+    <type-modification type="uccm.ContainerSpec">
+        <property name="ports" required="false" kind="set_of_ci"
+                  referenced-type="uccm.ContainerPortSpec" as-containment="true"
+                  description="List of ports to expose from the container."/>
+        <property name="mountedVolumes" kind="set_of_ci" referenced-type="uccm.MountedVolumeSpec" as-containment="true"
+                  description="mounted volumes"/>
+    </type-modification>
 
 
-  <type type="uccm.MountedVolume"  deployable-type="uccm.MountedVolumeSpec" container-type="uccm.Container" 
-    extends="udm.BaseEmbeddedDeployed" description="MountedVolume Management">
-    <generate-deployable type="uccm.MountedVolumeSpec" extends="udm.BaseEmbeddedDeployable" />
-    <property name="path" />
-    <property name="isSensitive" required="false" kind="boolean" default="true" description="is it a sensitive data?"/>
-  </type>
+    <type type="uccm.ContainerPort" deployable-type="uccm.ContainerPortSpec"
+          container-type="uccm.Container" extends="udm.BaseEmbeddedDeployed" description="Port binding.">
+        <generate-deployable type="uccm.ContainerPortSpec" extends="udm.BaseEmbeddedDeployable"
+                             description="Specification for a Kubernetes container port binding."/>
+        <property name="containerPort" required="true" kind="integer"
+                  description="Number of port to expose on the Pod’s IP address"/>
+        <property name="exposeAsService" required="true" kind="boolean" default="false" category="Exposed Service"
+                  description="Whether to expose the container port as service."/>
+        <property name="serviceType" category="Exposed Service" kind="enum" hidden="true" default="NodePort"
+                  required="false" description="Specifies the service type to be created.">
+            <enum-values>
+                <value>NodePort</value>
+                <value>LoadBalancer</value>
+                <value>ClusterIP</value>
+            </enum-values>
+        </property>
+        <property name="servicePort" required="false" kind="integer" category="Exposed Service"
+                  description="Name of the service port."/>
+        <property name="exposeAsIngress" required="true" kind="boolean" default="false" category="Exposed Service"
+                  description="Whether to expose the service port as an ingress"/>
+    </type>
+
+
+    <type type="uccm.MountedVolume" deployable-type="uccm.MountedVolumeSpec" container-type="uccm.Container"
+          extends="udm.BaseEmbeddedDeployed" description="MountedVolume Management">
+        <generate-deployable type="uccm.MountedVolumeSpec" extends="udm.BaseEmbeddedDeployable"/>
+        <property name="path"/>
+        <property name="isSensitive" required="false" kind="boolean" default="true"
+                  description="is it a sensitive data?"/>
+    </type>
+
 </synthetic>
