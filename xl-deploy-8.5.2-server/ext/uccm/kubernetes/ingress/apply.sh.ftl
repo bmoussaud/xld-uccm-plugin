@@ -1,37 +1,7 @@
-echo '
-{
-  "kind": "Ingress",
-  "apiVersion": "extensions/v1beta1",
-  "metadata": {
-    "name": "${deployed.name}-${ci.name}-ingress",
-    "labels": {
-      "application": "${application}",
-      "version": "${version}"
-    },
-    "annotations": {
-      "ingress.kubernetes.io/rewrite-target": "/${deployed.name}",
-      "nginx.ingress.kubernetes.io/ssl-redirect": "false"
-    }
-  },
-  "spec": {
-    "rules": [
-        {
-          "http": {
-            "paths": [
-              {
-                "path": "/${deployed.name}",
-                "backend": {
-                  "serviceName": "${deployed.name}-${ci.name}-service",
-                  "servicePort": <#if ci.servicePort??>${ci.servicePort}<#else>${ci.containerPort}</#if>
-                }
-              }
-            ]
-          }
-        }
-      ]
-    }
-}' > ingress.json
-cat -n ingress.json
-kubectl apply -f ingress.json --validate=true -n ${deployed.container.name}
 
+echo '
+<#include '/uccm/kubernetes/service/default_resource.json.ftl'>
+' > resource.json
+cat -n resource.json
+kubectl apply -f resource.json --validate=true -n ${deployed.container.name}
 
