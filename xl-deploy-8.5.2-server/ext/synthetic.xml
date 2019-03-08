@@ -61,6 +61,40 @@ Note: If you modify this file, you must restart the XL Deploy server.
   <type-modification type="k8s.Resources">
     <property name="profileName" default="default" category="Deployment Profile"/>
   </type-modification>
+
+
+  <!-- UCCM Dynamic Types -->
+
+  <type type="uccm.DynamicDeployed" extends="udm.BaseDeployed" deployable-type="uccm.DynamicDeployable" virtual="true">
+    <generate-deployable type="uccm.DynamicDeployable" extends="udm.BaseDeployable" virtual="true"/>
+    <property name="apiVersion" description="Dynamic type version. eg. uccm/k8s/container/v1beta1"/>
+    <property name="jsonSpec" size="large" description="Json specification define the required information for the dynamic type" />
+  </type>
+
+  <type type="uccm.DynamicDeployedArtifact" extends="udm.BaseDeployedArtifact" deployable-type="udm.BaseDeployableArtifact" virtual="true">
+    <property name="apiVersion" description="Dynamic type version. eg. uccm/k8s/container/v1beta1"/>
+    <property name="jsonSpec" size="large" description="Json specification define the required information for the dynamic type" />
+  </type>
+
+
+  <!-- UCCM K8s Dynamic Types -->
+  <type type="uccm.k8s.DynamicDeployed" extends="uccm.DynamicDeployed" deployable-type="uccm.k8s.DynamicResource" container-type="k8s.Namespace">
+    <generate-deployable type="uccm.k8s.DynamicResource" extends="uccm.DynamicDeployable"/>
+  </type>
+
+  <type type="uccm.k8s.DynamicDeployedFileArtifact" extends="uccm.DynamicDeployedArtifact" deployable-type="uccm.k8s.DynamicFile" container-type="k8s.Namespace">
+    <generate-deployable type="uccm.k8s.DynamicFile" extends="udm.BaseDeployableFileArtifact"/>
+  </type>
+
+  <type type="uccm.k8s.DynamicDeployedFolderArtifact" extends="uccm.DynamicDeployedArtifact" deployable-type="uccm.k8s.DynamicFolder" container-type="k8s.Namespace">
+    <generate-deployable type="uccm.k8s.DynamicFolder" extends="udm.BaseDeployableFolderArtifact"/>
+  </type>
+
+
+
+
+
+
   <!-- Profile Dictionary Support -->
 
   <type type="uccm.MountedVolume"  deployable-type="uccm.MountedVolumeSpec" container-type="uccm.Container"

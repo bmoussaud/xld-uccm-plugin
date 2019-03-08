@@ -1,0 +1,98 @@
+{
+    "schema": {
+        "$schema": "http://json-schema.org/schema#", 
+        "type": "object", 
+        "required": [
+            "image", 
+            "mountedVolumes", 
+            "name", 
+            "ports", 
+            "replicas"
+        ], 
+        "properties": {
+            "image": {
+                "type": "string"
+            }, 
+            "replicas": {
+                "type": "string"
+            }, 
+            "ports": {
+                "type": "array", 
+                "items": {
+                    "type": "object", 
+                    "required": [
+                        "containerPort", 
+                        "exposeAsIngress", 
+                        "exposeAsService", 
+                        "name"
+                    ], 
+                    "properties": {
+                        "exposeAsIngress": {
+                            "type": "boolean"
+                        }, 
+                        "exposeAsService": {
+                            "type": "boolean"
+                        }, 
+                        "name": {
+                            "type": "string"
+                        }, 
+                        "containerPort": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }, 
+            "name": {
+                "type": "string"
+            }, 
+            "mountedVolumes": {
+                "type": "array", 
+                "items": {
+                    "type": "object", 
+                    "required": [
+                        "isSensitive", 
+                        "name", 
+                        "path"
+                    ], 
+                    "properties": {
+                        "path": {
+                            "type": "string"
+                        }, 
+                        "isSensitive": {
+                            "type": "boolean"
+                        }, 
+                        "name": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }, 
+    "spec": {
+        "image": "bmoussaud/petclinic:4.1-20191102122912", 
+        "replicas": "1", 
+        "ports": [
+            {
+                "exposeAsIngress": true, 
+                "exposeAsService": true, 
+                "name": "web", 
+                "containerPort": "8080"
+            }
+        ], 
+        "name": "petclinic", 
+        "mountedVolumes": [
+            {
+                "path": "/application/secret", 
+                "isSensitive": true, 
+                "name": "pet-secret"
+            }, 
+            {
+                "path": "/application/properties", 
+                "isSensitive": false, 
+                "name": "pet-configuration"
+            }
+        ]
+    }, 
+    "apiVersion": "uccm/k8s/container/v1beta1"
+}

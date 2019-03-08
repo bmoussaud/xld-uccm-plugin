@@ -3,8 +3,21 @@
            xmlns="http://www.xebialabs.com/deployit/endpoints"
            xsi:schemaLocation="http://www.xebialabs.com/deployit/endpoints endpoints.xsd">
 
-    <endpoint path="/uccm/templates" method="POST" script="uccm/restapi/save_template.py" />
-    <endpoint path="/uccm/templates" method="PUT" script="uccm/restapi/save_template.py" />
-    <endpoint path="/uccm/templates" method="GET" script="uccm/restapi/list_templates.py" />
+    <endpoint path="/uccm/templates" method="POST" script="uccm/restapi/templates/save_template.py" />
+    <endpoint path="/uccm/templates" method="PUT" script="uccm/restapi/templates/save_template.py" />
+    <endpoint path="/uccm/templates" method="GET" script="uccm/restapi/templates/list_templates.py" />
 
+    <endpoint path="/uccm/rules" method="POST" script="uccm/restapi/rules/save_rules.py" />
+    <endpoint path="/uccm/rules" method="PUT" script="uccm/restapi/rules/save_rules.py" />
+    <endpoint path="/uccm/rules" method="GET" script="uccm/restapi/rules/get_rules.py" />
+
+    <endpoint path="/uccm/planners" method="POST" script="uccm/restapi/planners/save_planner.py" />
+    <endpoint path="/uccm/planners" method="PUT" script="uccm/restapi/planners/save_planner.py" />
+    <endpoint path="/uccm/planners" method="GET" script="uccm/restapi/planners/list_planners.py" />
+
+    <endpoint path="/uccm/specs" method="POST" script="uccm/restapi/specs/save_spec.py" />
+    <endpoint path="/uccm/specs" method="PUT" script="uccm/restapi/specs/save_spec.py" />
+    <endpoint path="/uccm/specs" method="GET" script="uccm/restapi/specs/list_specs.py" />
+
+    <endpoint path="/uccm/schema" method="POST" script="uccm/restapi/specs/generate_schema.py" />
 </endpoints>

@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="float-right">
+                <div class="btn-group mb-2">
+                    <button type="button" class="btn btn-primary btn-sm" ng-click="addSpec()"><i class="fas fa-plus-circle"></i> Add</button>
+                    <div style="padding-left: 5px">
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="loadSpecNames()"><i class="fas fa-sync-alt"></i> Refresh</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="blueprint-list">
+                        <div class="list-group">
+                            <button type="button" class="list-group-item list-group-item-action" ng-repeat="t in specNames | orderBy: 'name'"
+                                    ng-click="editSpec(t)">{{t.name}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+    </div>
+</div>

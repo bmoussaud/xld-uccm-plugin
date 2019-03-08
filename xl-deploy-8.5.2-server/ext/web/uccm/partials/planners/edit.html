@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="float-right">
+                <button type="button" class="btn btn-primary btn-sm" ng-click="savePlanner()"><i class="far fa-save"></i></i> Save</button>
+                <button type="button" class="btn btn-primary btn-sm" ng-click="cancelPlannerEdit()"><i class="fas fa-ban"></i></i></i> Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form>
+                <div class="form-group">
+                    <label for="plannerName">Name</label>
+                    <input type="text" class="form-control" id="plannerName" placeholder="name" ng-model="currentPlanner.name">
+                </div>
+                <div class="form-group">
+                    <label>Spec</label>
+                    <small class="form-text text-muted">Python Planner Specification</small>
+                    <div ui-ace="pyAceOption" ng-model="currentPlanner.planner"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

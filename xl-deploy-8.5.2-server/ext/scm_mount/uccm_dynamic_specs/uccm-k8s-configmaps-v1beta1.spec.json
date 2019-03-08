@@ -1,0 +1,8 @@
+{
+    "schema": {
+        "$schema": "http://json-schema.org/schema#", 
+        "type": "object"
+    }, 
+    "spec": {}, 
+    "apiVersion": "uccm/k8s/configmaps/v1beta1"
+}

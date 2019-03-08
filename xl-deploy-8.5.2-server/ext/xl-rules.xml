@@ -4,6 +4,32 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
 -->
 <rules xmlns="http://www.xebialabs.com/xl-deploy/xl-rules">
 
+  <rule name="uccm.k8s.container.v1beta1" scope="deployed">
+        <conditions>
+          <type>uccm.k8s.DynamicDeployed</type>
+          <operation>CREATE</operation>
+          <operation>MODIFY</operation>
+          <operation>DESTROY</operation>
+          <expression>uccm_utils.match_api_version(delta, 'uccm/k8s/container/v1beta1')</expression>
+        </conditions>
+        <planning-script-path>scm_mount/uccm_dynamic_planners/uccm_k8s_container_v1beta1.py</planning-script-path>
+    </rule>
+
+  <rule name="uccm.k8s.configmaps.v1beta1" scope="deployed">
+    <conditions>
+      <type>uccm.k8s.DynamicDeployedFolderArtifact</type>
+      <operation>CREATE</operation>
+      <operation>MODIFY</operation>
+      <operation>DESTROY</operation>
+      <expression>uccm_utils.match_api_version(delta, 'uccm/k8s/configmaps/v1beta1')</expression>
+    </conditions>
+    <planning-script-path>scm_mount/uccm_dynamic_planners/uccm_k8s_configmaps_v1beta1.py</planning-script-path>
+  </rule>
+
+
+  <!-- ********************************    Benoit's UCCM Model  ******************************************* -->
+
+
   <step-macro name="kubectlApply">
     <parameters>
       <parameter name="resource" type="string" />
@@ -22,7 +48,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
           <version expression="true">deployedApplication.version.name</version>
           <containername expression="true">deployed.name</containername>
           <ci expression="true">macro['ci']</ci>
-          <profile expression="true">"/uccm_templates/%s.json.ftl" % macro['profile']</profile>
+          <profile expression="true">"/scm_mount/uccm_templates/%s.json.ftl" % macro['profile']</profile>
           <dictionaries expression="true">deployedApplication.environment.profileDictionaries</dictionaries>
         </freemarker-context>
       </os-script>

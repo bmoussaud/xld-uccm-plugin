@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="float-right">
+                <button type="button" class="btn btn-primary btn-sm" ng-click="saveRules()"><i class="far fa-save"></i></i> Save</button>
+                <button type="button" class="btn btn-primary btn-sm" ng-click="editRules()"><i class="fas fa-sync-alt"></i></i></i> Reload</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form>
+                <div class="form-group">
+                    <label>XL Rules</label>
+                    <small class="form-text text-muted">Xebialabs Rule Definition</small>
+                    <div ui-ace="aceOptionForRules" ng-model="rules.xml"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

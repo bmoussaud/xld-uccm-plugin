@@ -14,7 +14,7 @@ class ProcessorChain(object):
     def process(self, template):
         fcn_to_call = 'process'
         for p in self.processors:
-            mod_name = "uccm_processors.%s" % p
+            mod_name = "scm_mount.uccm_processors.%s" % p
             mod = __import__(mod_name, fromlist=["process"])
             func = getattr(mod, fcn_to_call)
             template = func(template, self.profile_dictionary, self.deployed, self.deployed_application)
