@@ -22,7 +22,7 @@ def modify(planner):
 def destroy(planner):
     dynamic_type = planner.deployed.apiVersion
     template = "%s-destroy" % dynamic_type.replace("/", "-")
-    planner.add_step_with_check_point(kubectl_cmd(planner, resource="configmap", order=planner.CREATE_RESOURCES,
+    planner.add_step_with_check_point(kubectl_cmd(planner, resource="configmap", order=planner.DESTROY_RESOURCES,
                                                   deployed=planner.previous_deployed, dynamic_deployed=planner.previous_dynamic_deployed,
                                                   profile_template=planner.active_profile_template_path(template)))
 

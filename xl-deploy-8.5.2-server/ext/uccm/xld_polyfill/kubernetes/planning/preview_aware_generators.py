@@ -14,6 +14,8 @@ class PreviewAwareStepsGenerator(StepsGenerator):
         if "_StepsGenerator__last_step" in self.__dict__:
             jython_step = self.__dict__['_StepsGenerator__last_step']
             jython_step.setPreviewScript('uccm/xld_polyfill/kubernetes/planning/preview_resource.py')
+            jython_step.getJythonContext()["deployedApplication"] = self.deployed_application
+            jython_step.getJythonContext()["deployed"] = self.deployed
         else:
             raise Exception("__last_step not found!")
 

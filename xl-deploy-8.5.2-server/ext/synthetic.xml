@@ -78,21 +78,17 @@ Note: If you modify this file, you must restart the XL Deploy server.
 
 
   <!-- UCCM K8s Dynamic Types -->
-  <type type="uccm.k8s.DynamicDeployed" extends="uccm.DynamicDeployed" deployable-type="uccm.k8s.DynamicResource" container-type="k8s.Namespace">
+  <type type="uccm.k8s.DynamicDeployed" extends="uccm.DynamicDeployed" deployable-type="uccm.k8s.DynamicResource" container-type="k8s.BasePodContainer">
     <generate-deployable type="uccm.k8s.DynamicResource" extends="uccm.DynamicDeployable"/>
   </type>
 
-  <type type="uccm.k8s.DynamicDeployedFileArtifact" extends="uccm.DynamicDeployedArtifact" deployable-type="uccm.k8s.DynamicFile" container-type="k8s.Namespace">
+  <type type="uccm.k8s.DynamicDeployedFileArtifact" extends="uccm.DynamicDeployedArtifact" deployable-type="uccm.k8s.DynamicFile" container-type="k8s.BasePodContainer">
     <generate-deployable type="uccm.k8s.DynamicFile" extends="udm.BaseDeployableFileArtifact"/>
   </type>
 
-  <type type="uccm.k8s.DynamicDeployedFolderArtifact" extends="uccm.DynamicDeployedArtifact" deployable-type="uccm.k8s.DynamicFolder" container-type="k8s.Namespace">
+  <type type="uccm.k8s.DynamicDeployedFolderArtifact" extends="uccm.DynamicDeployedArtifact" deployable-type="uccm.k8s.DynamicFolder" container-type="k8s.BasePodContainer">
     <generate-deployable type="uccm.k8s.DynamicFolder" extends="udm.BaseDeployableFolderArtifact"/>
   </type>
-
-
-
-
 
 
   <!-- Profile Dictionary Support -->
@@ -109,9 +105,20 @@ Note: If you modify this file, you must restart the XL Deploy server.
     <property name="encryptedEntries" kind="map_string_string" description="The encrypted dictionary entries" required="false" password="true"/>
   </type>
 
+  <type type="uccm.ProfilePatchDictionary" extends="udm.BaseConfigurationItem" root="Environments">
+    <property name="pathActivation" kind="list_of_string" description="Checks if path exists to trigger this dictionary." required="false"/>
+    <property name="matchActivation" kind="map_string_string" description="Key by path, Json Value is expected value. Matches trigger this dictionary. JSON Patch Test Operation is performed" required="false"/>
+    <property name="failOnNotFound" kind="boolean" default="true"/>
+    <property name="add" kind="map_string_string" description="Path to add. Patch add operations" required="false"/>
+    <property name="replace" kind="map_string_string" description="Path to replace. Patch replace operations" required="false"/>
+    <property name="remove" kind="list_of_string" description="Paths to remove. Patch remove operations" required="false"/>
+  </type>
+
   <type-modification type="udm.Environment">
     <property name="profileDictionaries" kind="list_of_ci" referenced-type="uccm.ProfileDictionary" required="false"
               description="The dictionaries providing profile values. If the same entry exists in multiple dictionaries, the first one in the list is taken"/>
+    <property name="profilePatchDictionaries" kind="list_of_ci" referenced-type="uccm.ProfilePatchDictionary" required="false"
+              description="The dictionaries providing profile patches."/>
   </type-modification>
 
 </synthetic>

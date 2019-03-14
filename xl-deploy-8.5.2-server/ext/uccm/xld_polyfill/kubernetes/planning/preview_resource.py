@@ -1,3 +1,4 @@
 from uccm.utils.profile import ProfileProcessor
 
-result = ProfileProcessor.formatted_json_string(data)
+process_template = ProfileProcessor(deployed, deployedApplication).process(data)
+result = ProfileProcessor.formatted_json_string(process_template)

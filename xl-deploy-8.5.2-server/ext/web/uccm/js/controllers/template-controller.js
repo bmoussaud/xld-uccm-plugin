@@ -116,7 +116,7 @@ angular.module('uccm').controller('TemplateController', function($http, $scope, 
                 switch($scope.view_mode)
                 {
                     case "list":
-                        return 'partials/templates/list.html';
+                        return 'partials/templates/list-templates.html';
                     default:
                         return 'partials/templates/edit.html';
                 }

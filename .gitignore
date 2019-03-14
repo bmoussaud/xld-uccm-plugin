@@ -16,3 +16,4 @@ work/
 !/xl-deploy-8.5.2-server/hotfix/plugins/
 !/xl-deploy-8.5.2-server/hotfix/lib/
 /xl-deploy-8.5.2-server/hotfix/**/readme.txt
+/node_modules/

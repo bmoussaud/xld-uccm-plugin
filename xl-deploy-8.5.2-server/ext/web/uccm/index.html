@@ -12,6 +12,7 @@
     <script type="text/javascript" src="js/services/common.js"></script>
     <script type="text/javascript" src="js/controllers/main.js"></script>
     <script type="text/javascript" src="js/controllers/template-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/processor-controller.js"></script>
     <script type="text/javascript" src="js/controllers/rules-controller.js"></script>
     <script type="text/javascript" src="js/controllers/spec-controller.js"></script>
     <script type="text/javascript" src="js/controllers/planner-controller.js"></script>
@@ -29,18 +30,23 @@
                 <div ng-include="getView()"></div>
             </div>
         </uib-tab>
-        <uib-tab index="1" heading="Planners">
+        <uib-tab index="1" heading="Generators">
+            <div ng-controller="TemplateController">
+                <div ng-include="getView()"></div>
+            </div>
+        </uib-tab>
+        <uib-tab index="2" heading="Planners">
             <div ng-controller="PlannerController">
                 <div ng-include="getView()"></div>
             </div>
         </uib-tab>
-        <uib-tab index="2" heading="Rules">
+        <uib-tab index="3" heading="Rules">
             <div ng-controller="RulesController">
                 <div ng-include="'partials/templates/edit-rules.html'"></div>
             </div>
         </uib-tab>
-        <uib-tab index="3" heading="Proccessors">
-            <div ng-controller="TemplateController">
+        <uib-tab index="4" heading="Proccessors">
+            <div ng-controller="ProcessorController">
                 <div ng-include="getView()"></div>
             </div>
         </uib-tab>
