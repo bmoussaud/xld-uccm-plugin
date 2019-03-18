@@ -16,13 +16,14 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                 <description expression="true">"Deploy {0}/{3} as kubernetes {2} to {1} namespace".format(deployed.name,
                     deployed.container.name,macro['resource'],macro['ci'].name)
                 </description>
-                <script expression="true">"uccm/kubernetes/{0}/apply".format(macro['resource'])</script>
+                <script>uccm/kubernetes/apply</script>
                 <target-host expression="true">deployed.container.container.kubectlHost</target-host>
                 <freemarker-context>
                     <application expression="true">deployedApplication.name</application>
                     <version expression="true">deployedApplication.version.name</version>
                     <containername expression="true">deployed.name</containername>
                     <ci expression="true">macro['ci']</ci>
+                    <resource expression="true">macro['resource']</resource>
                 </freemarker-context>
             </os-script>
         </steps>
@@ -40,7 +41,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                 <order expression="true">macro['order']</order>
                 <description expression="true">"Delete {0} kubernetes {2} from {1} namespace".format(macro['target'].name,macro['target'].container.name,macro['resource'])
                 </description>
-                <script expression="true">"uccm/kubernetes/{0}/delete".format(macro['resource'])</script>
+                <script>uccm/kubernetes/delete</script>
                 <target-host expression="true">macro['target'].container.container.kubectlHost</target-host>
                 <freemarker-context>
                     <resource expression="true">macro['resource']</resource>
