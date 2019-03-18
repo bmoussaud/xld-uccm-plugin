@@ -14,6 +14,8 @@ Note: If you modify this file, you must restart the XL Deploy server.
         <generate-deployable type="uccm.ContainerSpec" extends="udm.BaseDeployable"/>
         <property name="image"/>
         <property name="replicas" kind="integer" default="1"/>
+        <property category="Process" name="env" required="false" kind="map_string_string"
+                  description="List of environment variables to set in the container. Cannot be updated."/>
         <property name="ports" required="false" kind="set_of_ci"
                   referenced-type="uccm.ContainerPort" as-containment="true"
                   description="List of ports to expose from the container."/>

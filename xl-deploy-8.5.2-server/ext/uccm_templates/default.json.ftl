@@ -59,6 +59,14 @@
               <#sep>,
               </#list>
             ],
+             "env": [
+             <#list c.env?keys as k>{
+                "name": "${k}",
+                "value": "${c.env[k]}"
+             }
+             <#sep>,
+             </#list>
+            ],
             "volumeMounts": [
             <#list deployed.mountedVolumes as vol>
               {
