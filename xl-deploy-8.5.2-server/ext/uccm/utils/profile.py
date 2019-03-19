@@ -17,7 +17,11 @@ class ProcessorChain(object):
         fcn_to_call = 'process'
         for p in self.processors:
             mod_name = "scm_mount.uccm_processors.%s" % p
-            mod = __import__(mod_name, fromlist=["process"])
+            try:
+                mod = __import__(mod_name, fromlist=["process"])
+            except ImportError, e:
+                logger.error("Processor %s not found." % mod_name)
+                continue
             func = getattr(mod, fcn_to_call)
             template = func(template, self.profile_dictionary, self.deployed, self.deployed_application)
         return template
@@ -44,8 +48,8 @@ class ProfileProcessor(object):
             data = json.loads(raw_data)
         return data
 
-    def process(self, template=None):
-        profile_name = self.deployed.profileName
+    def process(self, template=None, profile=None):
+        profile_name = profile if profile is not None else self.deployed.profileName
         if not template:
             template = self.read_template()
         chain = ProcessorChain([profile_name], self.deployed, self.deployed_application)
@@ -98,6 +102,8 @@ class ProfilePatchDictionary(object):
         return self.apply_patches(all_patches, obj, fail_on_error)
 
     def is_active(self, sd, obj):
+        if not sd.enabled:
+            return False
         active_path = True
         active_matches = True
         if sd.pathActivation:
@@ -113,8 +119,6 @@ class ProfilePatchDictionary(object):
                 obj = self.apply_modify_patch(sd.add, "add", obj, sd.failOnNotFound)
                 obj = self.apply_modify_patch(sd.replace, "replace", obj, sd.failOnNotFound)
                 obj = self.apply_delete_patch(sd.remove, "remove", obj, sd.failOnNotFound)
-            else:
-                logger.error("%s Profile Patch Dictionary is not active")
         return obj
 
 

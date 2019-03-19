@@ -1,7 +1,9 @@
-import json
-from uccm.utils.profile import ProfileDictionary
+from uccm.utils.freemarker_renderer import FreemarkerRenderer
+from uccm.utils.profile import ProfileDictionary, ProfileProcessor
 from uccm.dynamic.file_store import TemplateFileStore
 import jsonschema
+import json
+from syntactical.sugar import unwrap
 
 
 class DynamicPlanner(object):
@@ -25,9 +27,10 @@ class DynamicPlanner(object):
         self.profile_dictionary = ProfileDictionary(self.deployed_application.environment.profileDictionaries)
         self.deployed = planner_vars['deployed']
         self.previous_deployed = planner_vars['previousDeployed']
-        self.dynamic_deployed = json.loads(self.deployed.jsonSpec)
-        self.previous_dynamic_deployed = None if self.previous_deployed is None else json.loads(self.deployed.jsonSpec)
-        self.validate_dynamic_deployed()
+        if self.deployed.hasProperty("jsonSpec"):
+            self.dynamic_deployed = json.loads(self.deployed.jsonSpec)
+            self.previous_dynamic_deployed = None if self.previous_deployed is None else json.loads(self.deployed.jsonSpec)
+            self.validate_dynamic_deployed()
 
     def handle(self, create=None, modify=None, create_modify=None, destroy=None):
         if create_modify is not None:
@@ -63,4 +66,14 @@ class DynamicPlanner(object):
     def validate_dynamic_deployed(self):
         schema = TemplateFileStore().read_spec_json_file(self.deployed.apiVersion.replace("/", "-"))
         jsonschema.validate(instance=self.dynamic_deployed, schema=schema)
+
+    def process_profile_template(self, profile, **context):
+        freemarker_context = {"deployed": self.deployed._delegate,  "previousDeployed": unwrap(self.previous_deployed),
+         "deployedApplication": unwrap(self.deployed_application), "dictionaries": self.profile_dictionary}
+        freemarker_context.update(context)
+        fm = FreemarkerRenderer(freemarker_context)
+        result = fm.evaluate_template_from_path(self.active_profile_template_path(profile))
+        json_template = json.loads(result)
+        process_template = ProfileProcessor(self.deployed, self.deployed_application).process(json_template, profile)
+        return  json.dumps(process_template, indent=4)
 

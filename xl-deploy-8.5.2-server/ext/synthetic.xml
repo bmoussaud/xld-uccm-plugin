@@ -106,6 +106,7 @@ Note: If you modify this file, you must restart the XL Deploy server.
   </type>
 
   <type type="uccm.ProfilePatchDictionary" extends="udm.BaseConfigurationItem" root="Environments">
+    <property name="enabled" kind="boolean" default="true" description="Enable or Disable this dictionary."/>
     <property name="pathActivation" kind="list_of_string" description="Checks if path exists to trigger this dictionary." required="false"/>
     <property name="matchActivation" kind="map_string_string" description="Key by path, Json Value is expected value. Matches trigger this dictionary. JSON Patch Test Operation is performed" required="false"/>
     <property name="failOnNotFound" kind="boolean" default="true"/>

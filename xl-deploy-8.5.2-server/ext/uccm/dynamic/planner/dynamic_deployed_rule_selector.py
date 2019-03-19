@@ -1,5 +1,5 @@
 import json
-
+from .planner import DynamicPlanner
 
 class DynamicDeployedSelector(object):
 
@@ -15,5 +15,11 @@ class DynamicDeployedSelector(object):
         if delta.previousDeployed:
             return delta.previousDeployed.apiVersion == version
         return False
+
+    @staticmethod
+    def process_profile_template(planner_vars):
+        def process(profile, **context):
+            return DynamicPlanner(planner_vars).process_profile_template(profile, **context)
+        return process
 
 
