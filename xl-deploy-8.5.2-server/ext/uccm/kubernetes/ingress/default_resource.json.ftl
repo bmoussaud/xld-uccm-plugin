@@ -9,25 +9,25 @@
       "version": "${version}"
     },
     "annotations": {
-      "ingress.kubernetes.io/rewrite-target": "/${deployed.name}",
       "nginx.ingress.kubernetes.io/ssl-redirect": "false"
     }
   },
   "spec": {
-    "rules": [
-        {
-          "http": {
-            "paths": [
+          "rules": [
               {
-                "path": "/${deployed.name}",
-                "backend": {
-                  "serviceName": "${deployed.name}-${ci.name}-service",
-                  "servicePort": <#if ci.servicePort??>${ci.servicePort}<#else>${ci.containerPort}</#if>
-                }
+                  "host": "www.${environment?lower_case}.${application?lower_case}.xebialabs.demo",
+                  "http": {
+                      "paths": [
+                          {
+                              "backend": {
+                                  "serviceName": "${deployed.name}-${ci.name}-service",
+                                  "servicePort": <#if ci.servicePort??>${ci.servicePort}<#else>${ci.containerPort}</#if>
+                              },
+                              "path": "/"
+                          }
+                      ]
+                  }
               }
-            ]
-          }
-        }
-      ]
-    }
+          ]
+      }
 }
