@@ -1,0 +1,1 @@
+kubectl create secret docker-registry ${resourceName} --docker-server=${registry.url} --docker-username=${registry.username} --docker-password=${registry.password} -n ${deployed.container.name}

@@ -46,6 +46,14 @@
           <#sep>,
         </#list>
         ],
+        "imagePullSecrets": [
+        <#list deployed.container.container.securedRegistries as securedRegistry>
+          {
+            "name":"${deployed.name}-${securedRegistry.name}-secret"
+          }
+        <#sep>,
+        </#list>
+        ],
         "containers": [
           {
             "name": "${deployed.name}",

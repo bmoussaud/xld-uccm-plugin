@@ -7,6 +7,9 @@ Note: If you modify this file, you must restart the XL Deploy server.
 
     <type-modification type="k8s.Master">
         <property name="kubectlHost" required="false" category="uccm" kind="ci" referenced-type="overthere.Host"/>
+        <!-- securedRegistries could be moved to k8s.Namespace or managed as the deployed level -->
+        <property name="securedRegistries" required="false" category="uccm" kind="set_of_ci"
+                  referenced-type="docker.Registry"/>
     </type-modification>
 
     <type type="uccm.Container" extends="udm.BaseDeployed" deployable-type="uccm.ContainerSpec"
