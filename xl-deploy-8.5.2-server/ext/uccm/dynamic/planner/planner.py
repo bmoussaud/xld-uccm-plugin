@@ -68,8 +68,10 @@ class DynamicPlanner(object):
         jsonschema.validate(instance=self.dynamic_deployed, schema=schema)
 
     def process_profile_template(self, profile, **context):
+        unwrapped_dicts = [d._delegate for d in self.deployed_application.environment.profileDictionaries]
         freemarker_context = {"deployed": self.deployed._delegate,  "previousDeployed": unwrap(self.previous_deployed),
-         "deployedApplication": unwrap(self.deployed_application), "dictionaries": self.profile_dictionary}
+            "deployedApplication": unwrap(self.deployed_application),
+            "dictionaries": unwrapped_dicts}
         freemarker_context.update(context)
         fm = FreemarkerRenderer(freemarker_context)
         result = fm.evaluate_template_from_path(self.active_profile_template_path(profile))

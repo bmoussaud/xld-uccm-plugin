@@ -1,3 +1,4 @@
+<#import "/uccm/utils/ftl/dictionary.ftl" as dict>
 {
   "kind": "Deployment",
   "apiVersion": "extensions/v1beta1",
@@ -75,7 +76,7 @@
           }
         ],
         "restartPolicy": "Always",
-        "terminationGracePeriodSeconds": 30
+        "terminationGracePeriodSeconds": ${dict.resolve('terminationGracePeriodSeconds', '30')}
       }
     }
   }
