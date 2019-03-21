@@ -21,7 +21,6 @@ class ServiceStepGenerator(StepGenerator):
             context.addStep(steps.noop(**{
                 'description': 'Wait for Service {1}/{0} deleted on {2}'.format(port.name, deployed.name,
                                                                                 deployed.container.name), 'order': 44}))
-            print data
             context.addStepWithCheckpoint(steps.kubectlDelete(**data), delta)
 
 
@@ -35,5 +34,5 @@ try:
     ServiceStepGenerator(delta, list_of_deltas).generate()
 except:
     # Display the *original* exception
-    print(traceback.format_exc())
+    raise Exception(str(traceback.format_exc()))
     sys.exit(1)
