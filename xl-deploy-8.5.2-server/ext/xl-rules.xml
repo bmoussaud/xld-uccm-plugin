@@ -131,7 +131,6 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         <conditions>
             <type>uccm.Container</type>
             <operation>CREATE</operation>
-            <operation>MODIFY</operation>
         </conditions>
         <planning-script-path>uccm/kubernetes/deployment/planningScripts/createSecuredRegistries.py</planning-script-path>
     </rule>
@@ -140,7 +139,6 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         <conditions>
             <type>uccm.Container</type>
             <operation>DESTROY</operation>
-            <operation>MODIFY</operation>
         </conditions>
         <planning-script-path>uccm/kubernetes/deployment/planningScripts/destroySecuredRegistries.py</planning-script-path>
     </rule>
