@@ -25,7 +25,7 @@ class IngresStepGenerator(StepGenerator):
 
 
 import traceback
-import sys
+
 
 try:
     builder = DeltasBuilder()
@@ -33,6 +33,5 @@ try:
     print "ingress %s" % list_of_deltas
     IngresStepGenerator(delta, list_of_deltas).generate()
 except:
-    # Display the *original* exception
-    print(traceback.format_exc())
-    sys.exit(1)
+    raise Exception(str(traceback.format_exc()))
+

@@ -25,7 +25,7 @@ class ServiceStepGenerator(StepGenerator):
 
 
 import traceback
-import sys
+
 
 try:
     builder = DeltasBuilder()
@@ -33,6 +33,4 @@ try:
     print "services %s" % list_of_deltas
     ServiceStepGenerator(delta, list_of_deltas).generate()
 except:
-    # Display the *original* exception
     raise Exception(str(traceback.format_exc()))
-    sys.exit(1)
