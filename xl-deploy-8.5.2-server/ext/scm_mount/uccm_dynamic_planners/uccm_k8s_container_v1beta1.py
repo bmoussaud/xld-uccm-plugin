@@ -1,6 +1,5 @@
 import uccm.dynamic.planner.planner
 import uccm.kubernetes.dynamic.stepmacros.steps
-
 reload(uccm.dynamic.planner.planner)
 reload(uccm.kubernetes.dynamic.stepmacros.steps)
 
@@ -12,24 +11,22 @@ NOOP = 'noop'
 
 def create_modify(planner):
     dynamic_type = planner.deployed.apiVersion
-    template = dynamic_type.replace("/", "-")
+    profile = dynamic_type.replace("/", "-")
     planner.add_step_with_check_point(kubectl_apply(planner, resource="deployment", order=planner.CREATE_RESOURCES,
-                                                    ci=planner.dynamic_deployed, profile_template=
-                                                    planner.active_profile_template_path(template)))
-
+                                                    ci=planner.dynamic_deployed, profile=profile))
     planner.add_step(wait_resource_up(planner, resource="deployment", order=planner.CREATE_RESOURCES + 2,
                                       ci=planner.dynamic_deployed, resource_name="{0}-depl".format(planner.deployed.name)
-    ))
+                                      ))
 
     def add_create_steps(port, order_offset, resource_type):
-        resource_template = "%s-%s" % (template, resource_type)
+        resource_profile = "%s-%s" % (profile, resource_type)
         resource_name = '{0}-{1}-{2}'.format(planner.deployed.name,port['name'], resource_type)
         planner.add_step_with_check_point(kubectl_apply(planner, resource=resource_type,
                                                         order=planner.CREATE_RESOURCES + order_offset, ci=port,
-                                                        profile_template=planner.active_profile_template_path(resource_template)))
-
-        planner.add_step(wait_resource_up(planner, resource=resource_type, order=planner.CREATE_RESOURCES + order_offset + 1,
-                                          ci=port, resource_name=resource_name))
+                                                        profile=resource_profile))
+        resource_order = planner.CREATE_RESOURCES + order_offset + 1
+        planner.add_step(wait_resource_up(planner, resource=resource_type, order=resource_order, ci=port,
+                                          resource_name=resource_name))
 
     for p in planner.dynamic_deployed['ports']:
         if p['exposeAsService']:

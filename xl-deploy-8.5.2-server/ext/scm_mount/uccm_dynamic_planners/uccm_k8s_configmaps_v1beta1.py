@@ -1,9 +1,3 @@
-import uccm.dynamic.planner.planner
-import uccm.kubernetes.dynamic.stepmacros.steps
-
-reload(uccm.dynamic.planner.planner)
-reload(uccm.kubernetes.dynamic.stepmacros.steps)
-
 from uccm.kubernetes.dynamic.stepmacros.steps import kubectl_cmd
 from uccm.dynamic.planner.planner import DynamicPlanner
 

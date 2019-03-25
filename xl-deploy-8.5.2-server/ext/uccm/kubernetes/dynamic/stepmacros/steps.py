@@ -1,20 +1,17 @@
 
-def kubectl_apply(planner, resource=None, order=0, ci=None, profile_template=None):
+def kubectl_apply(planner, resource=None, order=0, ci=None, profile=None):
     deployed = planner.deployed
     description = "Deploy {0} as kubernetes {2} to {1} namespace".format(deployed.name, deployed.container.name,resource)
+    json_template = planner.process_profile_template(profile, application=planner.deployed_application.name,
+                                                     version=planner.deployed_application.version.name, ci=ci,
+                                                     containername=deployed.name, dynamic_deployed=planner.dynamic_deployed)
     return planner.steps.os_script(
         order=order,
         description=description,
         target_host=deployed.container.container.kubectlHost,
         script="uccm/kubernetes/dynamic/kubectl/apply",
         freemarker_context={
-            "application": planner.deployed_application.name,
-            "version": planner.deployed_application.version.name,
-            "containername": deployed.name,
-            "ci": ci,
-            "profileTemplate": profile_template,
-            "dictionaries": planner.deployed_application.environment.profileDictionaries,
-            "dynamic_deployed": planner.dynamic_deployed
+            "json": json_template
         })
 
 

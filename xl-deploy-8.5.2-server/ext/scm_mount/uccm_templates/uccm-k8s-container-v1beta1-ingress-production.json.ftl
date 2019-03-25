@@ -7,6 +7,7 @@
       "application": "${application}",
       "version": "${version}",
       "production": "production"
+    }
   },
   "spec": {
     "ports": [
