@@ -1,0 +1,68 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "petclinic": {
+      "Type": "AWS::ElasticBeanstalk::Application",
+      "Properties": {
+        "Description": "AWS Elastic Beanstalk Sample Application"
+      }
+    },
+    "petclinicVersion": {
+      "Type": "AWS::ElasticBeanstalk::ApplicationVersion",
+      "Properties": {
+        "ApplicationName": {
+          "Ref": "petclinic"
+        },
+        "Description": "AWS ElasticBeanstalk Sample Application Version",
+        "SourceBundle": {
+          "S3Bucket": "xlfr",
+          "S3Key": "PetClinic-2.0.war"
+        }
+      }
+    },
+    "petclinicConfigurationTemplate": {
+      "Type": "AWS::ElasticBeanstalk::ConfigurationTemplate",
+      "Properties": {
+        "ApplicationName": {
+          "Ref": "petclinic"
+        },
+        "Description": "AWS ElasticBeanstalk Sample Configuration Template",
+        "OptionSettings": [
+          {
+            "Namespace": "aws:autoscaling:asg",
+            "OptionName": "MinSize",
+            "Value": "2"
+          },
+          {
+            "Namespace": "aws:autoscaling:asg",
+            "OptionName": "MaxSize",
+            "Value": "6"
+          },
+          {
+            "Namespace": "aws:elasticbeanstalk:environment",
+            "OptionName": "EnvironmentType",
+            "Value": "LoadBalanced"
+          }
+        ],
+        "SolutionStackName": "64bit Amazon Linux 2018.03 v3.1.1 running Tomcat 8.5 Java 8"
+      }
+    },
+    "sampleEnvironment": {
+      "Type": "AWS::ElasticBeanstalk::Environment",
+      "Properties": {
+        "ApplicationName": {
+          "Ref": "petclinic"
+        },
+        "Description": "AWS ElasticBeanstalk Sample Environment",
+        "TemplateName": {
+          "Ref": "petclinicConfigurationTemplate"
+        },
+        "VersionLabel": {
+          "Ref": "petclinicVersion"
+        },
+        "CNAMEPrefix": "benoitpetclinicdev",
+        "EnvironmentName": "petclinicdev"
+      }
+    }
+  }
+}

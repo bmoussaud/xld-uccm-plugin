@@ -1,7 +1,7 @@
 apiVersion: xl-deploy/v1
 kind: Deployment
 spec:
-  package: Applications/Cloud/AWS/PetBeanStalk/5.3.1
-  environment: Environments/Cloud/AWS
+  package: Applications/PetStalk/5.1.0
+  environment: Environments/aws
 
 

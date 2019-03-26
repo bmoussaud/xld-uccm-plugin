@@ -2,16 +2,15 @@
 apiVersion: xl-deploy/v1
 kind: Applications
 spec:
-spec:
 - name: Applications/PetStalk
   type: udm.Application
   children:
-    - name: 5.3.1
+    - name: 5.2.0
       type: udm.DeploymentPackage
       children:
       - name: descriptor
         type: aws.cloudformation.Template
-        file: !file "petclinic.yaml"
+        file: !file "petclinic-2.0.json"
       - name: petclinic.war
         type: aws.s3.Archive
         acl: public-read
@@ -19,4 +18,25 @@ spec:
       - name: smoke test
         type: smoketest.HttpRequestTest
         url: http://benoitpetclinicdev.eu-west-1.elasticbeanstalk.com
-        expectedResponseText: Home
+        expectedResponseText: PetClinic 2.0
+---
+apiVersion: xl-deploy/v1
+kind: Applications
+spec:
+- name: Applications/PetStalk
+  type: udm.Application
+  children:
+    - name: 5.1.0
+      type: udm.DeploymentPackage
+      children:
+      - name: descriptor
+        type: aws.cloudformation.Template
+        file: !file "petclinic-1.0.json"
+      - name: petclinic.war
+        type: aws.s3.Archive
+        acl: public-read
+        file: !file "PetClinic-1.0.war"
+      - name: smoke test
+        type: smoketest.HttpRequestTest
+        url: http://benoitpetclinicdev.eu-west-1.elasticbeanstalk.com
+        expectedResponseText: PetClinic 1.0

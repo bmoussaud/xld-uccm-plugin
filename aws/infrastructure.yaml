@@ -24,14 +24,12 @@ spec:
 apiVersion: xl-deploy/v1
 kind: Environments
 spec:
-- directory: Environments/aws.dict
-  children:
-  - name: AWS Dictionary
-    type: udm.Dictionary
-    entries:
-      sample: scott
-      title: AWS
-- name: Environments/aws
+- name: aws.dict
+  type: udm.Dictionary
+  entries:
+    sample: scott
+    title: AWS
+- name: aws
   type: udm.Environment
   members:
   - ~Infrastructure/aws/xlfr
