@@ -1,0 +1,43 @@
+---
+apiVersion: xl-deploy/v1
+kind: Infrastructure
+spec:
+- name: Infrastructure/aws
+  type: aws.Cloud
+  accesskey: !value accesskey
+  accessSecret: !value accessSecret
+  children:
+  - name: xlfr
+    type: aws.s3.Bucket
+    bucketName: xlfr
+    region: eu-west-1
+  - name: dev-stack
+    type: aws.cloudformation.Stack
+    region: eu-west-1
+- name: Infrastructure/localhost
+  type: overthere.LocalHost
+  os: UNIX
+  children:
+  - name: aws test runner
+    type: smoketest.Runner
+---
+apiVersion: xl-deploy/v1
+kind: Environments
+spec:
+- directory: Environments/aws.dict
+  children:
+  - name: AWS Dictionary
+    type: udm.Dictionary
+    entries:
+      sample: scott
+      title: AWS
+- name: Environments/aws
+  type: udm.Environment
+  members:
+  - ~Infrastructure/aws/xlfr
+  - ~Infrastructure/aws/dev-stack
+  - ~Infrastructure/localhost/aws test runner
+  dictionaries:
+  - ~Environments/aws.dict
+
+
