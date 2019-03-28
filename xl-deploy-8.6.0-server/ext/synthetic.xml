@@ -66,4 +66,21 @@ Note: If you modify this file, you must restart the XL Deploy server.
                   description="is it a sensitive data?"/>
     </type>
 
+
+    <!-- AWS -->
+    <type-modification type="aws.Cloud">
+        <property name="awsHost" required="false" category="uccm" kind="ci" referenced-type="overthere.Host"/>
+    </type-modification>
+
+    <type type="uccm.aws.BeanStalkWarArtifact" extends="udm.BaseDeployedArtifact"
+          container-type="aws.cloudformation.Stack"
+          deployable-type="uccm.aws.JavaArtifact">
+        <generate-deployable type="uccm.aws.JavaArtifact" extends="jee.War"/>
+        <property name="solutionStackName" default="64bit Amazon Linux 2018.03 v3.1.1 running Tomcat 8.5 Java 8"/>
+        <property name="targetFileName" kind="string" required="false"
+                  description="Name of the file on bucket along with extension."/>
+        <property name="profile" default="default"/>
+    </type>
+
+
 </synthetic>

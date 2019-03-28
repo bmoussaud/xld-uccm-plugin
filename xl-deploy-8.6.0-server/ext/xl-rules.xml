@@ -258,7 +258,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
             </os-script>
             <jython>
                 <order>40</order>
-                <description expression="true">"Wait for {0} to be undeployed <from></from> {1} Elastic BeanStalk".format(previousDeployed.name, previousDeployed.container.name)</description>
+                <description expression="true">"Wait for {0} to be undeployed from {1} Elastic BeanStalk".format(previousDeployed.name, previousDeployed.container.name)</description>
                 <script>uccm/aws/elasticbeanstalk/wait_for_down.py</script>
                 <jython-context>
                     <target_host expression="true">previousDeployed.container.account.awsHost</target_host>

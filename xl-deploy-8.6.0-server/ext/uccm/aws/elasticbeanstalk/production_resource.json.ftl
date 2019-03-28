@@ -29,6 +29,23 @@
           "Ref": "${application}"
         },
         "Description": "${application} Configuration Template",
+        "OptionSettings": [
+          {
+            "Namespace": "aws:autoscaling:asg",
+            "OptionName": "MinSize",
+            "Value": "2"
+          },
+          {
+            "Namespace": "aws:autoscaling:asg",
+            "OptionName": "MaxSize",
+            "Value": "6"
+          },
+          {
+            "Namespace": "aws:elasticbeanstalk:environment",
+            "OptionName": "EnvironmentType",
+            "Value": "LoadBalanced"
+          }
+        ],
         "SolutionStackName": "${deployed.solutionStackName}"
       }
     },
