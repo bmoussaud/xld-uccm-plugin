@@ -1,0 +1,177 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Metadata": {
+        "AWS::CloudFormation::Designer": {
+            "d8d52781-619d-4d17-a937-5405378ebc46": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": 10.900543212890625,
+                    "y": 260.12369537353516
+                },
+                "z": 0,
+                "embeds": [],
+                "iscontainedinside": [
+                    "3544ece7-dc1f-47e7-bd6f-5fbe17aed322"
+                ]
+            },
+            "3544ece7-dc1f-47e7-bd6f-5fbe17aed322": {
+                "size": {
+                    "width": 140,
+                    "height": 140
+                },
+                "position": {
+                    "x": 150,
+                    "y": 220
+                },
+                "z": 0,
+                "embeds": []
+            },
+            "79ef6215-92e9-4a86-8529-80fed330ef5c": {
+                "size": {
+                    "width": 140,
+                    "height": 140
+                },
+                "position": {
+                    "x": 350,
+                    "y": 220
+                },
+                "z": 0
+            }
+        }
+    },
+    "Parameters": {
+        "ProjectName": {
+            "Type": "String",
+            "Default": "pet"
+        },
+        "AvailabilityZone": {
+            "Type": "String",
+            "Default": "eu-west-1a"
+        },
+        "VPCStackName": {
+            "Type": "String",
+            "Description": "VPC Stack Name",
+            "Default": "ecs-vpc"
+        }
+    },
+     "Outputs": {
+        "VPCID": {
+            "Value": {
+                "Ref": "petVPC"
+            },
+            "Description": "VPC ID",
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-VPCID"
+                }
+            }
+        },
+        "subnetID": {
+            "Description": "Subnet ID",
+            "Value": {
+                "Ref": "petSubNet"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-subnetID"
+                }
+            }
+        },
+        "securityGroupID": {
+            "Description": "securityGroup ID",
+            "Value": {
+                "Ref": "petSecurityGroup"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-securityGroupID"
+                }
+            }
+        }
+    },
+
+    "Resources": {
+        "petSecurityGroup": {
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+                "GroupDescription": "Allow http to client host",
+                "VpcId": {
+                    "Ref": "petVPC"
+                },
+                "SecurityGroupIngress": [
+                    {
+                        "IpProtocol": "tcp",
+                        "FromPort": 80,
+                        "ToPort": 80,
+                        "CidrIp": "0.0.0.0/0"
+                    }
+                ],
+                "SecurityGroupEgress": [
+                    {
+                        "IpProtocol": "tcp",
+                        "FromPort": 80,
+                        "ToPort": 80,
+                        "CidrIp": "0.0.0.0/0"
+                    }
+                ]
+            },
+
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "d8d52781-619d-4d17-a937-5405378ebc46"
+                }
+            }
+        },
+        "petVPC": {
+            "Type": "AWS::EC2::VPC",
+            "Properties": {
+                "CidrBlock": "10.0.0.0/16",
+                "EnableDnsSupport": "true",
+                "EnableDnsHostnames": "false",
+                "InstanceTenancy": "default",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Fn::Sub": "${ProjectName}-${VPCStackName}"
+                        }
+                    }
+                ]
+            },
+
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "3544ece7-dc1f-47e7-bd6f-5fbe17aed322"
+                }
+            }
+        },
+        "petSubNet": {
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "petVPC"
+                },
+                "CidrBlock": "10.0.0.0/24",
+                "AvailabilityZone": {
+                        "Fn::Sub": "${AvailabilityZone}"
+                },
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Fn::Sub": "${ProjectName}-${VPCStackName}"
+                        }
+                    }
+                ]
+            },
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "79ef6215-92e9-4a86-8529-80fed330ef5c"
+                }
+            }
+        }
+    }
+}

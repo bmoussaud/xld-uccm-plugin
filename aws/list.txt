@@ -1,0 +1,34 @@
+http://www.deplication.net/2013/11/java-war-deployment-options-on-aws.html
+https://github.com/thekosmix/AWS-Deploy/blob/master/deployOnProd.sh
+https://stackoverflow.com/questions/25683649/deploy-war-from-s3-to-aws-elastic-beanstalk
+
+610  aws elasticbeanstalk create-application-version --application-name petpet --version-label petpet-1.0 --source-bundle S3Bucket=xlfr,S3Key=PetClinic-1.0.war
+  611  aws elasticbeanstalk create-application
+  612  aws elasticbeanstalk create-application help
+  613  aws elasticbeanstalk create-application --application-name petpet
+  614  aws elasticbeanstalk create-application-version --application-name petpet --version-label petpet-1.0 --source-bundle S3Bucket=xlfr,S3Key=PetClinic-1.0.war
+  615  aws elasticbeanstalk create-environment
+  616  aws elasticbeanstalk create-environment help
+  617  aws elasticbeanstalk create-environment --application-name petpet --environment-name petpet-dev --cname-prefix benoit-petpet-my-app --version-label petpet-1.0 --solution-stack-name "64bit Amazon Linux 2018.03 v3.1.1 running Tomcat 8.5 Java 8"
+  618  aws elasticbeanstalk
+  619  aws elasticbeanstalk help
+  620  aws elasticbeanstalk describe-environments
+  621  aws elasticbeanstalk describe-environments --environment-names petpet-dev
+  622  aws elasticbeanstalk describe-environments --environment-names petpet-dev
+  623  aws elasticbeanstalk describe-environments --environment-names petpet-dev
+  624  aws elasticbeanstalk describe-environments --environment-names petpet-dev
+  625  aws elasticbeanstalk describe-environments --environment-names petpet-dev
+  626  aws elasticbeanstalk describe-environments --environment-names petpet-dev
+  627  aws elasticbeanstalk describe-environments --environment-names petpet-dev
+  628  aws elasticbeanstalk describe-environments --environment-names petpet-dev
+  629  aws s3 cp /Users/bmoussaud/Workspace/bmoussaud/xld-uccm-plugin/xl-deploy-8.6.0-server/importablePackages/PetClinic-war/2.0/PetClinic-2.0.war s3://xlfr/PetClinic-2.0.war
+  630  aws elasticbeanstalk create-application-version --application-name petpet --version-label petpet-2.0 --source-bundle S3Bucket=xlfr,S3Key=PetClinic-2.0.war
+  631  aws elasticbeanstalk update-environment --environment-name petpet-dev --version-label petpet-2.0
+  632  aws elasticbeanstalk describe-environments --environment-names petpet-dev
+  633  aws elasticbeanstalk describe-environments --environment-names petpet-dev
+  634  aws elasticbeanstalk describe-environments --environment-names petpet-dev
+  635  aws elasticbeanstalk describe-environments --environment-names petpet-dev
+  636  aws elasticbeanstalk describe-environments --environment-names petpet-dev
+  637  aws elasticbeanstalk describe-environments --environment-names petpet-dev
+  638  aws elasticbeanstalk describe-environments --environment-names petpet-dev
+  639  aws elasticbeanstalk describe-environments --environment-names petpet-dev

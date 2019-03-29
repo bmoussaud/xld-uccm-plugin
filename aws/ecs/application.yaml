@@ -1,0 +1,17 @@
+---
+apiVersion: xl-deploy/v1
+kind: Applications
+spec:
+- name: Applications/PetContainer
+  type: udm.Application
+  children:
+    - name: 1.0.2
+      type: udm.DeploymentPackage
+      children:
+      - name: descriptor
+        type: aws.cloudformation.Template
+        file: !file "network.json"
+      - name: smoke test
+        type: smoketest.HttpRequestTest
+        url: http://benoitpetclinicdev.eu-west-1.elasticbeanstalk.com
+        expectedResponseText: PetClinic 2.0

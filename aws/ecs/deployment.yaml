@@ -1,0 +1,7 @@
+apiVersion: xl-deploy/v1
+kind: Deployment
+spec:
+  package: Applications/PetContainer/1.0.2
+  environment: Environments/aws
+
+

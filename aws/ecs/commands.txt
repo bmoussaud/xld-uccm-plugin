@@ -1,0 +1,54 @@
+#Create a Cluster
+aws ecs create-cluster --cluster-name petclusterdev
+aws ecs create-cluster --generate-cli-skeleton
+{
+    "clusterName": "",
+    "tags": [
+        {
+            "key": "",
+            "value": ""
+        }
+    ]
+}
+
+#Register a Task Definition
+aws ecs register-task-definition --cli-input-json file://taskdef.json
+
+#List task definition
+aws ecs list-task-definitions
+{
+    "taskDefinitionArns": [
+        "arn:aws:ecs:eu-west-1:022614454065:task-definition/petdocker-integration:13",
+            "arn:aws:ecs:eu-west-1:022614454065:task-definition/petdocker-integration:15",
+        "arn:aws:ecs:eu-west-1:022614454065:task-definition/petdocker:8",
+        "arn:aws:ecs:eu-west-1:022614454065:task-definition/sample-fargate:1",
+        "arn:aws:ecs:eu-west-1:022614454065:task-definition/sample-fargate:2",
+        "arn:aws:ecs:eu-west-1:022614454065:task-definition/sample-fargate:3"
+    ]
+}
+
+#Create a Service
+aws ecs create-service --cluster petclusterdev --service-name pet-service --task-definition sample-fargate:3 --desired-count 2 --launch-type "FARGATE"
+aws ecs create-service --cluster petclusterdev --service-name pet-service --task-definition petdocker-integration:15 --desired-count 1
+aws ecs create-service --cluster petclusterdev --service-name pet-service --task-definition sample-fargate-2:1 --desired-count 1
+
+aws ecs create-service --cluster petcluster --service-name pet-service --task-definition pet-fargate:1 --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-0b7fae3ed830b6acd],securityGroups=[sg-060be3b17c3645e91]}"
+
+#Describe the Running Service
+aws ecs describe-services --cluster petclusterdev  --services pet-service
+aws ecs describe-services --cluster petcluster  --services pet-service
+
+#Update service
+aws ecs update-service --cluster petclusterdev --service pet-service --task-definition petdocker-integration:15 --desired-count 0
+
+
+
+#Check
+https://gist.github.com/victorcoder/3ac4aae9279d7c68c486fecccc2546cc
+aws ecs list-tasks --cluster petcluster
+aws ecs describe-tasks --tasks arn:aws:ecs:eu-west-1:022614454065:task/cb40f3fd-a073-42d9-a9b8-2bc3a9d6ac6e --cluster petcluster
+
+aws ecs wait services-stable --service pet-service --cluster petcluster
+
+#script
+https://medium.com/schibsted-tech-polska/aws-ecs-quickly-create-environment-for-your-dockerized-apps-ha-4a3b0c6fbbf3
