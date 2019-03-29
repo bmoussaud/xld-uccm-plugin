@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+<!--
+Note: If you modify this file and automatic reloading is disabled in `planner.conf`, you must restart the XL Deploy server.
+-->
+<rules xmlns="http://www.xebialabs.com/xl-deploy/xl-rules">
+
+    <step-macro name="kubectlApply">
+        <parameters>
+            <parameter name="resource" type="string"/>
+            <parameter name="order" type="integer"/>
+            <parameter name="ci" type="ci"/>
+        </parameters>
+        <steps>
+            <os-script>
+                <order expression="true">macro['order']</order>
+                <description expression="true">"Deploy {0}/{3} as kubernetes {2} to {1} namespace".format(deployed.name, deployed.container.name,macro['resource'],macro['ci'].name)
+                </description>
+                <script>uccm/kubernetes/apply</script>
+                <target-host expression="true">deployed.container.container.kubectlHost</target-host>
+                <freemarker-context>
+                    <application expression="true">deployedApplication.name</application>
+                    <version expression="true">deployedApplication.version.name</version>
+                    <environment expression="true">deployedApplication.environment.name</environment>
+                    <containername expression="true">deployed.name</containername>
+                    <ci expression="true">macro['ci']</ci>
+                    <resource expression="true">macro['resource']</resource>
+                </freemarker-context>
+            </os-script>
+        </steps>
+    </step-macro>
+
+    <step-macro name="kubectlDelete">
+        <parameters>
+            <parameter name="resource" type="string"/>
+            <parameter name="resourceName" type="string"/>
+            <parameter name="order" type="integer"/>
+            <parameter name="target" type="ci"/>
+        </parameters>
+        <steps>
+            <os-script>
+                <order expression="true">macro['order']</order>
+                <description expression="true">"Delete {0} kubernetes {2} from {1} namespace".format(macro['target'].name,macro['target'].container.name,macro['resource'])
+                </description>
+                <script>uccm/kubernetes/delete</script>
+                <target-host expression="true">macro['target'].container.container.kubectlHost</target-host>
+                <freemarker-context>
+                    <resource expression="true">macro['resource']</resource>
+                    <resourceName expression="true">macro['resourceName']</resourceName>
+                </freemarker-context>
+            </os-script>
+        </steps>
+    </step-macro>
+
+    <step-macro name="kubectlDescribe">
+        <parameters>
+            <parameter name="resource" type="string"/>
+            <parameter name="resourceName" type="string"/>
+            <parameter name="order" type="integer"/>
+        </parameters>
+        <steps>
+            <os-script>
+                <order expression="true">macro['order']</order>
+                <description expression="true">"Describe {0} kubernetes {2} from {1} namespace".format(deployed.name, deployed.container.name,macro['resource'])
+                </description>
+                <script expression="true">"uccm/kubernetes/{0}/describe".format(macro['resource'])</script>
+                <target-host expression="true">deployed.container.container.kubectlHost</target-host>
+                <freemarker-context>
+                    <resource expression="true">macro['resource']</resource>
+                    <resourceName expression="true">macro['resourceName']</resourceName>
+                </freemarker-context>
+            </os-script>
+        </steps>
+    </step-macro>
+
+
+    <step-macro name="waitResourceUp">
+        <parameters>
+            <parameter name="resource" type="string"/>
+            <parameter name="resourceName" type="string"/>
+            <parameter name="ci" type="ci"/>
+            <parameter name="order" type="integer"/>
+        </parameters>
+        <steps>
+            <jython>
+                <order expression="true">macro['order']</order>
+                <description expression="true">"Wait for {2} {0} to be deployed on {1}".format(deployed.name, deployed.container.name, macro['resource'])
+                </description>
+                <script expression="true">"uccm/kubernetes/{0}/wait_for_up.py".format(macro['resource'])</script>
+                <jython-context>
+                    <target_host expression="true">deployed.container.container.kubectlHost</target_host>
+                    <resource expression="true">macro['resource']</resource>
+                    <resourceName expression="true">macro['resourceName']</resourceName>
+                    <ci expression="true">macro['ci']</ci>
+                    <attempts>10</attempts>
+                </jython-context>
+            </jython>
+        </steps>
+    </step-macro>
+
+
+    <rule name="uccm.container.apply" scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <kubectlApply>
+                <resource>deployment</resource>
+                <order>60</order>
+                <ci expression="true">deployed</ci>
+            </kubectlApply>
+            <waitResourceUp>
+                <order>62</order>
+                <resource>deployment</resource>
+                <resourceName expression="true">"{0}-depl".format(deployed.name)</resourceName>
+                <ci expression="true">deployed</ci>
+            </waitResourceUp>
+            <kubectlDescribe>
+                <order>99</order>
+                <resource>deployment</resource>
+                <resourceName expression="true">"{0}-depl".format(deployed.name)</resourceName>
+            </kubectlDescribe>
+        </steps>
+    </rule>
+
+    <rule name="uccm.container.apply.registries" scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>CREATE</operation>
+        </conditions>
+        <planning-script-path>uccm/kubernetes/deployment/planningScripts/createSecuredRegistries.py</planning-script-path>
+    </rule>
+
+    <rule name="uccm.container.destroy.registries" scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>DESTROY</operation>
+        </conditions>
+        <planning-script-path>uccm/kubernetes/deployment/planningScripts/destroySecuredRegistries.py</planning-script-path>
+    </rule>
+
+    <rule name="uccm.container.delete" scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>DESTROY</operation>
+        </conditions>
+        <steps>
+            <kubectlDelete>
+                <order>40</order>
+                <resource>Deployment</resource>
+                <resourceName expression="true">"{0}-depl".format(previousDeployed.name)</resourceName>
+                <target expression="true">previousDeployed</target>
+            </kubectlDelete>
+            <noop>
+                <description expression="true">"Wait for Deployement {} to be deleted on {}".format(previousDeployed.name, previousDeployed.container.name)
+                </description>
+                <order>41</order>
+            </noop>
+        </steps>
+    </rule>
+
+
+    <rule name="uccm.container_service_operation" scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+            <operation>DESTROY</operation>
+            <operation>NOOP</operation>
+        </conditions>
+        <planning-script-path>uccm/kubernetes/service/planningScripts/operations.py</planning-script-path>
+    </rule>
+
+    <rule name="uccm.container_ingress_operation" scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+            <operation>DESTROY</operation>
+            <operation>NOOP</operation>
+        </conditions>
+        <planning-script-path>uccm/kubernetes/ingress/planningScripts/operations.py</planning-script-path>
+    </rule>
+
+
+    <rule name="uccm.container.describe_resource" scope="post-plan">
+        <planning-script-path>uccm/kubernetes/describe.py</planning-script-path>
+    </rule>
+    <!--
+    <rule name="dump.DeltaSpecification" scope="plan">
+      <planning-script-path>delta_specification.py</planning-script-path>
+    </rule>
+    -->
+
+    <!-- AWS -->
+    <rule name="uccm.aws.elasticbeanstalk.deploy" scope="deployed">
+        <conditions>
+            <type>uccm.aws.BeanStalkWarArtifact</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <description expression="true">"Upload %s on %s in S3" % (deployed.name, deployed.container.name)</description>
+                <order>60</order>
+                <script>uccm/aws/elasticbeanstalk/s3_upload_file</script>
+                <target-host expression="true">deployed.container.account.awsHost</target-host>
+            </os-script>
+
+            <os-script>
+                <order>60</order>
+                <description expression="true">"Deploy {0} to {1} Elastic BeanStalk".format(deployed.name, deployed.container.name)</description>
+                <target-host expression="true">deployed.container.account.awsHost</target-host>
+                <script>uccm/aws/elasticbeanstalk/deploy</script>
+                <freemarker-context>
+                    <deployedApplication expression="true">deployedApplication</deployedApplication>
+                    <stack_name expression="true">"{0}-{1}-{2}".format(deployed.name, deployedApplication.version.application.name, deployedApplication.environment.name)</stack_name>
+                </freemarker-context>
+            </os-script>
+
+            <jython>
+                <order>60</order>
+                <description expression="true">"Wait for {0} to be deployed on {1} Elastic BeanStalk".format(deployed.name, deployed.container.name)</description>
+                <script>uccm/aws/elasticbeanstalk/wait_for_up.py</script>
+                <jython-context>
+                    <target_host expression="true">deployed.container.account.awsHost</target_host>
+                    <stack_name expression="true">"{0}-{1}-{2}".format(deployed.name, deployedApplication.version.application.name, deployedApplication.environment.name)</stack_name>
+                    <attempts>100</attempts>
+                </jython-context>
+            </jython>
+        </steps>
+    </rule>
+
+    <rule name="uccm.aws.elasticbeanstalk.undeploy" scope="deployed">
+        <conditions>
+            <type>uccm.aws.BeanStalkWarArtifact</type>
+            <operation>DESTROY</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <description expression="true">"Undeploy {0} to {1} Elastic BeanStalk".format(previousDeployed.name, previousDeployed.container.name)</description>
+                <order>40</order>
+                <target-host expression="true">previousDeployed.container.account.awsHost</target-host>
+                <script>uccm/aws/elasticbeanstalk/undeploy</script>
+                <freemarker-context>
+                    <deployedApplication expression="true">previousDeployedApplication</deployedApplication>
+                </freemarker-context>
+            </os-script>
+            <os-script>
+                <description expression="true">"Delete %s from %s in S3" % (previousDeployed.name, previousDeployed.container.name)</description>
+                <order>40</order>
+                <script>uccm/aws/elasticbeanstalk/s3_delete_file</script>
+                <target-host expression="true">previousDeployed.container.account.awsHost</target-host>
+            </os-script>
+            <jython>
+                <order>40</order>
+                <description expression="true">"Wait for {0} to be undeployed from {1} Elastic BeanStalk".format(previousDeployed.name, previousDeployed.container.name)</description>
+                <script>uccm/aws/elasticbeanstalk/wait_for_down.py</script>
+                <jython-context>
+                    <target_host expression="true">previousDeployed.container.account.awsHost</target_host>
+                    <stack_name expression="true">"{0}-{1}-{2}".format(previousDeployed.name, previousDeployedApplication.version.application.name, previousDeployedApplication.environment.name)</stack_name>
+                    <attempts>100</attempts>
+                </jython-context>
+            </jython>
+
+        </steps>
+    </rule>
+
+
+</rules>
