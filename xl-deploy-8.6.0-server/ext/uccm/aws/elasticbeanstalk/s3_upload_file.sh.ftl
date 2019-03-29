@@ -1,1 +1,0 @@
-aws s3 cp ${deployed.file.path} s3://xlfr/${deployed.file.name}

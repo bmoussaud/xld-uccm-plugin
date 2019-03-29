@@ -1,1 +1,0 @@
-kubectl delete secret ${resourceName}    -n ${previousDeployed.container.name}
