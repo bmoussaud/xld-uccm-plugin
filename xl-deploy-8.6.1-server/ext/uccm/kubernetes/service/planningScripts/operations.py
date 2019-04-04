@@ -8,7 +8,9 @@ class ServiceStepGenerator(StepGenerator):
 
     def create(self, delta, deployed, port):
         if port.exposeAsService:
-            context.addStepWithCheckpoint(steps.kubectlApply(**{'resource': 'service', 'order': 63, 'ci': port}), delta)
+            context.addStepWithCheckpoint(
+                steps.kubectlApply(**{'resource': 'service', 'order': 63, 'ci': port, 'profile': deployed.profile}),
+                delta)
             context.addStep(steps.waitResourceUp(
                 **{'resource': 'service', 'resourceName': '{0}-{1}-service'.format(deployed.name, port.name),
                    'ci': port,
@@ -25,7 +27,6 @@ class ServiceStepGenerator(StepGenerator):
 
 
 import traceback
-
 
 try:
     builder = DeltasBuilder()

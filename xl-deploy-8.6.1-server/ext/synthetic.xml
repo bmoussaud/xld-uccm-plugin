@@ -5,6 +5,11 @@ Note: If you modify this file, you must restart the XL Deploy server.
 <synthetic xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd"
            xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
+
+    <type-modification type="udm.Environment">
+        <property name="nickname" default="" category="uccm"/>
+    </type-modification>
+
     <type-modification type="k8s.Master">
         <property name="kubectlHost" required="false" category="uccm" kind="ci" referenced-type="overthere.Host"/>
         <!-- securedRegistries could be moved to k8s.Namespace or managed as the deployed level -->
@@ -17,6 +22,7 @@ Note: If you modify this file, you must restart the XL Deploy server.
         <generate-deployable type="uccm.ContainerSpec" extends="udm.BaseDeployable"/>
         <property name="image"/>
         <property name="replicas" kind="integer" default="1"/>
+        <property name="profile" default="default"/>
         <property category="Process" name="env" required="false" kind="map_string_string"
                   description="List of environment variables to set in the container. Cannot be updated."/>
         <property name="ports" required="false" kind="set_of_ci"

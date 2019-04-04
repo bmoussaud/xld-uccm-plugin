@@ -1,5 +1,7 @@
+# ${resource}
+# ${profile}
 echo '
-<#include '/uccm/kubernetes/${resource}/default_resource.json.ftl'>
+<#include '/uccm/kubernetes/${resource}/${profile}_resource.json.ftl'>
 ' > resource.json
 cat -n resource.json
 kubectl apply -f resource.json --validate=true -n ${deployed.container.name}

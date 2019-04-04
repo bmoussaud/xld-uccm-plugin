@@ -8,7 +8,8 @@ class IngresStepGenerator(StepGenerator):
 
     def create(self, delta, deployed, port):
         if port.exposeAsIngress:
-            context.addStepWithCheckpoint(steps.kubectlApply(**{'resource': 'ingress', 'order': 65, 'ci': port}), delta)
+            context.addStepWithCheckpoint(steps.kubectlApply(**{'resource': 'ingress', 'order': 65, 'ci': port,
+                                                                'profile': deployed.profile}), delta)
             context.addStep(steps.waitResourceUp(
                 **{'resource': 'ingress', 'resourceName': '{0}-{1}-ingress'.format(deployed.name, port.name),
                    'ci': port,

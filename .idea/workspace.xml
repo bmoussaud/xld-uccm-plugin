@@ -2,170 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86651578-1908-4841-ad02-0ba9d13c5077" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/delta_specification.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/readme.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/synthetic.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/deltas/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/deltas/compute.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/apply.sh.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/delete.sh.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/deployment/create.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/deployment/describe.sh.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/deployment/planningScripts/createSecuredRegistries.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/deployment/planningScripts/destroySecuredRegistries.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/deployment/wait_for.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/deployment/wait_for_up.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/describe.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/ingress/default_resource.json.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/ingress/planningScripts/operations.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/ingress/wait_for_up.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/secret/applySecuredRegistry.sh.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/secret/destroySecuredRegistry.sh.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/service/default_resource.json.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/service/planningScripts/operations.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/service/wait_for_up.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm_templates/default.json.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm_templates/default_ingress.json.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm_templates/default_service.json.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm_templates/sample_using_dictionaries.json.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/xl-rules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/delta_specification.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/readme.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/synthetic.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/default_resource.json.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/deploy.sh.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/production_resource.json.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/s3_delete_file.sh.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/s3_upload_file.sh.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/undeploy.sh.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/wait_for_down.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/wait_for_up.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/deltas/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/deltas/compute.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/apply.sh.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/delete.sh.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/deployment/create.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/deployment/describe.sh.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/deployment/planningScripts/createSecuredRegistries.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/deployment/planningScripts/destroySecuredRegistries.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/deployment/wait_for_up.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/describe.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/ingress/default_resource.json.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/ingress/planningScripts/operations.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/ingress/wait_for_up.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/secret/applySecuredRegistry.sh.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/secret/destroySecuredRegistry.sh.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/service/default_resource.json.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/service/planningScripts/operations.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/service/wait_for_up.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/restapi/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/restapi/list_templates.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/restapi/save_template.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/restapi/template_file_store.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm_processors/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm_processors/default.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm_processors/noop.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm_processors/noop_aws.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm_processors/noop_k8s.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm_templates/default.json.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm_templates/default_ingress.json.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm_templates/default_service.json.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm_templates/sample_using_dictionaries.json.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/css/all.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/css/uccm.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/img/aws-cloudformation-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/img/freemarker-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/img/kubernetes-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/img/python-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ace.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-beautify.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-elastic_tabstops_lite.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-emmet.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-error_marker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-keybinding_menu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-language_tools.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-linking.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-modelist.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-options.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-rtl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-searchbox.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-settings_menu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-spellcheck.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-split.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-static_highlight.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-statusbar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-textarea.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-themelist.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/ext-whitespace.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/keybinding-emacs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/keybinding-vim.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/mode-ftl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/mode-javascript.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/mode-json.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/mode-liquid.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/mode-plain_text.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/mode-python.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/mode-terraform.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/mode-text.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/mode-xml.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/mode-yaml.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/snippets/ftl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/snippets/javascript.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/snippets/json.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/snippets/liquid.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/snippets/plain_text.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/snippets/python.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/snippets/snippets.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/snippets/terraform.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/snippets/text.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/snippets/xml.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/snippets/yaml.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/theme-ambiance.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/theme-terminal.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/theme-twilight.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/theme-xcode.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/worker-css.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/worker-html.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/worker-javascript.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/worker-json.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ace-noconflict/worker-xml.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/angular.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/angular.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/uccm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ui-ace.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/js/ui-bootstrap-tpls-3.0.6.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/partials/edit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/partials/list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/webfonts/fa-brands-400.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/webfonts/fa-brands-400.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/webfonts/fa-brands-400.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/webfonts/fa-brands-400.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/webfonts/fa-brands-400.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/webfonts/fa-regular-400.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/webfonts/fa-regular-400.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/webfonts/fa-regular-400.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/webfonts/fa-regular-400.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/webfonts/fa-regular-400.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/webfonts/fa-solid-900.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/webfonts/fa-solid-900.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/webfonts/fa-solid-900.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/webfonts/fa-solid-900.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/web/uccm/webfonts/fa-solid-900.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/xl-rest-endpoints.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/xl-rules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/xl-ui-plugin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/synthetic.xml" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/synthetic.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/apply.sh.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/apply.sh.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/default_resource.json.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/default_resource.json.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/planningScripts/operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/planningScripts/operations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/planningScripts/operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/planningScripts/operations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/xl-rules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/xl-rules.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -176,78 +20,80 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="commands.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aws/ecs/commands.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="47" column="12" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="createSecuredRegistries.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/planningScripts/createSecuredRegistries.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="wait_for_up.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/wait_for_up.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="88" column="44" selection-start-line="88" selection-start-column="44" selection-end-line="88" selection-end-column="44" />
-              <folding>
-                <element signature="e#287#298#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="xl-rules.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/xl-rules.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="139" column="100" selection-start-line="139" selection-start-column="100" selection-end-line="139" selection-end-column="100" />
+            <state relative-caret-position="304">
+              <caret line="112" column="33" selection-start-line="112" selection-start-column="33" selection-end-line="112" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="destroySecuredRegistries.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/planningScripts/destroySecuredRegistries.py">
+      <file leaf-file-name="synthetic.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/synthetic.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="422">
+              <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default_resource.json.ftl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/default_resource.json.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="operations.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/planningScripts/operations.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="10" column="60" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="operations.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/planningScripts/operations.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="11" column="113" selection-start-line="11" selection-start-column="113" selection-end-line="11" selection-end-column="113" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="apply.sh.ftl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/apply.sh.ftl">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="taskdef.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aws/ecs/taskdef.json">
+      <file leaf-file-name="default_resource.json.ftl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="25" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="25" />
+            <state relative-caret-position="196">
+              <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="infrastructure.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aws/infrastructure.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="11" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="11" />
-            </state>
-          </provider>
+      <file leaf-file-name="production_resource.json.ftl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/production_resource.json.ftl">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="deployment.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aws/ecs/deployment.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
-            </state>
-          </provider>
+      <file leaf-file-name="production_resource.json.ftl" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/production_resource.json.ftl">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="xebialabs.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aws/ecs/xebialabs.yaml">
+      <file leaf-file-name="production_resource.json.ftl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/production_resource.json.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="25" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="25" />
+            <state relative-caret-position="207">
+              <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -280,6 +126,8 @@
       <find>VPC</find>
       <find>DeployedTemplate</find>
       <find>uccm/kubernetes/deployment/planningScripts/createSecuredRegistries.py</find>
+      <find>profile</find>
+      <find>kubectlApply</find>
     </findStrings>
     <replaceStrings>
       <replace>${deployedApplication.version.application.name}</replace>
@@ -325,13 +173,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/service/default_resource.json" />
-        <option value="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/ingress/apply.sh.ftl" />
-        <option value="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/deployment/apply.sh.ftl" />
-        <option value="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/apply.sh.ftl" />
-        <option value="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm_templates/default.json.ftl" />
-        <option value="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/ingress/default_resource.json.ftl" />
-        <option value="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/synthetic.xml" />
         <option value="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/secret/applySecuredRegistry.sh.ftl" />
         <option value="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/deployment/planningScripts/securedRegistries.py" />
         <option value="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl" />
@@ -374,8 +215,15 @@
         <option value="$PROJECT_DIR$/aws/ecs/taskdef.json" />
         <option value="$PROJECT_DIR$/aws/ecs/commands.txt" />
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/planningScripts/createSecuredRegistries.py" />
-        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/xl-rules.xml" />
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/wait_for_up.py" />
+        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/default_resource.json.ftl" />
+        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/synthetic.xml" />
+        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/xl-rules.xml" />
+        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/planningScripts/operations.py" />
+        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/planningScripts/operations.py" />
+        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/apply.sh.ftl" />
+        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/production_resource.json.ftl" />
+        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl" />
       </list>
     </option>
   </component>
@@ -389,19 +237,12 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
               <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
@@ -450,14 +291,53 @@
               <item name="ext" type="462c0819:PsiDirectoryNode" />
               <item name="uccm" type="462c0819:PsiDirectoryNode" />
               <item name="kubernetes" type="462c0819:PsiDirectoryNode" />
-              <item name="deployment" type="462c0819:PsiDirectoryNode" />
+              <item name="ingress" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xl-deploy-8.6.1-server" type="462c0819:PsiDirectoryNode" />
+              <item name="ext" type="462c0819:PsiDirectoryNode" />
+              <item name="uccm" type="462c0819:PsiDirectoryNode" />
+              <item name="kubernetes" type="462c0819:PsiDirectoryNode" />
+              <item name="ingress" type="462c0819:PsiDirectoryNode" />
+              <item name="planningScripts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xl-deploy-8.6.1-server" type="462c0819:PsiDirectoryNode" />
+              <item name="ext" type="462c0819:PsiDirectoryNode" />
+              <item name="uccm" type="462c0819:PsiDirectoryNode" />
+              <item name="kubernetes" type="462c0819:PsiDirectoryNode" />
+              <item name="secret" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xl-deploy-8.6.1-server" type="462c0819:PsiDirectoryNode" />
+              <item name="ext" type="462c0819:PsiDirectoryNode" />
+              <item name="uccm" type="462c0819:PsiDirectoryNode" />
+              <item name="kubernetes" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xl-deploy-8.6.1-server" type="462c0819:PsiDirectoryNode" />
+              <item name="ext" type="462c0819:PsiDirectoryNode" />
+              <item name="uccm" type="462c0819:PsiDirectoryNode" />
+              <item name="kubernetes" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
               <item name="planningScripts" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -465,17 +345,17 @@
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/aws/ecs" />
-      <recent name="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk" />
-      <recent name="$PROJECT_DIR$/aws" />
-      <recent name="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/secret" />
-      <recent name="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/deployment/planningScripts" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/aws" />
       <recent name="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes" />
       <recent name="$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/ingress/planningScripts" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress" />
+      <recent name="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service" />
+      <recent name="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment" />
+      <recent name="$PROJECT_DIR$/aws/ecs" />
+      <recent name="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -663,7 +543,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="947" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -674,10 +553,10 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.13764706" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.25411764" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20757021" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21001221" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info id="Learn" order="2" weight="0.32967034" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -716,69 +595,8 @@
     <option name="LAST_COMMIT_MESSAGE" value="aws sample" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/aws/ecs/network.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="62" column="30" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aws/ecs/deployment.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aws/ecs/xebialabs.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="25" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aws/ecs/application.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aws/ecs/taskdef-out.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="55" column="10" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/service/planningScripts/operations.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="48" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/deployment/planningScripts/createSecuredRegistries.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/xl-rules.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2380">
-          <caret line="140" column="42" selection-start-line="140" selection-start-column="42" selection-end-line="140" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/deployment/planningScripts/createSecuredRegistries.py" />
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/xl-rules.xml" />
     <entry file="file://$PROJECT_DIR$/aws/secrets.xlvals" />
     <entry file="file://$PROJECT_DIR$/microservices/infrastructure.yaml">
       <provider selected="true" editor-type-id="text-editor">
@@ -816,69 +634,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/apply.sh.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="4" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/deltas/compute.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1471" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/deltas/compute.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1318">
-          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/ingress/planningScripts/operations.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/apply.sh.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="76" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/delete.sh.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/apply.sh.ftl" />
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/deltas/compute.py" />
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/deltas/compute.py" />
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/ingress/planningScripts/operations.py" />
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/apply.sh.ftl" />
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.5.2-server/ext/uccm/kubernetes/delete.sh.ftl" />
     <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/s3_upload_file.py" />
     <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/s3_file_helper.py" />
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/s3_upload_file.sh.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="63" selection-start-column="63" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/undeploy.sh.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="60" selection-start-column="60" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/s3_delete_file.sh.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="38" selection-start-column="38" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/s3_upload_file.sh.ftl" />
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/undeploy.sh.ftl" />
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/s3_delete_file.sh.ftl" />
     <entry file="file://$PROJECT_DIR$/aws/petclinic-1.0.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="532">
@@ -886,28 +652,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/wait_for_down.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="38" column="42" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/wait_for_up.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/wait_for_down.py" />
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/wait_for_up.py" />
     <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/planningScripts/deploy_upload.py" />
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/deployment/wait_for_down.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="42" column="47" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/deployment/wait_for_down.py" />
     <entry file="file://$PROJECT_DIR$/aws/list.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -915,34 +663,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/default_resource.json.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="30" column="63" selection-start-line="30" selection-start-column="63" selection-end-line="30" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/production_resource.json.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="761">
-          <caret line="47" column="10" selection-start-line="31" selection-start-column="8" selection-end-line="47" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/synthetic.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="762">
-          <caret line="81" column="49" selection-start-line="81" selection-start-column="49" selection-end-line="81" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/deploy.sh.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="95" lean-forward="true" selection-start-line="4" selection-start-column="95" selection-end-line="4" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/default_resource.json.ftl" />
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/production_resource.json.ftl" />
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/synthetic.xml" />
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/deploy.sh.ftl" />
     <entry file="file://$PROJECT_DIR$/aws/petclinic.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -992,49 +716,88 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/xl-rules.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3604">
-          <caret line="212" column="23" selection-start-line="212" selection-start-column="23" selection-end-line="212" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/xl-rules.xml" />
     <entry file="file://$PROJECT_DIR$/aws/ecs/taskdef.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="25" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="25" />
+        <state relative-caret-position="340">
+          <caret line="20" column="406" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="406" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/aws/ecs/commands.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
+        <state relative-caret-position="799">
           <caret line="47" column="12" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/planningScripts/destroySecuredRegistries.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/planningScripts/createSecuredRegistries.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/xl-rules.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="139" column="100" selection-start-line="139" selection-start-column="100" selection-end-line="139" selection-end-column="100" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/wait_for_up.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
+        <state relative-caret-position="1479">
           <caret line="88" column="44" selection-start-line="88" selection-start-column="44" selection-end-line="88" selection-end-column="44" />
           <folding>
             <element signature="e#287#298#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/default_resource.json.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/synthetic.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/xl-rules.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="112" column="33" selection-start-line="112" selection-start-column="33" selection-end-line="112" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/planningScripts/operations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="11" column="113" selection-start-line="11" selection-start-column="113" selection-end-line="11" selection-end-column="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/planningScripts/operations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="60" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/apply.sh.ftl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/production_resource.json.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/production_resource.json.ftl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/production_resource.json.ftl">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">
