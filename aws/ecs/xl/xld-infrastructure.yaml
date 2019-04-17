@@ -1,0 +1,35 @@
+apiVersion: xl-deploy/v1
+kind: Applications
+spec:
+- name: ECS
+  type: core.Directory
+  children:
+    - name: ecs-fargate-cluster
+      type: udm.Application
+      children:
+      - name: '1.0'
+        type: udm.DeploymentPackage
+        deployables:
+        - name: aws-ecs-cluster
+          type: terraform.Module
+          file: !file ./infrastructure
+          inputVariables:
+            app_name: 'pet-aws-tf'
+            aws_access_key: !value accesskey
+            aws_secret_key: !value accessSecret
+            region: '{{AWSRegion}}'
+            public_port: '80'
+          boundTemplates:
+          - "../aws-ecs-cluster-template"
+        templates:
+        - name: aws-ecs-cluster-template
+          instanceName: pet-aws-tf/pet-aws-tf-AWS
+          type: template.aws.Cloud
+          accesskey: !value accesskey
+          accessSecret: !value accessSecret
+          children:
+          - name: pet-aws-tf-ecs-cluster
+            type: template.aws.ecs.Cluster
+            clusterName: 'pet-aws-tf-ecs-cluster'
+            clusterArn: '{{%outputVariables.cluster_arn%}}'
+            region: '{{AWSRegion}}'
