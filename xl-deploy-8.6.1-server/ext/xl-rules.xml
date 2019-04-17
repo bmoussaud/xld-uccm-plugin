@@ -20,7 +20,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                 <freemarker-context>
                     <application expression="true">deployedApplication.name</application>
                     <version expression="true">deployedApplication.version.name</version>
-                    <environment expression="true">deployedApplication.environment.nickname</environment>
+                    <environment expression="true">deployedApplication.environment.name</environment>
                     <containername expression="true">deployed.name</containername>
                     <ci expression="true">macro['ci']</ci>
                     <resource expression="true">macro['resource']</resource>
