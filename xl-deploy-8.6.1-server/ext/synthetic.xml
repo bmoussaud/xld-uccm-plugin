@@ -45,14 +45,6 @@ Note: If you modify this file, you must restart the XL Deploy server.
                   description="Number of port to expose on the Pod’s IP address"/>
         <property name="exposeAsService" required="true" kind="boolean" default="false" category="Exposed Service"
                   description="Whether to expose the container port as service."/>
-        <property name="serviceType" category="Exposed Service" kind="enum" hidden="true" default="NodePort"
-                  required="false" description="Specifies the service type to be created.">
-            <enum-values>
-                <value>NodePort</value>
-                <value>LoadBalancer</value>
-                <value>ClusterIP</value>
-            </enum-values>
-        </property>
         <property name="servicePort" required="false" kind="integer" category="Exposed Service"
                   description="Name of the service port."/>
         <property name="exposeAsIngress" required="true" kind="boolean" default="false" category="Exposed Service"

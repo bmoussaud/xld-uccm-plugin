@@ -11,7 +11,11 @@
   "spec": {
     "replicas": ${deployed.replicas},
     "strategy": {
-      "type":"Recreate"
+      "type":"RollingUpdate",
+      "rollingUpdate": {
+        "maxSurge": 1,
+        "maxUnavailable": 0
+      }
     },
     "selector": {
       "matchLabels": {
