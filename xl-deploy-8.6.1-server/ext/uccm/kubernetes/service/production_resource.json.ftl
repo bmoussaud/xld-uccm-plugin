@@ -21,7 +21,7 @@
     "selector": {
       "application": "${application}",
       "version": "${version}",
-      "component": ${deployed.name}
+      "component": "${deployed.name}"
     },
     "type":"ClusterIP"
     }
