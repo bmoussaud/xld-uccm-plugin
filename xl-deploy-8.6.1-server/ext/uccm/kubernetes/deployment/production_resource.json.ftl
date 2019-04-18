@@ -6,7 +6,7 @@
     "labels": {
       "application": "${application}",
       "version": "${version}",
-      "component": ${deployed.name}
+      "component": "${deployed.name}"
     }
   },
   "spec": {
@@ -22,7 +22,7 @@
       "matchLabels": {
         "application": "${application}",
         "version": "${version}",
-        "component": ${deployed.name}
+        "component": "${deployed.name}"
       }
     },
     "template": {
@@ -31,7 +31,7 @@
         "labels": {
           "application": "${application}",
           "version": "${version}",
-          "component": ${deployed.name}
+          "component": "${deployed.name}"
         }
       },
       "spec": {

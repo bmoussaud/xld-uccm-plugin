@@ -6,7 +6,7 @@
     "labels": {
       "application": "${application}",
       "version": "${version}",
-      "component": ${deployed.name}
+      "component": "${deployed.name}"
     }
   },
   "spec": {

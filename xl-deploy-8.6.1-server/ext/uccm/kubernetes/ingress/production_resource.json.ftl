@@ -7,7 +7,7 @@
     "labels": {
       "application": "${application}",
       "version": "${version}",
-      "component": ${deployed.name}
+      "component": "${deployed.name}"
     },
     "annotations": {
       "nginx.ingress.kubernetes.io/ssl-redirect": "false"
