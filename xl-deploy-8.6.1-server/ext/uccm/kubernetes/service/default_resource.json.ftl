@@ -11,8 +11,8 @@
   "spec": {
     "ports": [
       {
-        "port": ${ci.containerPort},
-        "targetPort": <#if ci.servicePort??>${ci.servicePort}<#else>${ci.containerPort}</#if>,
+        "port": <#if ci.servicePort??>${ci.servicePort}<#else>${ci.containerPort}</#if>,
+        "targetPort": ${ci.containerPort},
         "protocol": "TCP",
         "name": "${ci.name}"
       }
