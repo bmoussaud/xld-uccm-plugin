@@ -5,7 +5,8 @@
     "name": "${deployed.name}-${ci.name}-service",
     "labels": {
       "application": "${application}",
-      "version": "${version}"
+      "version": "${version}",
+      "component": ${deployed.name}
     }
   },
   "spec": {
@@ -19,7 +20,8 @@
     ],
     "selector": {
       "application": "${application}",
-      "version": "${version}"
+      "version": "${version}",
+      "component": ${deployed.name}
     },
     "type":"ClusterIP"
     }

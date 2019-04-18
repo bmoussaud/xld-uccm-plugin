@@ -6,7 +6,8 @@
     "name": "${deployed.name}-${ci.name}-ingress",
     "labels": {
       "application": "${application}",
-      "version": "${version}"
+      "version": "${version}",
+      "component": ${deployed.name}
     },
     "annotations": {
       "nginx.ingress.kubernetes.io/ssl-redirect": "false"

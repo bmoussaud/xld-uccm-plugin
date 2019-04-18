@@ -5,7 +5,8 @@
     "name": "${deployed.name}-depl",
     "labels": {
       "application": "${application}",
-      "version": "${version}"
+      "version": "${version}",
+      "component": ${deployed.name}
     }
   },
   "spec": {
@@ -20,7 +21,8 @@
     "selector": {
       "matchLabels": {
         "application": "${application}",
-        "version": "${version}"
+        "version": "${version}",
+        "component": ${deployed.name}
       }
     },
     "template": {
@@ -28,7 +30,8 @@
         "name": "${deployed.name}-depl",
         "labels": {
           "application": "${application}",
-          "version": "${version}"
+          "version": "${version}",
+          "component": ${deployed.name}
         }
       },
       "spec": {
