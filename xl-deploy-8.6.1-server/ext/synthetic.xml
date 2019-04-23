@@ -19,6 +19,7 @@ Note: If you modify this file, you must restart the XL Deploy server.
         <property name="image"/>
         <property name="replicas" kind="integer" default="1"/>
         <property name="profile" default="default"/>
+        <property name="canary" kind="boolean" default="false" required="false"/>
         <property category="Process" name="env" required="false" kind="map_string_string"
                   description="List of environment variables to set in the container. Cannot be updated."/>
         <property name="ports" required="false" kind="set_of_ci"

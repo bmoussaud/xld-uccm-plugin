@@ -2,7 +2,7 @@
   "kind": "Deployment",
   "apiVersion": "extensions/v1beta1",
   "metadata": {
-    "name": "${deployed.name}-depl",
+    "name": "${resourceName}",
     "labels": {
       "application": "${application}",
       "component": "${deployed.name}"
@@ -25,7 +25,7 @@
     },
     "template": {
       "metadata": {
-        "name": "${deployed.name}-depl",
+        "name": "${resourceName}",
         "labels": {
           "application": "${application}",
           "component": "${deployed.name}",

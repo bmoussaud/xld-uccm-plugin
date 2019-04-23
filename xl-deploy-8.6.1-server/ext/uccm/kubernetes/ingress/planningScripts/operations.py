@@ -8,8 +8,9 @@ class IngresStepGenerator(StepGenerator):
 
     def create(self, delta, deployed, port):
         if port.exposeAsIngress:
-            context.addStepWithCheckpoint(steps.kubectlApply(**{'resource': 'ingress', 'order': 65, 'ci': port,
-                                                                'profile': deployed.profile}), delta)
+            context.addStepWithCheckpoint(steps.kubectlApply(
+                **{'resource': 'ingress', 'resourceName': '{0}-{1}-ingress'.format(deployed.name, port.name),
+                   'order': 65, 'ci': port, 'profile': deployed.profile}), delta)
             context.addStep(steps.waitResourceUp(
                 **{'resource': 'ingress', 'resourceName': '{0}-{1}-ingress'.format(deployed.name, port.name),
                    'ci': port,
@@ -27,7 +28,6 @@ class IngresStepGenerator(StepGenerator):
 
 import traceback
 
-
 try:
     builder = DeltasBuilder()
     list_of_deltas = builder.build2(delta.operation, deployed, previousDeployed, "ports")
@@ -35,4 +35,3 @@ try:
     IngresStepGenerator(delta, list_of_deltas).generate()
 except:
     raise Exception(str(traceback.format_exc()))
-

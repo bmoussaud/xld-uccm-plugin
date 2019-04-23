@@ -3,7 +3,7 @@
   "kind": "Ingress",
   "apiVersion": "extensions/v1beta1",
   "metadata": {
-    "name": "${deployed.name}-${ci.name}-ingress",
+    "name": "${resourceName}",
     "labels": {
       "application": "${application}",
       "version": "${version}",
