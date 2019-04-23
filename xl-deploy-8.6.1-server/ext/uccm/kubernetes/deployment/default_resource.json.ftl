@@ -5,8 +5,10 @@
     "name": "${deployed.name}-depl",
     "labels": {
       "application": "${application}",
-      "version": "${version}",
       "component": "${deployed.name}"
+    },
+    "annotations": {
+      "xldeploy.com/version": "${version}"
     }
   },
   "spec": {
@@ -17,7 +19,6 @@
     "selector": {
       "matchLabels": {
         "application": "${application}",
-        "version": "${version}",
         "component": "${deployed.name}"
       }
     },
@@ -26,8 +27,8 @@
         "name": "${deployed.name}-depl",
         "labels": {
           "application": "${application}",
-          "version": "${version}",
-          "component": "${deployed.name}"
+          "component": "${deployed.name}",
+          "version": "${version}"
         }
       },
       "spec": {

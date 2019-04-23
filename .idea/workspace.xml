@@ -5,8 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/production_resource.json.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/production_resource.json.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/default_resource.json.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/default_resource.json.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/production_resource.json.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/production_resource.json.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/default_resource.json.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/default_resource.json.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/production_resource.json.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/production_resource.json.ftl" afterDir="false" />
     </list>
@@ -37,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="production_resource.json.ftl" pinned="false" current-in-tab="false">
+      <file leaf-file-name="production_resource.json.ftl" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/production_resource.json.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="33" column="41" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+            <state relative-caret-position="384">
+              <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -67,8 +65,8 @@
       <file leaf-file-name="default_resource.json.ftl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
+            <state relative-caret-position="-18">
+              <caret line="11" column="5" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="11" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -76,17 +74,17 @@
       <file leaf-file-name="default_resource.json.ftl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/default_resource.json.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+            <state relative-caret-position="340">
+              <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="production_resource.json.ftl" pinned="false" current-in-tab="true">
+      <file leaf-file-name="production_resource.json.ftl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/production_resource.json.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+            <state relative-caret-position="340">
+              <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -230,12 +228,12 @@
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/xl-rules.xml" />
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/.gitignore" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl" />
-        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/production_resource.json.ftl" />
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/default_resource.json.ftl" />
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/production_resource.json.ftl" />
-        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/default_resource.json.ftl" />
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/production_resource.json.ftl" />
+        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/default_resource.json.ftl" />
+        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl" />
+        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/production_resource.json.ftl" />
       </list>
     </option>
   </component>
@@ -249,8 +247,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -321,6 +319,7 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -544,7 +543,21 @@
       <option name="project" value="LOCAL" />
       <updated>1555589210235</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="manage labels">
+      <created>1555589494151</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1555589494151</updated>
+    </task>
+    <task id="LOCAL-00020" summary="manage labels">
+      <created>1555589582556</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1555589582556</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -563,7 +576,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.31764707" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21184371" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21672772" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info id="Learn" order="2" weight="0.32967034" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -806,20 +819,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/production_resource.json.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="33" column="41" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/default_resource.json.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -834,17 +833,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/default_resource.json.ftl">
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/production_resource.json.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+        <state relative-caret-position="340">
+          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/production_resource.json.ftl">
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/default_resource.json.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+        <state relative-caret-position="340">
+          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-18">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="11" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/production_resource.json.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
         </state>
       </provider>
     </entry>
