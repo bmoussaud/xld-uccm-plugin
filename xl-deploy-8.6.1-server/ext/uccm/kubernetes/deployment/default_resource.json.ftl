@@ -8,7 +8,8 @@
       "component": "${deployed.name}"
     },
     "annotations": {
-      "xldeploy.com/version": "${version}"
+      "xldeploy.com/version": "${version}",
+      "xldeploy.com/environment": "${environment}"
     }
   },
   "spec": {
