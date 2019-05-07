@@ -14,9 +14,6 @@
   },
   "spec": {
     "replicas": ${deployed.replicas},
-    "strategy": {
-      "type":"Recreate"
-    },
     "selector": {
       "matchLabels": {
         "application": "${application}",
