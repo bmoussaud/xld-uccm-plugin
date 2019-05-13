@@ -42,7 +42,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         <steps>
             <os-script>
                 <order expression="true">macro['order']</order>
-                <description expression="true">"Delete {0} kubernetes {2} from {1} namespace".format(<macro></macro>,macro['target'].container.name,macro['resource'])</description>
+                <description expression="true">"Delete {0} kubernetes {2} from {1} namespace".format(macro['resourceName'],macro['target'].container.name,macro['resource'])</description>
                 <script>uccm/kubernetes/delete</script>
                 <target-host expression="true">macro['target'].container.container.kubectlHost</target-host>
                 <freemarker-context>
@@ -200,7 +200,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         </conditions>
         <steps>
             <kubectlDelete>
-                <order>100</order>
+                <order>99</order>
                 <resource>Deployment</resource>
                 <resourceName expression="true">"{0}-canary-depl".format(previousDeployed.name)</resourceName>
                 <target expression="true">previousDeployed</target>
@@ -208,7 +208,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
             <noop>
                 <description expression="true">"Wait for Canary Deployement {} to be deleted on {}".format(previousDeployed.name, previousDeployed.container.name)
                 </description>
-                <order>41</order>
+                <order>101</order>
             </noop>
         </steps>
     </rule>
@@ -240,11 +240,10 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
     <rule name="uccm.container.describe_resource" scope="post-plan">
         <planning-script-path>uccm/kubernetes/describe.py</planning-script-path>
     </rule>
-    <!--
+
     <rule name="dump.DeltaSpecification" scope="plan">
       <planning-script-path>delta_specification.py</planning-script-path>
     </rule>
-    -->
 
     <!-- AWS -->
     <rule name="uccm.aws.elasticbeanstalk.deploy" scope="deployed">
