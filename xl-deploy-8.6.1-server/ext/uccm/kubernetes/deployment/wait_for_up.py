@@ -89,8 +89,8 @@ try:
             print "DONE replicas"
             dump_events()
         else:
-            inc_context(deployment_name)
-            cpt = get_value_context(deployment_name)
+            inc_context(resourceName)
+            cpt = get_value_context(resourceName)
             print "WAIT....{0}/{1}".format(cpt, attempts)
             if cpt < int(attempts):
                 result = "RETRY"
