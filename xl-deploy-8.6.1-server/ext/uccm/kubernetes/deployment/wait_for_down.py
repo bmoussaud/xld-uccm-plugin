@@ -30,8 +30,7 @@ def get_available_replicas(data):
 
 
 #attempts = 10
-deployment_name = "{0}-depl".format(deployed.name)
-command_line = "{2} get deployment {0} --namespace={1} -o=json".format(deployment_name, deployed.container.name, 'kubectl')
+command_line = "{2} get deployment {0} --namespace={1} -o=json".format(resourceName, deployed.container.name, 'kubectl')
 if get_value_context() == 0:
     print command_line
 

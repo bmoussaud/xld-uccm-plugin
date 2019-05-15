@@ -58,8 +58,7 @@ def get_available_replicas(data):
         return -1
 
 
-deployment_name = "{0}-depl".format(ci.name)
-command_line = "{2} get {3} {0} --namespace={1} -o=json".format(deployment_name, ci.container.name, 'kubectl', resource)
+command_line = "{2} get {3} {0} --namespace={1} -o=json".format(resourceName, ci.container.name, 'kubectl', resource)
 print command_line
 
 session = OverthereHostSession(target_host)
