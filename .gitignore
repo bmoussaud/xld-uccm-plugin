@@ -1,1 +1,5 @@
 xl-deploy-8.6.1-server_
+xl-deploy-8.6.1-server
+.DS_Store
+.idea/workspace.xml
+
