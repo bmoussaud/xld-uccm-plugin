@@ -53,6 +53,29 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         </steps>
     </step-macro>
 
+    <step-macro name="kubectlScale">
+        <parameters>
+            <parameter name="resource" type="string"/>
+            <parameter name="resourceName" type="string"/>
+            <parameter name="order" type="integer"/>
+            <parameter name="target" type="ci"/>
+            <parameter name="replicas" type="integer"/>
+        </parameters>
+        <steps>
+            <os-script>
+                <order expression="true">macro['order']</order>
+                <description expression="true">"Scale {0} kubernetes {2} to {3} replicas from {1} namespace".format(macro['resourceName'],macro['target'].container.name,macro['resource'],macro['replicas'])</description>
+                <script>uccm/kubernetes/scale</script>
+                <target-host expression="true">macro['target'].container.container.kubectlHost</target-host>
+                <freemarker-context>
+                    <resource expression="true">macro['resource']</resource>
+                    <resourceName expression="true">macro['resourceName']</resourceName>
+                    <nbreplicas expression="true">macro['replicas']</nbreplicas>
+                </freemarker-context>
+            </os-script>
+        </steps>
+    </step-macro>
+
     <step-macro name="kubectlDescribe">
         <parameters>
             <parameter name="resource" type="string"/>
@@ -110,20 +133,104 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                 <resource>deployment</resource>
                 <order>60</order>
                 <ci expression="true">deployed</ci>
-                <resourceName expression="true">"{0}-depl".format(deployed.name)</resourceName>
+                <resourceName expression="true">"{0}-deployment-{1}".format(deployed.name, deployedApplication.version.name)</resourceName>
                 <profile expression="true">deployed.profile</profile>
             </kubectlApply>
             <waitResourceUp>
                 <order>62</order>
                 <resource>deployment</resource>
-                <resourceName expression="true">"{0}-depl".format(deployed.name)</resourceName>
+                <resourceName expression="true">"{0}-deployment-{1}".format(deployed.name, deployedApplication.version.name)</resourceName>
                 <ci expression="true">deployed</ci>
             </waitResourceUp>
             <kubectlDescribe>
-                <order>99</order>
+                <order>80</order>
                 <resource>deployment</resource>
-                <resourceName expression="true">"{0}-depl".format(deployed.name)</resourceName>
+                <resourceName expression="true">"{0}-deployment-{1}".format(deployed.name, deployedApplication.version.name)</resourceName>
             </kubectlDescribe>
+        </steps>
+    </rule>
+
+    <rule name="uccm.container.scale_dow" scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <kubectlScale>
+                <resource>deployment</resource>
+                <order>85</order>
+                <target expression="true">previousDeployed</target>
+                <resourceName expression="true">"{0}-deployment-{1}".format(previousDeployed.name, previousDeployedApplication.version.name)</resourceName>
+                <replicas expression="true">previousDeployed.replicas</replicas>
+            </kubectlScale>
+            <noop>
+                <description expression="true">"Wait for Deployment {} to be updated on {}".format(previousDeployed.name, previousDeployed.container.name)
+                </description>
+                <order>86</order>
+            </noop>
+        </steps>
+    </rule>
+
+    <rule name="uccm.container.scale_down_validation " scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>MODIFY</operation>
+            <expression>(deployed.progressiveValidation or previousDeployed.progressiveValidation) and previousDeployed.replicas > 0</expression>
+        </conditions>
+        <steps>
+            <manual>
+                <description expression="true">"Validate the Deployment of the version {1}/{0}".format(deployedApplication.version.name, deployedApplication.version.application.name)</description>
+                <order>87</order>
+                <message-template>uccm/emailtemplates/email.txt.ftl</message-template>
+                <mail-to>
+                    <value>businessteam@xebialabs.demo</value>
+                </mail-to>
+                <mail-from>xldeploy@xebialabs.demo</mail-from>
+                <freemarker-context>
+                    <buttonColour>green</buttonColour>
+                </freemarker-context>
+            </manual>
+        </steps>
+    </rule>
+
+    <rule name="uccm.container.scale_down_delete" scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>MODIFY</operation>
+            <expression>previousDeployed.replicas == 0</expression>
+        </conditions>
+        <steps>
+            <kubectlDelete>
+                <order>99</order>
+                <resource>Deployment</resource>
+                <resourceName expression="true">"{0}-deployment-{1}".format(previousDeployed.name, previousDeployedApplication.version.name)</resourceName>
+                <target expression="true">previousDeployed</target>
+            </kubectlDelete>
+            <noop>
+                <description expression="true">"Wait for Deployment {} to be delete on {}".format(previousDeployed.name, previousDeployed.container.name)
+                </description>
+                <order>99</order>
+            </noop>
+        </steps>
+    </rule>
+
+    <rule name="uccm.container.delete" scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>DESTROY</operation>
+        </conditions>
+        <steps>
+            <kubectlDelete>
+                <order>40</order>
+                <resource>Deployment</resource>
+                <resourceName expression="true">"{0}-deployment-{1}".format(previousDeployed.name, previousDeployedApplication.version.name)</resourceName>
+                <target expression="true">previousDeployed</target>
+            </kubectlDelete>
+            <noop>
+                <description expression="true">"Wait for Deployment {} to be deleted on {}".format(previousDeployed.name, previousDeployed.container.name)
+                </description>
+                <order>41</order>
+            </noop>
         </steps>
     </rule>
 
@@ -171,25 +278,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         <planning-script-path>uccm/kubernetes/deployment/planningScripts/destroySecuredRegistries.py</planning-script-path>
     </rule>
 
-    <rule name="uccm.container.delete" scope="deployed">
-        <conditions>
-            <type>uccm.Container</type>
-            <operation>DESTROY</operation>
-        </conditions>
-        <steps>
-            <kubectlDelete>
-                <order>40</order>
-                <resource>Deployment</resource>
-                <resourceName expression="true">"{0}-depl".format(previousDeployed.name)</resourceName>
-                <target expression="true">previousDeployed</target>
-            </kubectlDelete>
-            <noop>
-                <description expression="true">"Wait for Deployement {} to be deleted on {}".format(previousDeployed.name, previousDeployed.container.name)
-                </description>
-                <order>41</order>
-            </noop>
-        </steps>
-    </rule>
+
 
     <rule name="uccm.container.delete_canary" scope="deployed">
         <conditions>
