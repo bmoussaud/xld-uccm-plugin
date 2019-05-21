@@ -154,6 +154,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         <conditions>
             <type>uccm.Container</type>
             <operation>MODIFY</operation>
+            <expression>"k8s-progressive-group" in deployedApplication.orchestrator</expression>
         </conditions>
         <steps>
             <kubectlScale>
