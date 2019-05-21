@@ -27,6 +27,8 @@ Note: If you modify this file, you must restart the XL Deploy server.
                   description="List of ports to expose from the container."/>
         <property name="mountedVolumes" kind="set_of_ci" referenced-type="uccm.MountedVolume" as-containment="true"
                   description="mounted volumes"/>
+        <property name="progressive" kind="boolean" required="false" default="false" category="Progressive"/>
+        <property name="progressiveValidation" kind="boolean" required="false" default="false" category="Progressive"/>
     </type>
 
     <type-modification type="uccm.ContainerSpec">

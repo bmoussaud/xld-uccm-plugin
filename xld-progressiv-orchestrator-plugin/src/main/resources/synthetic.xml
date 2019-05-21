@@ -5,9 +5,7 @@
 
     <!-- Generic load balancer support -->
     <type-modification type="uccm.Container">
-        <property name="progressive" kind="boolean" required="false" default="false" category="Progressive"/>
-        <property name="progressiveCount" kind="integer" required="false" default="0" category="Progressive"/>
-        <property name="progressiveValidation" kind="boolean" required="false" default="false" category="Progressive"/>
+
     </type-modification>
 
 

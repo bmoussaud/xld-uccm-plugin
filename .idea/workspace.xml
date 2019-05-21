@@ -4,14 +4,8 @@
     <list default="true" id="86651578-1908-4841-ad02-0ba9d13c5077" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/synthetic.xml" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/synthetic.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/apply.sh.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/apply.sh.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/delete.sh.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/delete.sh.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/describe.sh.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/describe.sh.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/wait_for_down.py" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/wait_for_down.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/wait_for_up.py" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/wait_for_up.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/wait_for_up.py" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/wait_for_up.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/scale.sh.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/scale.sh.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/wait_for_up.py" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/wait_for_up.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/java/com/xebialabs/deployit/plugin/uccm/kubernetes/planning/orchestrator/KubernetesProgessiveOrchestrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/java/com/xebialabs/deployit/plugin/uccm/kubernetes/planning/orchestrator/KubernetesProgessiveOrchestrator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/resources/synthetic.xml" beforeDir="false" afterPath="$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/resources/synthetic.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="production_resource.json.ftl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/production_resource.json.ftl">
+      <file leaf-file-name="xl-rules.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/xl-rules.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="7" column="16" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="16" />
+            <state relative-caret-position="257">
+              <caret line="253" selection-start-line="253" selection-end-line="253" />
             </state>
           </provider>
         </entry>
@@ -40,7 +34,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="describe.sh.ftl" pinned="false" current-in-tab="true">
+      <file leaf-file-name="KubernetesProgessiveOrchestrator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/java/com/xebialabs/deployit/plugin/uccm/kubernetes/planning/orchestrator/KubernetesProgessiveOrchestrator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="48" column="53" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="describe.sh.ftl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/describe.sh.ftl">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
@@ -49,20 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wait_for_up.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/wait_for_up.py">
+      <file leaf-file-name="synthetic.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/synthetic.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="30" selection-start-line="23" selection-end-line="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wait_for_up.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/wait_for_up.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="31" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="302">
+              <caret line="30" column="119" selection-start-line="30" selection-start-column="119" selection-end-line="30" selection-end-column="119" />
             </state>
           </provider>
         </entry>
@@ -70,6 +64,15 @@
       <file leaf-file-name="describe.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/describe.py">
           <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="synthetic.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/resources/synthetic.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="default_resource.json.ftl" pinned="false" current-in-tab="false">
@@ -99,15 +102,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wait_for_up.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/wait_for_up.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="73" column="106" selection-start-line="73" selection-end-line="73" selection-end-column="106" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -119,7 +113,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>;</find>
       <find>is_different</find>
       <find>builder</find>
       <find>find_similar</find>
@@ -139,7 +132,6 @@
       <find>pet</find>
       <find>kubectlApply</find>
       <find>deployed.name</find>
-      <find>cana</find>
       <find>_</find>
       <find>ccm.container.delete</find>
       <find>canar</find>
@@ -148,6 +140,9 @@
       <find>deployment_name</find>
       <find>get_associated_pods</find>
       <find>dump_events</find>
+      <find>cana</find>
+      <find>canary</find>
+      <find>progressiveCountPropertyName</find>
     </findStrings>
     <replaceStrings>
       <replace>${deployedApplication.version.application.name}</replace>
@@ -193,8 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/aws/petclinic-2.0.json" />
-        <option value="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/planningScripts/deploy_upload.py" />
         <option value="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/s3_upload_file.py" />
         <option value="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/s3_file_helper.py" />
         <option value="$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/s3_upload_file.sh.ftl" />
@@ -234,8 +227,6 @@
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/default_resource.json.ftl" />
         <option value="$PROJECT_DIR$/progressiv-orchestrator/pom.xml" />
         <option value="$PROJECT_DIR$/progressiv-orchestrator/src/main/java/com/xebialabs/deployit/plugin/uccm/kubernetes/planning/orchestrator/SwitchedLoadBalancingOrchestrator.java" />
-        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/xl-rules.xml" />
-        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/synthetic.xml" />
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/apply.sh.ftl" />
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/delete.sh.ftl" />
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/scale.sh.ftl" />
@@ -244,6 +235,10 @@
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/wait_for_up.py" />
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/wait_for_up.py" />
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/wait_for_up.py" />
+        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/xl-rules.xml" />
+        <option value="$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/java/com/xebialabs/deployit/plugin/uccm/kubernetes/planning/orchestrator/KubernetesProgessiveOrchestrator.java" />
+        <option value="$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/resources/synthetic.xml" />
+        <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/synthetic.xml" />
       </list>
     </option>
   </component>
@@ -635,7 +630,21 @@
       <option name="project" value="LOCAL" />
       <updated>1557943465847</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="set --context if provide on the kubeclt command line">
+      <created>1558451249017</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1558451249017</updated>
+    </task>
+    <task id="LOCAL-00029" summary="remove canary property &amp; rules">
+      <created>1558453431104</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1558453431104</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -696,11 +705,11 @@
     <MESSAGE value="manage labels &amp; annotations" />
     <MESSAGE value="canary (bay) mode" />
     <MESSAGE value="reuse resourceName in python wait scripts" />
-    <option name="LAST_COMMIT_MESSAGE" value="reuse resourceName in python wait scripts" />
+    <MESSAGE value="set --context if provide on the kubeclt command line" />
+    <MESSAGE value="remove canary property &amp; rules" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove canary property &amp; rules" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/wait_for_down.py" />
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/wait_for_up.py" />
     <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/aws/elasticbeanstalk/planningScripts/deploy_upload.py" />
     <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.0-server/ext/uccm/kubernetes/deployment/wait_for_down.py" />
     <entry file="file://$PROJECT_DIR$/aws/list.txt">
@@ -882,20 +891,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/synthetic.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="41" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/xl-rules.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="49" column="33" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/scale.sh.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -969,10 +964,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/xl-rules.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="253" selection-start-line="253" selection-end-line="253" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/deployment/describe.sh.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/resources/synthetic.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/java/com/xebialabs/deployit/plugin/uccm/kubernetes/planning/orchestrator/KubernetesProgessiveOrchestrator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="48" column="53" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/synthetic.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="30" column="119" selection-start-line="30" selection-start-column="119" selection-end-line="30" selection-end-column="119" />
         </state>
       </provider>
     </entry>

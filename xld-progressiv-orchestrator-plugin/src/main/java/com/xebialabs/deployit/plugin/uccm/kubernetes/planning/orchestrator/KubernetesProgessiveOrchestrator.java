@@ -47,7 +47,6 @@ public class KubernetesProgessiveOrchestrator implements Orchestrator {
 
             Deployed deployed = delta.getDeployed() == null ? delta.getPrevious() : delta.getDeployed();
             String replicasPropertyName = "replicas";
-            String progressiveCountPropertyName = "progressiveCount";
 
             int replicas = deployed.getProperty(replicasPropertyName);
             for (int i = 0; i < replicas; i++) {
