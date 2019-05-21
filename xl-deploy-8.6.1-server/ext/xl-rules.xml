@@ -126,7 +126,6 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
             <type>uccm.Container</type>
             <operation>CREATE</operation>
             <operation>MODIFY</operation>
-            <expression>not deployed.canary</expression>
         </conditions>
         <steps>
             <kubectlApply>
@@ -235,33 +234,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         </steps>
     </rule>
 
-    <rule name="uccm.container.apply_canary" scope="deployed">
-        <conditions>
-            <type>uccm.Container</type>
-            <operation>MODIFY</operation>
-            <expression>deployed.canary</expression>
-        </conditions>
-        <steps>
-            <kubectlApply>
-                <resource>deployment</resource>
-                <order>60</order>
-                <ci expression="true">deployed</ci>
-                <resourceName expression="true">"{0}-canary-depl".format(deployed.name)</resourceName>
-                <profile expression="true">"{0}_canary".format(deployed.profile)</profile>
-            </kubectlApply>
-            <waitResourceUp>
-                <order>62</order>
-                <resource>deployment</resource>
-                <resourceName expression="true">"{0}-depl".format(deployed.name)</resourceName>
-                <ci expression="true">deployed</ci>
-            </waitResourceUp>
-            <kubectlDescribe>
-                <order>99</order>
-                <resource>deployment</resource>
-                <resourceName expression="true">"{0}-depl".format(deployed.name)</resourceName>
-            </kubectlDescribe>
-        </steps>
-    </rule>
+
 
     <rule name="uccm.container.apply.registries" scope="deployed">
         <conditions>
@@ -277,30 +250,6 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
             <operation>DESTROY</operation>
         </conditions>
         <planning-script-path>uccm/kubernetes/deployment/planningScripts/destroySecuredRegistries.py</planning-script-path>
-    </rule>
-
-
-
-    <rule name="uccm.container.delete_canary" scope="deployed">
-        <conditions>
-            <type>uccm.Container</type>
-            <operation>MODIFY</operation>
-            <operation>DESTROY</operation>
-            <expression>previousDeployed.canary</expression>
-        </conditions>
-        <steps>
-            <kubectlDelete>
-                <order>99</order>
-                <resource>Deployment</resource>
-                <resourceName expression="true">"{0}-canary-depl".format(previousDeployed.name)</resourceName>
-                <target expression="true">previousDeployed</target>
-            </kubectlDelete>
-            <noop>
-                <description expression="true">"Wait for Canary Deployement {} to be deleted on {}".format(previousDeployed.name, previousDeployed.container.name)
-                </description>
-                <order>101</order>
-            </noop>
-        </steps>
     </rule>
 
 
