@@ -30,7 +30,13 @@ def get_available_replicas(data):
 
 
 #attempts = 10
-command_line = "{2} get deployment {0} --namespace={1} -o=json".format(resourceName, deployed.container.name, 'kubectl')
+def get_kubectl_command(container):
+    kubectl = 'kubectl --namespace={0}'.format(container.name)
+    if container.container.kubeConfigContext is not None:
+        kubectl = kubectl + ' --context={0}'.format(deployed.container.container.kubeConfigContext)
+    return kubectl
+
+command_line = "{0} get {1} {2} -o=json".format(get_kubectl_command(deployed.container), resource, resourceName)
 if get_value_context() == 0:
     print command_line
 

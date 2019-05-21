@@ -11,9 +11,8 @@ from overtherepy import OverthereHostSession
 def get_associated_pods(ci):
     pods = []
     session = OverthereHostSession(target_host)
-    command_line = "{1} get {2} -l=application=PetPortal  --namespace={0}  -o json".format(ci.container.name,
-                                                                                           'kubectl',
-                                                                                           'pods')
+    command_line = "{0} get {1} -l=component={2} -o json".format(get_kubectl_command(ci.container), 'pods', ci.name)
+    print command_line
     response = session.execute(command_line)
     if response.rc == 0:
         data = json.loads(" ".join(response.stdout))
@@ -25,10 +24,9 @@ def get_associated_pods(ci):
 def get_pod_events(ci, pod_name):
     events = []
     session = OverthereHostSession(target_host)
-    command_line = "{1} get {2} --field-selector involvedObject.name={3} --namespace={0}  -o json".format(
-        ci.container.name,
-        'kubectl',
-        'event', pod_name)
+    command_line = "{0} get {1} --field-selector involvedObject.name={2} -o json".format(
+        get_kubectl_command(ci.container), 'event',
+        pod_name)
     response = session.execute(command_line)
     if response.rc == 0:
         data = json.loads(" ".join(response.stdout))
@@ -58,10 +56,11 @@ def get_available_replicas(data):
         return -1
 
 
-command_line = "{2} get {3} {0} --namespace={1} -o=json".format(resourceName, ci.container.name, 'kubectl', resource)
-print command_line
-
-session = OverthereHostSession(target_host)
+def get_kubectl_command(container):
+    kubectl = 'kubectl --namespace={0}'.format(container.name)
+    if container.container.kubeConfigContext is not None:
+        kubectl = kubectl + ' --context={0}'.format(deployed.container.container.kubeConfigContext)
+    return kubectl
 
 
 def dump_events():
@@ -72,8 +71,12 @@ def dump_events():
             print event
 
 
+command_line = "{0} get {1} {2} -o=json".format(get_kubectl_command(ci.container), resource, resourceName)
+print command_line
+session = OverthereHostSession(target_host)
+
 try:
-    response = session.execute(command_line)
+    response = session.execute(command_line, suppress_streaming_output=True)
     rc = response.rc
     if rc != 0:
         print "Non zero Exit Code {0}".format(rc)

@@ -23,8 +23,15 @@ def get_value_context(name):
 
 
 
+def get_kubectl_command(container):
+    kubectl = 'kubectl --namespace={0}'.format(container.name)
+    if container.container.kubeConfigContext is not None:
+        kubectl = kubectl + ' --context={0}'.format(deployed.container.container.kubeConfigContext)
+    return kubectl
+
+
 result=""
-command_line = "{2} get {3} {0} --namespace={1} ".format(resourceName, deployed.container.name, 'kubectl', resource)
+command_line = "{0} get {1} {2} -o=json".format(get_kubectl_command(deployed.container), resource, resourceName)
 print command_line
 
 session = OverthereHostSession(target_host)
