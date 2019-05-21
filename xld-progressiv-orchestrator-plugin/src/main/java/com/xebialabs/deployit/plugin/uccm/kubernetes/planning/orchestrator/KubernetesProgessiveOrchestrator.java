@@ -26,7 +26,7 @@ import java.util.List;
 
 @Orchestrator.Metadata(
         name = "k8s-progressive-group",
-        description = "blabla")
+        description = "a progressive group orchestrator ")
 public class KubernetesProgessiveOrchestrator implements Orchestrator {
 
     private static final Logger logger = LoggerFactory.getLogger(KubernetesProgessiveOrchestrator.class);

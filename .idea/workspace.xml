@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86651578-1908-4841-ad02-0ba9d13c5077" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/synthetic.xml" beforeDir="false" afterPath="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/synthetic.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/java/com/xebialabs/deployit/plugin/uccm/kubernetes/planning/orchestrator/KubernetesProgessiveOrchestrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/java/com/xebialabs/deployit/plugin/uccm/kubernetes/planning/orchestrator/KubernetesProgessiveOrchestrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/resources/synthetic.xml" beforeDir="false" afterPath="$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/resources/synthetic.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,7 +31,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KubernetesProgessiveOrchestrator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="KubernetesProgessiveOrchestrator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/java/com/xebialabs/deployit/plugin/uccm/kubernetes/planning/orchestrator/KubernetesProgessiveOrchestrator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="140">
@@ -52,7 +49,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="synthetic.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="synthetic.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/synthetic.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="302">
@@ -140,9 +137,9 @@
       <find>deployment_name</find>
       <find>get_associated_pods</find>
       <find>dump_events</find>
-      <find>cana</find>
       <find>canary</find>
       <find>progressiveCountPropertyName</find>
+      <find>cana</find>
     </findStrings>
     <replaceStrings>
       <replace>${deployedApplication.version.application.name}</replace>
@@ -236,9 +233,9 @@
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/ingress/wait_for_up.py" />
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/uccm/kubernetes/service/wait_for_up.py" />
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/xl-rules.xml" />
-        <option value="$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/java/com/xebialabs/deployit/plugin/uccm/kubernetes/planning/orchestrator/KubernetesProgessiveOrchestrator.java" />
         <option value="$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/resources/synthetic.xml" />
         <option value="$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/synthetic.xml" />
+        <option value="$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/java/com/xebialabs/deployit/plugin/uccm/kubernetes/planning/orchestrator/KubernetesProgessiveOrchestrator.java" />
       </list>
     </option>
   </component>
@@ -331,6 +328,146 @@
               <item name="uccm" type="462c0819:PsiDirectoryNode" />
               <item name="kubernetes" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xld-progressiv-orchestrator-plugin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xld-progressiv-orchestrator-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xld-progressiv-orchestrator-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xld-progressiv-orchestrator-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xld-progressiv-orchestrator-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xld-progressiv-orchestrator-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xld-progressiv-orchestrator-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="xebialabs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xld-progressiv-orchestrator-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="xebialabs" type="462c0819:PsiDirectoryNode" />
+              <item name="deployit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xld-progressiv-orchestrator-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="xebialabs" type="462c0819:PsiDirectoryNode" />
+              <item name="deployit" type="462c0819:PsiDirectoryNode" />
+              <item name="plugin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xld-progressiv-orchestrator-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="xebialabs" type="462c0819:PsiDirectoryNode" />
+              <item name="deployit" type="462c0819:PsiDirectoryNode" />
+              <item name="plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="uccm" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xld-progressiv-orchestrator-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="xebialabs" type="462c0819:PsiDirectoryNode" />
+              <item name="deployit" type="462c0819:PsiDirectoryNode" />
+              <item name="plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="uccm" type="462c0819:PsiDirectoryNode" />
+              <item name="kubernetes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xld-progressiv-orchestrator-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="xebialabs" type="462c0819:PsiDirectoryNode" />
+              <item name="deployit" type="462c0819:PsiDirectoryNode" />
+              <item name="plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="uccm" type="462c0819:PsiDirectoryNode" />
+              <item name="kubernetes" type="462c0819:PsiDirectoryNode" />
+              <item name="planning" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xld-progressiv-orchestrator-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="xebialabs" type="462c0819:PsiDirectoryNode" />
+              <item name="deployit" type="462c0819:PsiDirectoryNode" />
+              <item name="plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="uccm" type="462c0819:PsiDirectoryNode" />
+              <item name="kubernetes" type="462c0819:PsiDirectoryNode" />
+              <item name="planning" type="462c0819:PsiDirectoryNode" />
+              <item name="orchestrator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xld-uccm-plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xld-uccm-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="xld-progressiv-orchestrator-plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -660,10 +797,10 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.31882352" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.31882352" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2954823" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2814408" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info id="Learn" order="2" weight="0.32967034" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -985,17 +1122,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/java/com/xebialabs/deployit/plugin/uccm/kubernetes/planning/orchestrator/KubernetesProgessiveOrchestrator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="48" column="53" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/xl-deploy-8.6.1-server/ext/synthetic.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
           <caret line="30" column="119" selection-start-line="30" selection-start-column="119" selection-end-line="30" selection-end-column="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xld-progressiv-orchestrator-plugin/src/main/java/com/xebialabs/deployit/plugin/uccm/kubernetes/planning/orchestrator/KubernetesProgessiveOrchestrator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="48" column="53" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
         </state>
       </provider>
     </entry>
