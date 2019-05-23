@@ -1,0 +1,7 @@
+
+gcloud container clusters get-credentials your-first-cluster-benoit-moussaud --zone europe-west2-b --project itest-playground \
+ &&
+kubectl port-forward --namespace gke-staging $(kubectl get pod --namespace gke-staging --selector="application=xl-demo-uccm-gke-app,component=front" --output jsonpath='{.items[0].metadata.name}') 8080:8000
+
+
+kubectl port-forward --context=gke --namespace gke-staging $(kubectl get pod --context=gke --namespace gke-staging --selector="application=xl-demo-uccm-gke-app,component=front" --output jsonpath='{.items[0].metadata.name}') 8080:800
