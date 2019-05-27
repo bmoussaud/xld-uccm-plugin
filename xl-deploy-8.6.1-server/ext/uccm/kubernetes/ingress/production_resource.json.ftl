@@ -16,7 +16,7 @@
   "spec": {
           "rules": [
               {
-                  "host": "${environment?lower_case}.${application?lower_case}.xebialabs.gke",
+                  "host": "${environment?lower_case}.${application?lower_case}.xebialabs.demo",
                   "http": {
                       "paths": [
                           {
