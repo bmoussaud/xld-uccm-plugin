@@ -33,7 +33,9 @@ public class KubernetesProgessiveOrchestrator implements Orchestrator {
 
     @Override
     public Orchestration orchestrate(DeltaSpecification specification) {
-
+        if (specification.getOperation() != Operation.MODIFY) {
+            return Orchestrations.interleaved(this.descForAppDeployment(specification.getDeployedApplication()), specification.getDeltas());
+        }
 
         Collection<Delta> uccmContainerDeltas = Collections2.filter(specification.getDeltas(), new IsUCCMContainer("uccm.Container"));
         Collection<Delta> smokeTestDeltas = Collections2.filter(specification.getDeltas(), new IsUCCMContainer("smoketest.ExecutedHttpRequestTest"));
