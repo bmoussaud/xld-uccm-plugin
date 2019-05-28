@@ -14,6 +14,10 @@ Note: If you modify this file, you must restart the XL Deploy server.
         <property name="kubeConfigContext" required="false" category="uccm" description="the context that should be set before running the commands."/>
     </type-modification>
 
+    <type-modification type="k8s.Namespace">
+        <property name="dnsSuffix" default="xebialabs.demo" />
+    </type-modification>
+
     <type type="uccm.Container" extends="udm.BaseDeployed" deployable-type="uccm.ContainerSpec"
           container-type="k8s.Namespace">
         <generate-deployable type="uccm.ContainerSpec" extends="udm.BaseDeployable"/>

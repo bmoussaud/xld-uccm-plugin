@@ -1,5 +1,3 @@
-# ${resource}
-# ${profile}
 echo '
 <#include '/uccm/kubernetes/${resource}/${profile}_resource.json.ftl'>
 ' > resource.json
