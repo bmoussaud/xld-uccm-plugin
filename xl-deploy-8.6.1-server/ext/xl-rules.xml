@@ -102,6 +102,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
             <parameter name="resource" type="string"/>
             <parameter name="resourceName" type="string"/>
             <parameter name="order" type="integer"/>
+            <parameter name="ci" type="ci"/>
         </parameters>
         <steps>
             <os-script>
@@ -112,6 +113,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                 <freemarker-context>
                     <resource expression="true">macro['resource']</resource>
                     <resourceName expression="true">macro['resourceName']</resourceName>
+                    <ci expression="true">macro['ci']</ci>
                 </freemarker-context>
             </os-script>
         </steps>
@@ -292,6 +294,17 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
             <operation>NOOP</operation>
         </conditions>
         <planning-script-path>uccm/kubernetes/ingress/planningScripts/operations.py</planning-script-path>
+    </rule>
+
+    <rule name="uccm.container_configmap_operation" scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+            <operation>DESTROY</operation>
+            <operation>NOOP</operation>
+        </conditions>
+        <planning-script-path>uccm/kubernetes/configmap/planningScripts/operations.py</planning-script-path>
     </rule>
 
 

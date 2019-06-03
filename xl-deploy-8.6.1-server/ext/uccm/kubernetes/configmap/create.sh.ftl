@@ -4,14 +4,7 @@
 </#if>
 
 <#assign commandline = commandline + ["create","${resource}","${resourceName}"]/>
-
-<#list deployed.data?keys as key>
-    <#assign commandline = commandline + ["--from-literal=${key}=${deployed.data[key]}"]/>
-</#list>
-
-<#list deployed.propertyFiles as pf>
-    <#assign commandline = commandline + ["--from-file=${(pf.file)!pf.name}"]/>
-</#list>
+<#assign commandline = commandline + ["--from-file=${ci.file.path}"]/>
 
 echo Executing <#list commandline as item>${item} </#list>
 <#list commandline as item>${item} </#list>

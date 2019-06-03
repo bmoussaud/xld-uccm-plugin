@@ -38,7 +38,7 @@
       },
       "spec": {
         "volumes": [
-        <#list deployed.mountedVolumes as vol>
+        <#list deployed.mountedVolumes + deployed.mountedFiles as vol>
           <#if vol.isSensitive>
           {
             "name": "${vol.name}-volume",
@@ -50,7 +50,7 @@
           {
             "name": "${vol.name}-volume",
             "configMap": {
-              "name": "${vol.name}",
+              "name": "${deployed.name}-${vol.name}-configmap",
               "defaultMode": 420
             }
           }
@@ -88,7 +88,7 @@
                </#list>
              ],
             "volumeMounts": [
-            <#list deployed.mountedVolumes as vol>
+            <#list deployed.mountedVolumes + deployed.mountedFiles as vol>
               {
                   "name": "${vol.name}-volume",
                   "readOnly": true,

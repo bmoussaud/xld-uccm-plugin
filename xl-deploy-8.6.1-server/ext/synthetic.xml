@@ -31,6 +31,7 @@ Note: If you modify this file, you must restart the XL Deploy server.
                   description="List of ports to expose from the container."/>
         <property name="mountedVolumes" kind="set_of_ci" referenced-type="uccm.MountedVolume" as-containment="true"
                   description="mounted volumes"/>
+        <property name="mountedFiles" kind="set_of_ci" referenced-type="uccm.MountedFile" as-containment="true" />
         <property name="progressive" kind="boolean" required="false" default="false" category="Progressive"/>
         <property name="progressiveValidation" kind="boolean" required="false" default="false" category="Progressive"/>
     </type>
@@ -41,6 +42,7 @@ Note: If you modify this file, you must restart the XL Deploy server.
                   description="List of ports to expose from the container."/>
         <property name="mountedVolumes" kind="set_of_ci" referenced-type="uccm.MountedVolumeSpec" as-containment="true"
                   description="mounted volumes"/>
+        <property name="mountedFiles" kind="set_of_ci" referenced-type="uccm.MountedFileSpec" as-containment="true" />
     </type-modification>
 
 
@@ -66,6 +68,15 @@ Note: If you modify this file, you must restart the XL Deploy server.
         <property name="isSensitive" required="false" kind="boolean" default="true"
                   description="is it a sensitive data?"/>
     </type>
+
+    <type type="uccm.MountedFile" deployable-type="uccm.MountedFileSpec" container-type="uccm.Container"
+          extends="udm.EmbeddedDeployedArtifact" description="MountedFile Management">
+        <generate-deployable type="uccm.MountedFileSpec" extends="udm.EmbeddedDeployableArtifact"/>
+        <property name="path"/>
+        <property name="isSensitive" required="false" kind="boolean" default="true"
+                  description="is it a sensitive data?"/>
+    </type>
+
 
     <!-- AWS -->
     <type-modification type="aws.Cloud">
