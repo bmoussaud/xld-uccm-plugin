@@ -67,7 +67,6 @@ Note: If you modify this file, you must restart the XL Deploy server.
                   description="is it a sensitive data?"/>
     </type>
 
-
     <!-- AWS -->
     <type-modification type="aws.Cloud">
         <property name="awsHost" required="false" category="uccm" kind="ci" referenced-type="overthere.Host"/>

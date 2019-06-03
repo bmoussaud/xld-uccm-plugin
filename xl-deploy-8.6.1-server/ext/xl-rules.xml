@@ -97,6 +97,26 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
     </step-macro>
 
 
+    <step-macro name="kubectlCreate">
+        <parameters>
+            <parameter name="resource" type="string"/>
+            <parameter name="resourceName" type="string"/>
+            <parameter name="order" type="integer"/>
+        </parameters>
+        <steps>
+            <os-script>
+                <order expression="true">macro['order']</order>
+                <description expression="true">"Create {0} kubernetes {2} from {1} namespace".format(deployed.name, deployed.container.name,macro['resource'])</description>
+                <script expression="true">"uccm/kubernetes/{0}/create".format(macro['resource'])</script>
+                <target-host expression="true">deployed.container.container.kubectlHost</target-host>
+                <freemarker-context>
+                    <resource expression="true">macro['resource']</resource>
+                    <resourceName expression="true">macro['resourceName']</resourceName>
+                </freemarker-context>
+            </os-script>
+        </steps>
+    </step-macro>
+
     <step-macro name="waitResourceUp">
         <parameters>
             <parameter name="resource" type="string"/>
@@ -235,7 +255,6 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
     </rule>
 
 
-
     <rule name="uccm.container.apply.registries" scope="deployed">
         <conditions>
             <type>uccm.Container</type>
@@ -283,6 +302,24 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
     <rule name="dump.DeltaSpecification" scope="plan">
       <planning-script-path>delta_specification.py</planning-script-path>
     </rule>
+
+    <disable-rule name="k8s.ConfigMap.CREATE"/>
+
+    <rule name="uccm.config_map.apply" scope="deployed">
+        <conditions>
+            <type>k8s.ConfigMap</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <kubectlCreate>
+                <order>55</order>
+                <resource>configmap</resource>
+                <resourceName expression="true">deployed.name</resourceName>
+            </kubectlCreate>
+        </steps>
+    </rule>
+
 
     <!-- AWS -->
     <rule name="uccm.aws.elasticbeanstalk.deploy" scope="deployed">
