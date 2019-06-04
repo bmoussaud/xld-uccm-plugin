@@ -48,7 +48,7 @@
           }
           <#else>
           {
-            "name": "${vol.name}-volume",
+            "name": "${deployed.name}-${vol.name}-${vol.data_hash}-volume",
             "configMap": {
               "name": "${deployed.name}-${vol.name}-configmap",
               "defaultMode": 420
@@ -90,7 +90,7 @@
             "volumeMounts": [
             <#list deployed.mountedVolumes + deployed.mountedFiles as vol>
               {
-                  "name": "${vol.name}-volume",
+                  "name": "${deployed.name}-${vol.name}-${vol.data_hash}-volume",
                   "readOnly": true,
                   "mountPath": "${vol.path}"
               }
