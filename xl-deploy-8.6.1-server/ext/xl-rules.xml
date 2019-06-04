@@ -316,24 +316,6 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
       <planning-script-path>delta_specification.py</planning-script-path>
     </rule>
 
-    <disable-rule name="k8s.ConfigMap.CREATE"/>
-
-    <rule name="uccm.config_map.apply" scope="deployed">
-        <conditions>
-            <type>k8s.ConfigMap</type>
-            <operation>CREATE</operation>
-            <operation>MODIFY</operation>
-        </conditions>
-        <steps>
-            <kubectlCreate>
-                <order>55</order>
-                <resource>configmap</resource>
-                <resourceName expression="true">deployed.name</resourceName>
-            </kubectlCreate>
-        </steps>
-    </rule>
-
-
     <!-- AWS -->
     <rule name="uccm.aws.elasticbeanstalk.deploy" scope="deployed">
         <conditions>
