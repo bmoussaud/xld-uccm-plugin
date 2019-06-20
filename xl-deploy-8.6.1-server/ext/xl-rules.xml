@@ -171,11 +171,34 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         </steps>
     </rule>
 
-    <rule name="uccm.container.scale_dow" scope="deployed">
+    <rule name="uccm.container.delete" scope="deployed">
         <conditions>
             <type>uccm.Container</type>
             <operation>MODIFY</operation>
-            <expression>"k8s-progressive-group" in deployedApplication.orchestrator</expression>
+            <operation>DESTROY</operation>
+            <expression>"k8s-progressive-group" not in deployedApplication.orchestrator</expression>
+        </conditions>
+        <steps>
+            <kubectlDelete>
+                <order>99</order>
+                <resource>Deployment</resource>
+                <resourceName expression="true">"{0}-deployment-{1}".format(previousDeployed.name, previousDeployedApplication.version.name)</resourceName>
+                <target expression="true">previousDeployed</target>
+            </kubectlDelete>
+            <noop>
+                <description expression="true">"Wait for Deployment {} to be delete on {}".format(previousDeployed.name, previousDeployed.container.name)
+                </description>
+                <order>99</order>
+            </noop>
+        </steps>
+    </rule>
+
+
+    <rule name="uccm.container.k8s-progressive-group.scale_down" scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>MODIFY</operation>
+            <expression>"k8s-progressive-group" in deployedApplication.orchestrator and deployed.progressive</expression>
         </conditions>
         <steps>
             <kubectlScale>
@@ -185,19 +208,32 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                 <resourceName expression="true">"{0}-deployment-{1}".format(previousDeployed.name, previousDeployedApplication.version.name)</resourceName>
                 <replicas expression="true">previousDeployed.replicas</replicas>
             </kubectlScale>
-            <noop>
-                <description expression="true">"Wait for Deployment {} to be updated on {}".format(previousDeployed.name, previousDeployed.container.name)
-                </description>
-                <order>86</order>
-            </noop>
         </steps>
     </rule>
 
-    <rule name="uccm.container.scale_down_validation " scope="deployed">
+
+
+    <rule name="uccm.container.k8s-progressive-group.scale_down_delete" scope="deployed">
         <conditions>
             <type>uccm.Container</type>
             <operation>MODIFY</operation>
-            <expression>(deployed.progressiveValidation or previousDeployed.progressiveValidation) and previousDeployed.replicas > 0</expression>
+            <expression>"k8s-progressive-group" in deployedApplication.orchestrator and deployed.progressive and previousDeployed.replicas == 0</expression>
+        </conditions>
+        <steps>
+            <kubectlDelete>
+                <order>99</order>
+                <resource>Deployment</resource>
+                <resourceName expression="true">"{0}-deployment-{1}".format(previousDeployed.name, previousDeployedApplication.version.name)</resourceName>
+                <target expression="true">previousDeployed</target>
+            </kubectlDelete>
+        </steps>
+    </rule>
+
+    <rule name="uccm.container.k8s-progressive-group.scale_down_validation " scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>MODIFY</operation>
+            <expression>"k8s-progressive-group" in deployedApplication.orchestrator and deployed.progressiveValidation and previousDeployed.replicas > 0</expression>
         </conditions>
         <steps>
             <manual>
@@ -215,46 +251,8 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         </steps>
     </rule>
 
-    <rule name="uccm.container.scale_down_delete" scope="deployed">
-        <conditions>
-            <type>uccm.Container</type>
-            <operation>MODIFY</operation>
-            <expression>previousDeployed.replicas == 0</expression>
-        </conditions>
-        <steps>
-            <kubectlDelete>
-                <order>99</order>
-                <resource>Deployment</resource>
-                <resourceName expression="true">"{0}-deployment-{1}".format(previousDeployed.name, previousDeployedApplication.version.name)</resourceName>
-                <target expression="true">previousDeployed</target>
-            </kubectlDelete>
-            <noop>
-                <description expression="true">"Wait for Deployment {} to be delete on {}".format(previousDeployed.name, previousDeployed.container.name)
-                </description>
-                <order>99</order>
-            </noop>
-        </steps>
-    </rule>
 
-    <rule name="uccm.container.delete" scope="deployed">
-        <conditions>
-            <type>uccm.Container</type>
-            <operation>DESTROY</operation>
-        </conditions>
-        <steps>
-            <kubectlDelete>
-                <order>40</order>
-                <resource>Deployment</resource>
-                <resourceName expression="true">"{0}-deployment-{1}".format(previousDeployed.name, previousDeployedApplication.version.name)</resourceName>
-                <target expression="true">previousDeployed</target>
-            </kubectlDelete>
-            <noop>
-                <description expression="true">"Wait for Deployment {} to be deleted on {}".format(previousDeployed.name, previousDeployed.container.name)
-                </description>
-                <order>41</order>
-            </noop>
-        </steps>
-    </rule>
+
 
 
     <rule name="uccm.container.apply.registries" scope="deployed">
