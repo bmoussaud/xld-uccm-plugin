@@ -171,12 +171,32 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         </steps>
     </rule>
 
-    <rule name="uccm.container.delete" scope="deployed">
+    <rule name="uccm.container.modify" scope="deployed">
         <conditions>
             <type>uccm.Container</type>
             <operation>MODIFY</operation>
-            <operation>DESTROY</operation>
             <expression>"k8s-progressive-group" not in deployedApplication.orchestrator</expression>
+        </conditions>
+        <steps>
+            <kubectlDelete>
+                <order>99</order>
+                <resource>Deployment</resource>
+                <resourceName expression="true">"{0}-deployment-{1}".format(previousDeployed.name, previousDeployedApplication.version.name)</resourceName>
+                <target expression="true">previousDeployed</target>
+            </kubectlDelete>
+            <noop>
+                <description expression="true">"Wait for Deployment {} to be delete on {}".format(previousDeployed.name, previousDeployed.container.name)
+                </description>
+                <order>99</order>
+            </noop>
+        </steps>
+    </rule>
+
+    <rule name="uccm.container.delete" scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>DESTROY</operation>
+
         </conditions>
         <steps>
             <kubectlDelete>
