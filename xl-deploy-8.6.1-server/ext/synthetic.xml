@@ -25,7 +25,7 @@ Note: If you modify this file, you must restart the XL Deploy server.
         <property name="replicas" kind="integer" default="1"/>
         <property name="profile" default="default"/>
         <property category="Process" name="env" required="false" kind="map_string_string"
-                  description="List of environment variables to set in the container. Cannot be updated."/>
+                  description="List of environment variables to set in the container"/>
         <property name="ports" required="false" kind="set_of_ci"
                   referenced-type="uccm.ContainerPort" as-containment="true"
                   description="List of ports to expose from the container."/>
@@ -76,6 +76,7 @@ Note: If you modify this file, you must restart the XL Deploy server.
         <property name="isSensitive" required="false" kind="boolean" default="true"
                   description="is it a sensitive data?"/>
         <property name="data_hash" required="false" />
+        <property name="resourceName" required="false"/>
     </type>
 
 

@@ -10,16 +10,19 @@ import json
 class ServiceStepGenerator(StepGenerator):
 
     def create(self, delta, deployed, config):
-        #https://blog.questionable.services/article/kubernetes-deployments-configmap-change/
-        h = hashlib.md5(json.dumps(config.placeholders, sort_keys=True))
-        short_h = str(int(h.hexdigest(), 16) % (10 ** 8))
-        checksum = str(config.deployable.checksum)
-        data_md5 = "d-{0}-f-{1}".format(short_h, checksum[0:10])
-        config.data_hash = data_md5
+        # https://blog.questionable.services/article/kubernetes-deployments-configmap-change/
+        #h = hashlib.md5(json.dumps(config.placeholders, sort_keys=True))
+        #short_h = str(int(h.hexdigest(), 16) % (10 ** 8))
+        #checksum = str(config.deployable.checksum)
+        #data_md5 = "d-{0}-f-{1}".format(short_h, checksum[0:10])
+        #config.data_hash = data_md5
 
-        resourceName = '{0}-{1}-configmap'.format(deployed.name, config.name)
+        #resource_name = '{0}-{1}-{2}-configmap'.format(deployed.name, config.name, data_md5)
+        #config.resourceName = resource_name
+
         context.addStepWithCheckpoint(
-            steps.kubectlCreate(**{'resource': 'configmap', 'resourceName': resourceName, 'order': 59, 'ci': config}),
+            steps.kubectlCreate(
+                **{'resource': 'configmap', 'resourceName': config.resourceName, 'order': 59, 'ci': config}),
             delta
         )
         # context.addStep(steps.waitResourceUp(
@@ -29,7 +32,7 @@ class ServiceStepGenerator(StepGenerator):
 
     def destroy(self, delta, deployed, config):
         data = {'target': deployed, 'resource': 'configmap',
-                'resourceName': '{0}-{1}-configmap'.format(deployed.name, config.name), 'order': 43}
+                'resourceName': config.resourceName, 'order': 43}
         context.addStep(steps.noop(**{
             'description': 'Wait for ConfigMap {1}/{0} deleted on {2}'.format(config.name, deployed.name,
                                                                               deployed.container.name), 'order': 44}))
