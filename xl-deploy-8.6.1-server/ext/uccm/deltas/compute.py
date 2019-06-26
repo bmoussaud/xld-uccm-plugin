@@ -94,7 +94,6 @@ def get_modified_properties(deployed, previous):
     for pd in ci_descriptor.getPropertyDescriptors():
         result = (pd, pd.get(deployed), pd.get(previous))
         print("%s:%s<->%s" % (result))
-        #if "deployable" == pd.getName() or "data_hash" == pd.getName() or "resourceName" == pd.getName() or "container" == pd.getName() or pd.isHidden() or pd.isTransient():
         if "deployable" == pd.getName() or "container" == pd.getName() or pd.isHidden() or pd.isTransient():
             continue
         if not (pd.areEqual(deployed, previous)):

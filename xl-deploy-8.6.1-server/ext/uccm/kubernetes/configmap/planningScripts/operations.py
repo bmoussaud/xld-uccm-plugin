@@ -10,25 +10,12 @@ import json
 class ServiceStepGenerator(StepGenerator):
 
     def create(self, delta, deployed, config):
-        # https://blog.questionable.services/article/kubernetes-deployments-configmap-change/
-        #h = hashlib.md5(json.dumps(config.placeholders, sort_keys=True))
-        #short_h = str(int(h.hexdigest(), 16) % (10 ** 8))
-        #checksum = str(config.deployable.checksum)
-        #data_md5 = "d-{0}-f-{1}".format(short_h, checksum[0:10])
-        #config.data_hash = data_md5
-
-        #resource_name = '{0}-{1}-{2}-configmap'.format(deployed.name, config.name, data_md5)
-        #config.resourceName = resource_name
-
+        # the resourceName has been computed by the resolve.py
         context.addStepWithCheckpoint(
             steps.kubectlCreate(
                 **{'resource': 'configmap', 'resourceName': config.resourceName, 'order': 59, 'ci': config}),
             delta
         )
-        # context.addStep(steps.waitResourceUp(
-        #    **{'resource': 'configmap', 'resourceName': '{0}-{1}-configmap'.format(deployed.name, port.name),
-        #       'ci': port,
-        #       'order': 59}))
 
     def destroy(self, delta, deployed, config):
         data = {'target': deployed, 'resource': 'configmap',

@@ -75,7 +75,6 @@ Note: If you modify this file, you must restart the XL Deploy server.
         <property name="path"/>
         <property name="isSensitive" required="false" kind="boolean" default="true"
                   description="is it a sensitive data?"/>
-        <property name="data_hash" required="false" />
         <property name="resourceName" required="false"/>
     </type>
 
