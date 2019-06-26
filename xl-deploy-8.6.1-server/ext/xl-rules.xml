@@ -142,8 +142,16 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         </steps>
     </step-macro>
 
+    <rule name="uccm.container.before.pply" scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <planning-script-path>uccm/kubernetes/deployment/planningScripts/resolve.py</planning-script-path>
+    </rule>
 
-    <rule name="uccm.container.apply" scope="deployed">
+    <rule name="uccm.container.rule.apply" scope="deployed">
         <conditions>
             <type>uccm.Container</type>
             <operation>CREATE</operation>
@@ -154,34 +162,34 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                 <resource>deployment</resource>
                 <order>60</order>
                 <ci expression="true">deployed</ci>
-                <resourceName expression="true">"{0}-deployment-{1}".format(deployed.name, deployedApplication.version.name)</resourceName>
+                <resourceName expression="true">deployed.resourceName</resourceName>
                 <profile expression="true">deployed.profile</profile>
             </kubectlApply>
             <waitResourceUp>
                 <order>62</order>
                 <resource>deployment</resource>
-                <resourceName expression="true">"{0}-deployment-{1}".format(deployed.name, deployedApplication.version.name)</resourceName>
+                <resourceName expression="true">deployed.resourceName</resourceName>
                 <ci expression="true">deployed</ci>
             </waitResourceUp>
             <kubectlDescribe>
                 <order>80</order>
                 <resource>deployment</resource>
-                <resourceName expression="true">"{0}-deployment-{1}".format(deployed.name, deployedApplication.version.name)</resourceName>
+                <resourceName expression="true">deployed.resourceName</resourceName>
             </kubectlDescribe>
         </steps>
     </rule>
 
-    <rule name="uccm.container.modify" scope="deployed">
+    <rule name="uccm.container.rule.modify" scope="deployed">
         <conditions>
             <type>uccm.Container</type>
             <operation>MODIFY</operation>
-            <expression>"k8s-progressive-group" not in deployedApplication.orchestrator</expression>
+            <expression>"k8s-progressive-group" not in deployedApplication.orchestrator and not(deployed.resourceName == previousDeployed.resourceName) </expression>
         </conditions>
         <steps>
             <kubectlDelete>
                 <order>99</order>
                 <resource>Deployment</resource>
-                <resourceName expression="true">"{0}-deployment-{1}".format(previousDeployed.name, previousDeployedApplication.version.name)</resourceName>
+                <resourceName expression="true">previousDeployed.resourceName</resourceName>
                 <target expression="true">previousDeployed</target>
             </kubectlDelete>
             <noop>
@@ -192,7 +200,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         </steps>
     </rule>
 
-    <rule name="uccm.container.delete" scope="deployed">
+    <rule name="uccm.container.rule.delete" scope="deployed">
         <conditions>
             <type>uccm.Container</type>
             <operation>DESTROY</operation>
@@ -202,7 +210,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
             <kubectlDelete>
                 <order>99</order>
                 <resource>Deployment</resource>
-                <resourceName expression="true">"{0}-deployment-{1}".format(previousDeployed.name, previousDeployedApplication.version.name)</resourceName>
+                <resourceName expression="true">previousDeployed.resourceName</resourceName>
                 <target expression="true">previousDeployed</target>
             </kubectlDelete>
             <noop>
@@ -225,7 +233,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                 <resource>deployment</resource>
                 <order>85</order>
                 <target expression="true">previousDeployed</target>
-                <resourceName expression="true">"{0}-deployment-{1}".format(previousDeployed.name, previousDeployedApplication.version.name)</resourceName>
+                <resourceName expression="true">previousDeployed.resourceName</resourceName>
                 <replicas expression="true">previousDeployed.replicas</replicas>
             </kubectlScale>
         </steps>

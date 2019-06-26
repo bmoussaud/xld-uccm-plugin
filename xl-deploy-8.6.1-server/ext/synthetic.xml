@@ -34,6 +34,7 @@ Note: If you modify this file, you must restart the XL Deploy server.
         <property name="mountedFiles" kind="set_of_ci" referenced-type="uccm.MountedFile" as-containment="true" />
         <property name="progressive" kind="boolean" required="false" default="false" category="Progressive"/>
         <property name="progressiveValidation" kind="boolean" required="false" default="false" category="Progressive"/>
+        <property name="resourceName" required="false"/>
     </type>
 
     <type-modification type="uccm.ContainerSpec">
