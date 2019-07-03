@@ -41,9 +41,9 @@
         <#list deployed.mountedVolumes + deployed.mountedFiles as vol>
           <#if vol.isSensitive>
           {
-            "name": "${vol.name}-volume",
+            "name": "${vol.resourceName}-volume",
             "secret": {
-              "secretName": "${vol.name}"
+              "secretName": "${vol.resourceName }"
             }
           }
           <#else>

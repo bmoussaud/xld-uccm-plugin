@@ -13,16 +13,24 @@ class ServiceStepGenerator(StepGenerator):
         # the resourceName has been computed by the resolve.py
         context.addStepWithCheckpoint(
             steps.kubectlCreate(
-                **{'resource': 'configmap', 'resourceName': config.resourceName, 'order': 59, 'ci': config}),
+                **{'resource': self.get_resource(config), 'resourceName': config.resourceName, 'order': 59,
+                   'ci': config}),
             delta
         )
 
+    @staticmethod
+    def get_resource(config):
+        resource = 'configmap'
+        if config.isSensitive:
+            resource = 'secret'
+        return resource
+
     def destroy(self, delta, deployed, config):
-        data = {'target': deployed, 'resource': 'configmap',
-                'resourceName': config.resourceName, 'order': 43}
+        data = {'target': deployed, 'resource': self.get_resource(config),
+                'resourceName': config.resourceName, 'order': 78}
         context.addStep(steps.noop(**{
             'description': 'Wait for ConfigMap {1}/{0} deleted on {2}'.format(config.name, deployed.name,
-                                                                              deployed.container.name), 'order': 44}))
+                                                                              deployed.container.name), 'order': 79}))
         context.addStepWithCheckpoint(steps.kubectlDelete(**data), delta)
 
 

@@ -107,7 +107,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         <steps>
             <os-script>
                 <order expression="true">macro['order']</order>
-                <description expression="true">"Create {0} kubernetes {2} from {1} namespace".format(deployed.name, deployed.container.name,macro['resource'])</description>
+                <description expression="true">"Create {0} kubernetes {2} from {1} namespace".format(macro['resourceName'], deployed.container.name,macro['resource'])</description>
                 <script expression="true">"uccm/kubernetes/{0}/create".format(macro['resource'])</script>
                 <target-host expression="true">deployed.container.container.kubectlHost</target-host>
                 <freemarker-context>
