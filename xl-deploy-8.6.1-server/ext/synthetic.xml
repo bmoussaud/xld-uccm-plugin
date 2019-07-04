@@ -24,8 +24,10 @@ Note: If you modify this file, you must restart the XL Deploy server.
         <property name="image"/>
         <property name="replicas" kind="integer" default="1"/>
         <property name="profile" default="default"/>
-        <property category="Process" name="env" required="false" kind="map_string_string"
+        <property category="Process" name="env" label="Environment Variables" required="false" kind="map_string_string"
                   description="List of environment variables to set in the container"/>
+        <property category="Process" name="securedEnv" label="Secured Environment Variables" required="false" password="true" kind="map_string_string"
+                  description="List of secured environment variables to be managed in the container"/>
         <property name="ports" required="false" kind="set_of_ci"
                   referenced-type="uccm.ContainerPort" as-containment="true"
                   description="List of ports to expose from the container."/>

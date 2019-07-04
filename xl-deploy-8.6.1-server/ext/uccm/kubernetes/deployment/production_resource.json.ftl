@@ -86,6 +86,18 @@
                  }
                <#sep>,
                </#list>
+               <#if (deployed.securedEnv?size > 0)>,</#if>
+               <#list deployed.securedEnv?keys as k>{
+                   "name": "${k}",
+                   "valueFrom": {
+                       "secretKeyRef" :{
+                         "name":"${deployed.resourceName}-securedenv",
+                         "key": "${k}"
+                       }
+                   }
+                }
+               <#sep>,
+               </#list>
              ],
             "volumeMounts": [
             <#list deployed.mountedVolumes + deployed.mountedFiles as vol>

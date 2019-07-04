@@ -179,6 +179,42 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         </steps>
     </rule>
 
+
+    <rule name="uccm.container.rule.apply_securedEnv" scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+            <expression>len(deployed.securedEnv)> 0 </expression>
+        </conditions>
+        <steps>
+            <kubectlApply>
+                <resource>secret</resource>
+                <order>59</order>
+                <ci expression="true">deployed</ci>
+                <resourceName expression="true">deployed.resourceName+"-securedenv"</resourceName>
+                <profile>securedenv</profile>
+            </kubectlApply>
+        </steps>
+    </rule>
+
+    <rule name="uccm.container.rule.apply_securedEnv_u" scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>DESTROY</operation>
+            <operation>MODIFY</operation>
+            <expression>len(previousDeployed.securedEnv)> 0 </expression>
+        </conditions>
+        <steps>
+            <kubectlDelete>
+                <order>58</order>
+                <resource>Secret</resource>
+                <resourceName expression="true">previousDeployed.resourceName+"-securedenv"</resourceName>
+                <target expression="true">previousDeployed</target>
+            </kubectlDelete>
+        </steps>
+    </rule>
+
     <rule name="uccm.container.rule.modify" scope="deployed">
         <conditions>
             <type>uccm.Container</type>
