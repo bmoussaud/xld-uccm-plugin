@@ -11,6 +11,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
             <parameter name="ci" type="ci"/>
             <parameter name="resourceName" type="string"/>
             <parameter name="profile" type="string"/>
+            <parameter name="extra" type="map_string_string"/>
         </parameters>
         <steps>
             <os-script>
@@ -27,6 +28,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                     <resource expression="true">macro['resource']</resource>
                     <resourceName expression="true">macro['resourceName']</resourceName>
                     <profile expression="true">macro['profile']</profile>
+                    <extra expression="true">macro['extra']</extra>
                 </freemarker-context>
             </os-script>
         </steps>
@@ -164,6 +166,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                 <ci expression="true">deployed</ci>
                 <resourceName expression="true">deployed.resourceName</resourceName>
                 <profile expression="true">deployed.profile</profile>
+                <extra expression="true">dict()</extra>
             </kubectlApply>
             <waitResourceUp>
                 <order>62</order>
@@ -179,24 +182,16 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         </steps>
     </rule>
 
-
     <rule name="uccm.container.rule.apply_securedEnv" scope="deployed">
         <conditions>
             <type>uccm.Container</type>
             <operation>CREATE</operation>
             <operation>MODIFY</operation>
-            <expression>len(deployed.securedEnv)> 0 </expression>
+                <expression>len(deployed.securedEnv)> 0 </expression>
         </conditions>
-        <steps>
-            <kubectlApply>
-                <resource>secret</resource>
-                <order>59</order>
-                <ci expression="true">deployed</ci>
-                <resourceName expression="true">deployed.resourceName+"-securedenv"</resourceName>
-                <profile>securedenv</profile>
-            </kubectlApply>
-        </steps>
+        <planning-script-path>uccm/kubernetes/deployment/planningScripts/encode_securedenv.py</planning-script-path>
     </rule>
+
 
     <rule name="uccm.container.rule.apply_securedEnv_u" scope="deployed">
         <conditions>

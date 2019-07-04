@@ -15,7 +15,7 @@
   "type": "Opaque",
   "data": {
      <#list deployed.securedEnv?keys as k>
-        "${k}": "${deployed.securedEnv[k]}"<#sep>,
+        "${k}": "${(extra['encoded_secured_env'][k])!"#######"}"<#sep>,
      </#list>
   }
 }

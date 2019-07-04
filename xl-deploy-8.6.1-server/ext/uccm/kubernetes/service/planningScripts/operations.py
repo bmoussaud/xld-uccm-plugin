@@ -10,7 +10,7 @@ class ServiceStepGenerator(StepGenerator):
         if port.exposeAsService:
             context.addStepWithCheckpoint(
                 steps.kubectlApply(**{'resource': 'service', 'resourceName': '{0}-{1}-service'.format(deployed.name, port.name),
-                                      'order': 63, 'ci': port, 'profile': deployed.profile}),
+                                      'order': 63, 'ci': port, 'profile': deployed.profile, 'extra': dict()}),
                 delta)
             context.addStep(steps.waitResourceUp(
                 **{'resource': 'service', 'resourceName': '{0}-{1}-service'.format(deployed.name, port.name),

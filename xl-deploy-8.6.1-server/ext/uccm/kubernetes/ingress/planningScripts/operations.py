@@ -10,7 +10,7 @@ class IngresStepGenerator(StepGenerator):
         if port.exposeAsIngress:
             context.addStepWithCheckpoint(steps.kubectlApply(
                 **{'resource': 'ingress', 'resourceName': '{0}-{1}-ingress'.format(deployed.name, port.name),
-                   'order': 65, 'ci': port, 'profile': deployed.profile}), delta)
+                   'order': 65, 'ci': port, 'profile': deployed.profile, 'extra': dict()}), delta)
             context.addStep(steps.waitResourceUp(
                 **{'resource': 'ingress', 'resourceName': '{0}-{1}-ingress'.format(deployed.name, port.name),
                    'ci': port,
