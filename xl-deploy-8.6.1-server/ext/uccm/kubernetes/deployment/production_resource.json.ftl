@@ -87,7 +87,7 @@
                <#sep>,
                </#list>
                <#if (deployed.securedEnv?size > 0)>,</#if>
-               <#list deployed.securedEnv?keys as k>{
+                   <#list deployed.securedEnv?keys as k>{
                    "name": "${k}",
                    "valueFrom": {
                        "secretKeyRef" :{
