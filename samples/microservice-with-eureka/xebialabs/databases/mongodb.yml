@@ -1,8 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
-metadata:
-  namespace: xl-demo
-    name: notification-mongodb-config
+metadata:  
+  name: {{mongodb.service}}-config
 data:
   mongod.conf: |
     net:
@@ -14,9 +13,8 @@ data:
 ---
 apiVersion: v1
 kind: ConfigMap
-metadata:
-  namespace: xl-demo
-  name: notification-mongodb-init
+metadata:  
+  name: {{mongodb.service}}-init
 data:
   on-start.sh: |
     script_name=${0##*/}
@@ -153,18 +151,17 @@ data:
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: notification-mongodb
-  namespace: xl-demo
+  name: {{mongodb.service}}  
 spec:
-  serviceName: notification-mongodb
+  serviceName: {{mongodb.service}}
   replicas: 1
   selector:
     matchLabels:
-      app: notification-mongodb
+      app: {{mongodb.service}}
   template:
     metadata:
       labels:
-        app: notification-mongodb
+        app: {{mongodb.service}}
     spec:
       initContainers:
         - name: config
@@ -198,7 +195,7 @@ spec:
             - /work-dir/peer-finder
           args:
             - -on-start=/init/on-start.sh
-            - '-service=notification-mongodb'
+            - '-service={{mongodb.service}}'
           imagePullPolicy: 'IfNotPresent'
           env:
             - name: POD_NAMESPACE
@@ -280,13 +277,13 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: notification-mongodb-config
+            name: {{mongodb.service}}-config
         - name: workdir
           emptyDir: {}
         - name: init
           configMap:
             defaultMode: 0755
-            name: notification-mongodb-init
+            name: {{mongodb.service}}-init
         - name: configdir
           emptyDir: {}
   volumeClaimTemplates:
@@ -304,7 +301,7 @@ kind: Service
 metadata:
   annotations:
     service.alpha.kubernetes.io/tolerate-unready-endpoints: 'true'
-  name: notification-mongodb
+  name: {{mongodb.service}}
   namespace: xl-demo
 spec:
   type: ClusterIP
@@ -313,4 +310,4 @@ spec:
     - name: peer
       port: 27017
   selector:
-    app: notification-mongodb
+    app: {{mongodb.service}}
