@@ -1,0 +1,37 @@
+---
+apiVersion: xl-deploy/v1
+kind: Applications
+spec:
+- name: eureka
+  type: core.Directory
+  children:
+  - name: invoice
+    type: udm.Application
+    children:
+    - name: 1.0.0
+      type: udm.DeploymentPackage
+      applicationDependencies:
+        invoice-db: 1.0.0
+      orchestrator:
+        - sequential-by-dependency
+      deployables:
+      - name: invoice-app
+        type: uccm.ContainerSpec
+        image: deepu105/invoice
+        replicas: "1"
+        profile: '{{profile}}'
+        env:
+          EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://admin:{{jhipster.registry.password}}@jhipster-registry.xl-demo.svc.cluster.local:8761/eureka/
+          SPRING_DATASOURCE_URL: jdbc:mariadb://invoice-mariadb.xl-demo.svc.cluster.local:3306/invoice
+          SPRING_PROFILES_ACTIVE: prod
+          JAVA_OPTS: -Xmx256m -Xms256m
+          SPRING_CLOUD_CONFIG_URI: http://admin:{{jhipster.registry.password}}@jhipster-registry.xl-demo.svc.cluster.local:8761/config
+          SPRING_SLEUTH_PROPAGATION_KEYS: x-request-id,x-ot-span-context
+        securedEnv:
+          JHIPSTER_REGISTRY_PASSWORD: x-{{ jhipster.registry.password }}
+          SPRING_DATASOURCE_PASSWORD: x-{{ mariadb-root-password }}
+        ports:
+        - name: http
+          type: uccm.ContainerPortSpec
+          containerPort: "8082"
+          exposeAsService: True

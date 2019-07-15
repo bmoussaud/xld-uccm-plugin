@@ -1,0 +1,16 @@
+---
+apiVersion: xl-deploy/v1
+kind: Applications
+spec:
+- name: eureka
+  type: core.Directory
+  children:
+  - name: invoice-db
+    type: udm.Application
+    children:
+    - name: 1.0.0
+      type: udm.DeploymentPackage
+      deployables:
+      - name: invoice-maria
+        type: k8s.ResourcesFile
+        file: !file ../databases/mariadb.yml
