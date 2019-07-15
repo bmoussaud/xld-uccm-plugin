@@ -3,13 +3,8 @@ kind: Import
 metadata:
  imports:
    - invoice/invoice.yaml
-   - invoice/invoice-db.yaml
    - notification/notification.yaml
-   - notification/notification-db.yaml
    - payments/payments.yaml
-   - payments/payments-db.yaml
    - product/product.yaml
-   - product/product-db.yaml
    - store/store.yaml
-   - store/store-db.yaml
    - registry/registry.yaml

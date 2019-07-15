@@ -10,12 +10,20 @@ spec:
     children:
     - name: 1.0.0
       type: udm.DeploymentPackage
-      applicationDependencies:
-        store-db: 1.0.0
       orchestrator:
-        - sequential-by-dependency
+        - parallel-by-dependency
+        - sequential-by-deployed
+      applicationDependencies:
+        registry: 1.0.0
+        product: 1.0.0
+        payment: 1.0.0
+        invoice: 1.0.0
+        notification: 1.0.0
       deployables:
-      - name: store-app
+      - name: store-app-db
+        type: k8s.ResourcesFile
+        file: !file ../databases/mysql.yml
+      - name: store-app-service
         type: uccm.ContainerSpec
         image: deepu105/store
         replicas: "1"

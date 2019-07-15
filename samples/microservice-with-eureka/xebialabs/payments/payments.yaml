@@ -10,12 +10,15 @@ spec:
     children:
     - name: 1.0.0
       type: udm.DeploymentPackage
-      applicationDependencies:
-        payment-db: 1.0.0
       orchestrator:
-        - sequential-by-dependency
+        - sequential-by-deployed
+      applicationDependencies:
+        registry: 1.0.0
       deployables:
-      - name: payment-app
+      - name: payment-app-db
+        type: k8s.ResourcesFile
+        file: !file ../databases/couchbase.yml
+      - name: payment-app-service
         type: uccm.ContainerSpec
         image: deepu105/payment
         replicas: "1"
