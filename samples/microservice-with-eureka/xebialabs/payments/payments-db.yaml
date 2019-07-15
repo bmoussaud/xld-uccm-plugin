@@ -5,12 +5,12 @@ spec:
 - name: eureka
   type: core.Directory
   children:
-  - name: notification-db
+  - name: payment-db
     type: udm.Application
     children:
     - name: 1.0.0
       type: udm.DeploymentPackage
       deployables:
-      - name: notification-mongodb
+      - name: payment-db
         type: k8s.ResourcesFile
-        file: !file ../databases/mariadb.yml
+        file: !file ../databases/couchbase.yml

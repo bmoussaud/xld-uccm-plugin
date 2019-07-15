@@ -1,0 +1,39 @@
+---
+apiVersion: xl-deploy/v1
+kind: Applications
+spec:
+- name: eureka
+  type: core.Directory
+  children:
+  - name: payment
+    type: udm.Application
+    children:
+    - name: 1.0.0
+      type: udm.DeploymentPackage
+      applicationDependencies:
+        payment-db: 1.0.0
+      orchestrator:
+        - sequential-by-dependency
+      deployables:
+      - name: payment-app
+        type: uccm.ContainerSpec
+        image: deepu105/payment
+        replicas: "1"
+        profile: '{{profile}}'
+        env:
+          SPRING_PROFILES_ACTIVE: prod
+          SPRING_CLOUD_CONFIG_URI: http://admin:{{jhipster.registry.password}}@jhipster-registry.xl-demo.svc.cluster.local:8761/config
+          EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://admin:{{jhipster.registry.password}}@jhipster-registry.xl-demo.svc.cluster.local:8761/eureka/
+          SPRING_DATASOURCE_URL: jdbc:mariadb://payment-mariadb.xl-demo.svc.cluster.local:3306/payment
+          SPRING_COUCHBASE_BOOTSTRAP_HOSTS: payments-couchbase-0.payments-couchbase
+          SPRING_COUCHBASE_BUCKET_NAME: payments
+          SPRING_SLEUTH_PROPAGATION_KEYS: x-request-id,x-ot-span-context
+          JAVA_OPTS: -Xmx256m -Xms256m
+        securedEnv:
+          JHIPSTER_REGISTRY_PASSWORD: x-{{ jhipster.registry.password }}
+          SPRING_DATASOURCE_PASSWORD: x-{{ mariadb-root-password }}
+        ports:
+        - name: http
+          type: uccm.ContainerPortSpec
+          containerPort: "8084"
+          exposeAsService: True

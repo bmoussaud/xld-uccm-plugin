@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{postgres.service}}-postgresql
+  namespace: xl-demo
+  labels:
+    app: {{postgres.service}}-postgresql
+type: Opaque
+data:
+  postgresql-password: {{postgresql-password}}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{postgres.service}}-postgresql
+  namespace: xl-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{postgres.service}}-postgresql
+  template:
+    metadata:
+      labels:
+        app: {{postgres.service}}-postgresql
+    spec:
+      volumes:
+        - name: data
+          emptyDir: {}
+      containers:
+        - name: postgres
+          image: postgres:11.3
+          env:
+            - name: POSTGRES_USER
+              value: {{postgres.service}}
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{postgres.service}}-postgresql
+                  key: postgresql-password
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/postgresql/
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{postgres.service}}-postgresql
+  namespace: xl-demo
+spec:
+  selector:
+    app: {{postgres.service}}-postgresql
+  ports:
+    - port: 5432
