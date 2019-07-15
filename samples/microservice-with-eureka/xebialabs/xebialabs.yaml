@@ -10,3 +10,6 @@ metadata:
    - payments/payments-db.yaml
    - product/product.yaml
    - product/product-db.yaml
+   - store/store.yaml
+   - store/store-db.yaml
+   - registry/registry.yaml

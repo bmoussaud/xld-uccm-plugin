@@ -1,0 +1,53 @@
+---
+apiVersion: xl-deploy/v1
+kind: Applications
+spec:
+- name: eureka
+  type: core.Directory
+  children:
+  - name: registry
+    type: udm.Application
+    children:
+    - name: 1.0.0
+      type: udm.DeploymentPackage
+      orchestrator:
+        - sequential-by-dependency
+      deployables:
+      - name: registry-app
+        type: uccm.ContainerSpec
+        image: jhipster/jhipster-registry:v5.0.2
+        replicas: "1"
+        profile: '{{profile}}'
+        env:
+          SPRING_PROFILES_ACTIVE: prod,k8s
+          JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET: YlhrdGMyVmpjbVYwTFhSdmEyVnVMWFJ2TFdOb1lXNW5aUzFwYmkxd2NtOWtkV04wYVc5dUxXRnVaQzEwYnkxclpXVndMV2x1TFdFdGMyVmpkWEpsTFhCc1lXTmwK
+          SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_TYPE: native
+          SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_SEARCH_LOCATIONS: file:./central-config
+          EUREKA_INSTANCE_LEASE_RENEWAL_INTERVAL_IN_SECONDS: 15
+          EUREKA_INSTANCE_LEASE_EXPIRATION_DURATION_IN_SECONDS: 300
+          EUREKA_SERVER_PEER_EUREKA_NODES_UPDATE_INTERVAL_MS: 15000
+          EUREKA_SERVER_RENAWAL_THRESHOLD_UPDATE_INTERVAL_MS: 15000
+          EUREKA_SERVER_REGISTRY_SYNC_RETRIES: 3
+          EUREKA_SERVER_ENABLE_SELF_PRESERVATION: false
+          EUREKA_SERVER_PEER_NODE_CONNECT_TIMEOUT_MS: 2000
+          EUREKA_CLIENT_FETCH_REGISTRY: 'true'
+          EUREKA_CLIENT_REGISTER_WITH_EUREKA: 'true'
+          K8S_CONFIG_PATH: '/central-config/'
+        securedEnv:
+          JHIPSTER_REGISTRY_PASSWORD: admin
+        ports:
+        - name: http
+          type: uccm.ContainerPortSpec
+          containerPort: "8761"
+          exposeAsService: True
+        mountedFiles:
+          - name: application.yaml
+            type: uccm.MountedFileSpec
+            path: /central-config/application.yaml
+            file: !file "application.yml"
+            isSensitive: false
+          - name: jhipster-registry.yaml
+            type: uccm.MountedFileSpec
+            path: /central-config/jhipster-registry.yaml
+            file: !file "jhipster-registry.yml"
+            isSensitive: false
