@@ -41,12 +41,12 @@ spec:
           containerPort: "8761"
           exposeAsService: True
         mountedFiles:
-          - name: application.yaml
+          - name: application
             type: uccm.MountedFileSpec
             path: /central-config/application.yaml
             file: !file "application.yml"
             isSensitive: false
-          - name: jhipster-registry.yaml
+          - name: jhipster-registry
             type: uccm.MountedFileSpec
             path: /central-config/jhipster-registry.yaml
             file: !file "jhipster-registry.yml"
