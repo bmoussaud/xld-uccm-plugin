@@ -1,0 +1,20 @@
+[
+  {
+    "path": "/spec/template/spec/containers/0/readinessProbe", 
+    "value": {
+      "exec": {
+        "command": "['/bin/grpc_health_probe', '-addr=:7000']"
+      }
+    }, 
+    "op": "add"
+  }, 
+  {
+    "path": "/spec/template/spec/containers/0/livenessProbe", 
+    "value": {
+      "exec": {
+        "command": "['/bin/grpc_health_probe', '-addr=:7000']"
+      }
+    }, 
+    "op": "add"
+  }
+]

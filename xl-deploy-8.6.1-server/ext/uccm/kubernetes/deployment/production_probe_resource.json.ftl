@@ -111,7 +111,34 @@
              ],
             "terminationMessagePath": "/dev/termination-log",
             "terminationMessagePolicy": "File",
-            "imagePullPolicy": "IfNotPresent"
+            "imagePullPolicy": "IfNotPresent",
+            "resources": {
+                "requests": {
+                    "memory":"512Mi",
+                    "cpu": "500m"
+                },
+                "limits": {
+                    "memory":"GMi",
+                    "cpu": "1"
+                }
+
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/management/health",
+                "port": "http"
+              },
+              "initialDelaySeconds": 20,
+              "periodSeconds": 15,
+              "failureThreshold": 6
+            },
+            "livenessProbe": {
+              "httpGet": {
+                "path": "/management/health",
+                "port": "http"
+              },
+              "initialDelaySeconds": 120
+            }
           }
         ],
         "restartPolicy": "Always",

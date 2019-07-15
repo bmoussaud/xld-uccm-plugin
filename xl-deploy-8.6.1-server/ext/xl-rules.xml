@@ -27,8 +27,11 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                     <ci expression="true">macro['ci']</ci>
                     <resource expression="true">macro['resource']</resource>
                     <resourceName expression="true">macro['resourceName']</resourceName>
+                    <!--
                     <profile expression="true">macro['profile']</profile>
+                    -->
                     <extra expression="true">macro['extra']</extra>
+                    <profile expression="true">deployedApplication.environment.profiles[macro['resource']]</profile>
                 </freemarker-context>
             </os-script>
         </steps>

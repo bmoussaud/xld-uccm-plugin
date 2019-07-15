@@ -6,6 +6,11 @@ Note: If you modify this file, you must restart the XL Deploy server.
            xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 
+
+    <type-modification type="udm.Environment">
+        <property name="profiles" kind="map_string_string" required="false" category="uccm"/>
+    </type-modification>
+
     <type-modification type="k8s.Master">
         <property name="kubectlHost" required="false" category="uccm" kind="ci" referenced-type="overthere.Host"/>
         <!-- securedRegistries could be moved to k8s.Namespace or managed as the deployed level -->

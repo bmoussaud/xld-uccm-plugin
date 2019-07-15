@@ -1,0 +1,135 @@
+{
+  "kind": "Deployment",
+  "apiVersion": "apps/v1",
+  "metadata": {
+    "name": "front-deployment-1.0.79",
+    "labels": {
+      "application": "xl-demo-uccm-app",
+      "component": "front"
+    },
+    "annotations": {
+      "xldeploy.com/version": "1.0.79",
+      "xldeploy.com/environment": "xl-demo-staging"
+    }
+  },
+  "spec": {
+    "replicas": 1,
+    "strategy": {
+      "type": "RollingUpdate",
+      "rollingUpdate": {
+        "maxSurge": 1,
+        "maxUnavailable": 0
+      }
+    },
+    "selector": {
+      "matchLabels": {
+        "application": "xl-demo-uccm-app",
+        "component": "front"
+      }
+    },
+    "template": {
+      "metadata": {
+        "name": "front-deployment-1.0.79",
+        "labels": {
+          "application": "xl-demo-uccm-app",
+          "component": "front",
+          "version": "1.0.79"
+        }
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "front-secured-config-d-36328453-f-8048dbd125-configmap-volume",
+            "secret": {
+              "secretName": "front-secured-config-d-36328453-f-8048dbd125-configmap"
+            }
+          },
+          {
+            "name": "front-config-d-89083250-f-3d7f4bbbc0-configmap-volume",
+            "configMap": {
+              "name": "front-config-d-89083250-f-3d7f4bbbc0-configmap",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "imagePullSecrets": [
+        ],
+        "containers": [
+          {
+            "name": "front",
+            "image": "localhost:5000/xl-demo-frontend:1.0.77",
+            "ports": [
+              {
+                "containerPort": 8000,
+                "protocol": "TCP"
+              }
+            ],
+            "readinessProbe": {
+              "exec": {
+                "command": "['/bin/grpc_health_probe', '-addr=:7000']"
+              }
+            },
+            "livenessProbe": {
+              "exec": {
+                "command": "['/bin/grpc_health_probe', '-addr=:7000']"
+              }
+            },
+            "env": [
+              {
+                "name": "BACKEND_ENDPOINT",
+                "value": "http://back-web-service"
+              },
+              {
+                "name": "DB_USERNAME",
+                "value": "scott"
+              },
+              {
+                "name": "FEATURE",
+                "value": "UCCM <b>staging</b>-xl-demo-frontend:1.0.78"
+              },
+              {
+                "name": "API_KEY",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "front-deployment-1.0.79-securedenv",
+                    "key": "API_KEY"
+                  }
+                }
+              },
+              {
+                "name": "DB_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "front-deployment-1.0.79-securedenv",
+                    "key": "DB_PASSWORD"
+                  }
+                }
+              }
+            ],
+            "volumeMounts": [
+              {
+                "name": "front-secured-config-d-36328453-f-8048dbd125-configmap-volume",
+                "readOnly": true,
+                "mountPath": "/opt/config/data_secured"
+              },
+              {
+                "name": "front-config-d-89083250-f-3d7f4bbbc0-configmap-volume",
+                "readOnly": true,
+                "mountPath": "/opt/config/data"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30
+      }
+    }
+  }
+}
+
+
+
+

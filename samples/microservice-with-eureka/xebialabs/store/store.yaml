@@ -43,3 +43,4 @@ spec:
           type: uccm.ContainerPortSpec
           containerPort: "8080"
           exposeAsService: True
+          exposeAsIngress: True

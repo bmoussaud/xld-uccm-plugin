@@ -14,7 +14,7 @@ def resolve(deployed, config):
     checksum = str(config.deployable.checksum)
     data_md5 = "d-{0}-f-{1}".format(short_h, checksum[0:10])
 
-    resource_name = '{0}-{1}-{2}-configmap'.format(deployed.name, config.name, data_md5)
+    resource_name = '{0}-{1}-{2}-cm'.format(deployed.name, config.name, data_md5)
     config.resourceName = resource_name
 
 
