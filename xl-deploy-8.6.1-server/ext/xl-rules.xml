@@ -27,11 +27,8 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                     <ci expression="true">macro['ci']</ci>
                     <resource expression="true">macro['resource']</resource>
                     <resourceName expression="true">macro['resourceName']</resourceName>
-                    <!--
-                    <profile expression="true">macro['profile']</profile>
-                    -->
                     <extra expression="true">macro['extra']</extra>
-                    <profile expression="true">deployedApplication.environment.profiles[macro['resource']]</profile>
+                    <profile expression="true">deployedApplication.environment.profiles.get(macro['resource'],macro['profile'])</profile>
                 </freemarker-context>
             </os-script>
         </steps>
@@ -168,7 +165,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                 <order>60</order>
                 <ci expression="true">deployed</ci>
                 <resourceName expression="true">deployed.resourceName</resourceName>
-                <profile expression="true">deployed.profile</profile>
+                    <profile expression="true">deployed.profile</profile>
                 <extra expression="true">dict()</extra>
             </kubectlApply>
             <waitResourceUp>
