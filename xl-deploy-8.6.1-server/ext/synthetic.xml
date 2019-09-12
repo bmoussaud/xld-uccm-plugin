@@ -87,6 +87,9 @@ Note: If you modify this file, you must restart the XL Deploy server.
         <property name="resourceName" required="false"/>
     </type>
 
+    <type-modification type="uccm.MountedFileSpec">
+        <property name="textFileNamesRegex" hidden="true" default=".+\.(cfg | conf | config | ini | properties | yaml | txt | yml | json | htm | html | xml | xsd | xsl | xslt)"/>
+    </type-modification>
 
     <!-- AWS -->
     <type-modification type="aws.Cloud">
