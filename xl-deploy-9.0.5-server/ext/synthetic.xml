@@ -61,11 +61,11 @@ Note: If you modify this file, you must restart the XL Deploy server.
                              description="Specification for a Kubernetes container port binding."/>
         <property name="containerPort" required="true" kind="integer"
                   description="Number of port to expose on the Pod’s IP address"/>
-        <property name="exposeAsService" required="true" kind="boolean" default="false" category="Exposed Service"
+        <property name="exposeAsService" required="false" kind="boolean" default="true" category="Exposed Service"
                   description="Whether to expose the container port as service."/>
         <property name="servicePort" required="false" kind="integer" category="Exposed Service"
                   description="Name of the service port."/>
-        <property name="exposeAsIngress" required="true" kind="boolean" default="false" category="Exposed Service"
+        <property name="exposeAsIngress" required="false" kind="boolean" default="false" category="Exposed Service"
                   description="Whether to expose the service port as an ingress"/>
     </type>
 
