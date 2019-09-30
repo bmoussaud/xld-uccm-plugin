@@ -21,6 +21,6 @@
       "application": "${application}",
       "component": "${deployed.name}"
     },
-    "type":"NodePort"
+    "type":"ClusterIP"
     }
   }
