@@ -109,6 +109,17 @@ Note: If you modify this file, you must restart the XL Deploy server.
 
 
 
+    <!-- Integration with XLR -->
+    <type type="xlrelease.Server" extends="udm.Configuration" root="CONFIGURATION">
+        <property name="url"/>
+        <property name="username"/>
+        <property name="password" password="true"/>
+    </type>
 
+    <type-modification type="udm.Environment">
+        <property name="xlreleaseServer" kind="ci" referenced-type="xlrelease.Server" required="false" category="XLRelease"/>
+    </type-modification>
+
+    
 </synthetic>
 

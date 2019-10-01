@@ -310,6 +310,28 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         </steps>
     </rule>
 
+    <rule name="uccm.container.test " scope="deployed">
+        <conditions>
+            <type>uccm.Container</type>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <jython>
+                <order>87</order>
+                <description expression="true">"Validate the Deployment of the version {1}/{0}".format(deployedApplication.version.name, deployedApplication.version.application.name)</description>
+                <script>xlr/start_release_and_wait.py</script>
+                <jython-context>
+                    <xlreleaseServer expression="true">deployedApplication.environment.xlreleaseServer</xlreleaseServer>
+                    <applicationName expression="true">deployedApplication.version.application.name</applicationName>
+                    <templateId>Release7d25ce2f75224fae947f1bedd1f0440e</templateId>
+                    <folderId>Applications/Folder371e232af7e04f778a82f2843709dc93</folderId>
+                </jython-context>
+                <preview-script>xlr/preview_start_release_and_wait.py</preview-script>
+            </jython>
+
+        </steps>
+    </rule>
+
 
 
 
