@@ -292,7 +292,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         <conditions>
             <type>uccm.Container</type>
             <operation>MODIFY</operation>
-            <expression>"k8s-progressive-group" in deployedApplication.orchestrator and deployed.progressiveValidation and previousDeployed.replicas > 0</expression>
+            <expression>"0 ==1 and k8s-progressive-group" in deployedApplication.orchestrator and deployed.progressiveValidation and previousDeployed.replicas > 0</expression>
         </conditions>
         <steps>
             <manual>
@@ -310,15 +310,16 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         </steps>
     </rule>
 
-    <rule name="uccm.container.test " scope="deployed">
+    <rule name="uccm.container.k8s-progressive-group.scale_down_XLR_validation" scope="deployed">
         <conditions>
             <type>uccm.Container</type>
             <operation>MODIFY</operation>
+            <expression>"k8s-progressive-group" in deployedApplication.orchestrator and deployed.progressiveValidation and previousDeployed.replicas > 0</expression>
         </conditions>
         <steps>
             <jython>
                 <order>87</order>
-                <description expression="true">"Validate the Deployment of the version {1}/{0}".format(deployedApplication.version.name, deployedApplication.version.application.name)</description>
+                <description expression="true">"Validate the Deployment of the version {1}/{0} using XLRelease".format(deployedApplication.version.name, deployedApplication.version.application.name)</description>
                 <script>xlr/start_release_and_wait.py</script>
                 <jython-context>
                     <xlreleaseServer expression="true">deployedApplication.environment.xlreleaseServer</xlreleaseServer>
