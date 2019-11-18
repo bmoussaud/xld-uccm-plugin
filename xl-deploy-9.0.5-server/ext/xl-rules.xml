@@ -319,7 +319,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         <steps>
             <jython>
                 <order>87</order>
-                <description expression="true">"Validate the Deployment of the version {1}/{0} using XLRelease".format(deployedApplication.version.name, deployedApplication.version.application.name)</description>
+                <description expression="true">"Validate the Deployment of the version {1}/{0} using <XLRelease></XLRelease>".format(deployedApplication.version.name, deployedApplication.version.application.name)</description>
                 <script>xlr/start_release_and_wait.py</script>
                 <jython-context>
                     <xlreleaseServer expression="true">deployedApplication.environment.xlreleaseServer</xlreleaseServer>
