@@ -1,0 +1,21 @@
+---
+apiVersion: xl-deploy/v1
+kind: Configuration
+spec:
+- name: Configuration/defaultMailServer
+  type: mail.SmtpServer
+  host: localhost
+  port: 1025
+  fromAddress: xldeploy@demo.org
+  testAddress: xldeploy-test@demo.org
+- name: Configuration/defaultSmtpServer
+  type: mail.SmtpServer
+  host: localhost
+  port: 1025
+  fromAddress: xldeploy@demo.org
+  testAddress: xldeploy-test@demo.org
+- name: Configuration/defaultMyXLR
+  type: xlrelease.Server
+  url: http://localhost:5516
+  username: admin
+  password: admin

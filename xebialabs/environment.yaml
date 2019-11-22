@@ -1,0 +1,42 @@
+---
+apiVersion: xl-deploy/v1
+kind: Environments
+spec:
+- directory: Environments/xl-demo
+  children:
+  - name: staging.conf
+    type: udm.Dictionary
+    entries:
+      env: staging
+      alternate.color: GENEVA
+      replicas: "1"
+    encryptedEntries:
+      password:  "ADMIN"
+  - name: canary.conf
+    type: udm.Dictionary
+    entries:
+      uccm.Container.progressiveValidation: "true"
+      uccm.Container.progressive: "true"
+  - name: xl-demo-production
+    type: udm.Environment
+    members:
+    - Infrastructure/xl-demo/localhost/test-runner-production
+    - Infrastructure/xl-demo/xl-demo-kube/xl-demo-production
+    dictionaries:
+    - Environments/xl-demo/production.conf
+    - Environments/xl-demo/canary.conf
+  - name: production.conf
+    type: udm.Dictionary
+    entries:
+      replicas: "3"
+      env: production
+      alternate.color: green-prod
+    encryptedEntries:
+      password: "ADMIN"
+  - name: xl-demo-staging
+    type: udm.Environment
+    members:
+    - Infrastructure/xl-demo/xl-demo-kube/xl-demo-staging
+    - Infrastructure/xl-demo/localhost/test-runner-staging
+    dictionaries:
+    - Environments/xl-demo/staging.conf
