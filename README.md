@@ -6,7 +6,7 @@
 
 * Copy the latest file from the [releases page](https://github.com/bmoussaud/xld-uccm-plugin/releases) into the `XL_DEPLOY_SERVER/plugins` directory.
 
-* Create directories in the ext directory  :  ```mkdir ext/uccm_templates ext/uccm_processors  ext/uccm_profiles``
+* Create directories in the ext directory  :  ``mkdir ext/uccm_templates ext/uccm_processors  ext/uccm_profiles``
 
 * Restart the XL Deploy server.
 
