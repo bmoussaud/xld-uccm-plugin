@@ -44,7 +44,9 @@ try:
         print stack_status
 
         if stack_status == "CREATE_COMPLETE":
-            print "OK"
+            print "OK Create"
+        elif stack_status == "UPDATE_COMPLETE":
+            print "OK Update"
         else:
             result="RETRY"
 finally:

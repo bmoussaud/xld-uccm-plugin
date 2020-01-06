@@ -439,7 +439,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                 <jython-context>
                     <target_host expression="true">deployed.container.account.awsHost</target_host>
                     <stack_name expression="true">"{0}-{1}-{2}".format(deployed.name, deployedApplication.version.application.name, deployedApplication.environment.name)</stack_name>
-                    <attempts>100</attempts>
+                    <attempts>200</attempts>
                 </jython-context>
             </jython>
         </steps>
@@ -449,7 +449,6 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         <conditions>
             <type>uccm.aws.BeanStalkWarArtifact</type>
             <operation>DESTROY</operation>
-            <operation>MODIFY</operation>
         </conditions>
         <steps>
             <os-script>
