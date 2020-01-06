@@ -6,9 +6,17 @@
 
 * Copy the latest file from the [releases page](https://github.com/bmoussaud/xld-uccm-plugin/releases) into the `XL_DEPLOY_SERVER/plugins` directory.
 
+* Copy [xld-progressiv-orchestrator-plugin-0.0.2.jar](https://github.com/bmoussaud/xld-uccm-plugin/releases/download/0.0.1/xld-progressiv-orchestrator-plugin-0.0.2.jar ) from the release page into the `XL_DEPLOY_SERVER/plugins` directory.
+
+* Copy [cloning-1.9.12.jar](https://github.com/bmoussaud/xld-uccm-plugin/releases/download/0.0.1/cloning-1.9.12.jar)
+
 * Create directories in the ext directory  :  ``mkdir ext/uccm_templates ext/uccm_processors  ext/uccm_profiles``
 
 * Restart the XL Deploy server.
+
+* if you use minikube (_tested on minikube only_): ` minikube addons enable ingress `
+
+* edit `/etc/hosts` XLDeploy file to map all the url ending with `.xebialabs.demo` to your cluster.
 
 
 
