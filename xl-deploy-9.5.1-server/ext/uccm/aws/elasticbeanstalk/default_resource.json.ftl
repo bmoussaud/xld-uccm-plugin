@@ -1,4 +1,5 @@
 <#assign application>${deployedApplication.version.application.name?lower_case}</#assign>
+<#assign environment>${deployedApplication.environment.name?lower_case}</#assign>
 
 {
   "AWSTemplateFormatVersion": "2010-09-09",
@@ -17,7 +18,7 @@
         },
         "Description": "${application}/${deployedApplication.version.name} Application Version",
         "SourceBundle": {
-          "S3Bucket": "xlfr",
+          "S3Bucket": "xld-elasticbeanstalk-${deployed.container.region}",
           "S3Key": "${deployed.file.name}"
         }
       }
@@ -38,15 +39,21 @@
         "ApplicationName": {
           "Ref": "${application}"
         },
-        "Description": "${deployedApplication.environment.name} Environment",
         "TemplateName": {
           "Ref": "${application}ConfigurationTemplate"
         },
         "VersionLabel": {
           "Ref": "${application}Version"
         },
-        "CNAMEPrefix": "benoit-${application}-dev",
-        "EnvironmentName": "${application}-dev"
+        "CNAMEPrefix": "${deployed.container.region}-${application}-${environment}",
+        "EnvironmentName": "${application}-${environment}",
+        "OptionSettings" : [
+          {
+            "Namespace": "aws:autoscaling:launchconfiguration",
+            "OptionName": "IamInstanceProfile",
+            "Value": "aws-elasticbeanstalk-ec2-role"
+          }
+          ]
       }
     }
   }

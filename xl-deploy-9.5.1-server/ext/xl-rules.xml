@@ -429,6 +429,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                 <freemarker-context>
                     <deployedApplication expression="true">deployedApplication</deployedApplication>
                     <stack_name expression="true">"{0}-{1}-{2}".format(deployed.name, deployedApplication.version.application.name, deployedApplication.environment.name)</stack_name>
+                    <operation expression="true">delta.operation</operation>
                 </freemarker-context>
             </os-script>
 

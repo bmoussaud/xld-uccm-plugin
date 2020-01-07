@@ -5,8 +5,8 @@
 #
 
 import json
+import sys
 from overtherepy import OverthereHostSession
-
 
 def inc_context(name):
     key = "wait_replicates_{0}".format(name)
@@ -25,39 +25,63 @@ def get_value_context(name):
 
 result=""
 resourceName=stack_name
+stack_status=""
 #aws cloudformation describe-stacks --stack-name petclinic-PetStalk-aws --query 'Stacks[0].StackStatus'
-command_line = "{0} cloudformation describe-stacks --stack-name {1} ".format('aws', stack_name)
-if get_value_context(resourceName) == 0:
+command_line = "{0} cloudformation describe-stacks --stack-name {1} --region {2}".format('aws', stack_name,deployed.container.region)
+
+if get_value_context(resourceName) == None:
     print command_line
 
 session = OverthereHostSession(target_host)
-try:
-    response = session.execute(command_line, check_success=False)
-    rc = response.rc
-    if rc != 0:
-        print "Non zero Exit Code {0}".format(rc)
-        result="RETRY"
-    else:
-        data = json.loads(" ".join(response.stdout))
-        #print data
-        stack_status =  data['Stacks'][0]['StackStatus']
-        print stack_status
-
-        if stack_status == "CREATE_COMPLETE":
-            print "OK Create"
-        elif stack_status == "UPDATE_COMPLETE":
-            print "OK Update"
+while True:
+    try:
+        response = session.execute(command_line, check_success=False)
+        rc = response.rc
+        if rc != 0:
+            print "Non zero Exit Code {0}".format(rc)
+            raise Exception("Non zero Exit Code {0}".format(rc))
         else:
-            result="RETRY"
-finally:
-    if result == "RETRY":
-        inc_context(resourceName)
-        cpt = get_value_context(resourceName)
-        #print "WAIT....{0}/{1}".format(cpt, attempts)
-        if cpt < int(attempts):
-            result = "RETRY"
-        else:
-            print "Too many attempts {0}".format(attempts)
-            result = int(attempts)
+            data = json.loads(" ".join(response.stdout))
+            if get_value_context(resourceName) == None:
+                stack_id =  data['Stacks'][0]['StackId']
+                print stack_id
 
-    session.close_conn()
+            new_stack_status =  data['Stacks'][0]['StackStatus']
+            if new_stack_status == stack_status:
+                sys.stdout.write(".")
+            else:
+                sys.stdout.write("\n")
+                sys.stdout.write(new_stack_status)
+            stack_status = new_stack_status
+
+            if stack_status == "CREATE_COMPLETE":
+                sys.stdout.write("\n")
+                print "OK Create"
+                result="0"
+                break
+            elif stack_status == "UPDATE_COMPLETE":
+                sys.stdout.write("\n")
+                print "OK Update"
+                result="0"
+                break
+            elif stack_status == "ROLLBACK_COMPLETE":
+                sys.stdout.write("\n")
+                print "KO"
+                sys.exit(1)
+                break
+            else:
+                result="RETRY"
+    finally:
+        if result == "RETRY":
+            inc_context(resourceName)
+            cpt = get_value_context(resourceName)
+            #print "WAIT....{0}/{1}".format(cpt, attempts)
+            if cpt < int(attempts):
+                result = "RETRY"
+                import time
+                time.sleep(5)
+            else:
+                print "Too many attempts {0}".format(attempts)
+                result = int(attempts)
+
+session.close_conn()
