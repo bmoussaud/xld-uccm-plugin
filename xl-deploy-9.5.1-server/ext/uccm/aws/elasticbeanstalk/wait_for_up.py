@@ -64,7 +64,7 @@ while True:
                 print "OK Update"
                 result="0"
                 break
-            elif stack_status == "ROLLBACK_COMPLETE":
+            elif stack_status == "ROLLBACK_COMPLETE" or stack_status == "UPDATE_ROLLBACK_COMPLETE":
                 sys.stdout.write("\n")
                 print "KO"
                 sys.exit(1)
