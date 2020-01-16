@@ -428,7 +428,7 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                 <script>uccm/aws/elasticbeanstalk/deploy</script>
                 <freemarker-context>
                     <deployedApplication expression="true">deployedApplication</deployedApplication>
-                    <stack_name expression="true">"{0}-{1}-{2}".format(deployed.name, deployedApplication.version.application.name, deployedApplication.environment.name)</stack_name>
+                    <stack_name expression="true">"{0}-{1}-{2}-{3}".format(deployedApplication.environment.name,deployedApplication.version.application.name,deployed.name, deployed.container.name)</stack_name>
                     <operation expression="true">delta.operation</operation>
                 </freemarker-context>
             </os-script>
@@ -439,7 +439,18 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                 <script>uccm/aws/elasticbeanstalk/wait_for_up.py</script>
                 <jython-context>
                     <target_host expression="true">deployed.container.account.awsHost</target_host>
-                    <stack_name expression="true">"{0}-{1}-{2}".format(deployed.name, deployedApplication.version.application.name, deployedApplication.environment.name)</stack_name>
+                    <stack_name expression="true">"{0}-{1}-{2}-{3}".format(deployedApplication.environment.name,deployedApplication.version.application.name,deployed.name, deployed.container.name)</stack_name>
+                    <attempts>200</attempts>
+                </jython-context>
+            </jython>
+
+            <jython>
+                <order>62</order>
+                <description expression="true">"Read the exposed URL result of {0} deployed on {1} Elastic BeanStalk".format(deployed.name, deployed.container.name)</description>
+                <script>uccm/aws/elasticbeanstalk/read_output_url.py</script>
+                <jython-context>
+                    <target_host expression="true">deployed.container.account.awsHost</target_host>
+                    <stack_name expression="true">"{0}-{1}-{2}-{3}".format(deployedApplication.environment.name,deployedApplication.version.application.name,deployed.name, deployed.container.name)</stack_name>
                     <attempts>200</attempts>
                 </jython-context>
             </jython>
@@ -458,27 +469,38 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
                 <target-host expression="true">previousDeployed.container.account.awsHost</target-host>
                 <script>uccm/aws/elasticbeanstalk/undeploy</script>
                 <freemarker-context>
-                    <deployedApplication expression="true">previousDeployedApplication</deployedApplication>
+                    <stack_name expression="true">"{0}-{1}-{2}-{3}".format(previousDeployedApplication.environment.name,previousDeployedApplication.version.application.name,previousDeployed.name, previousDeployed.container.name)</stack_name>
                 </freemarker-context>
             </os-script>
-            <os-script>
-                <description expression="true">"Delete %s from %s in S3" % (previousDeployed.name, previousDeployed.container.name)</description>
-                <order>40</order>
-                <script>uccm/aws/elasticbeanstalk/s3_delete_file</script>
-                <target-host expression="true">previousDeployed.container.account.awsHost</target-host>
-            </os-script>
+
             <jython>
                 <order>40</order>
                 <description expression="true">"Wait for {0} to be undeployed from {1} Elastic BeanStalk".format(previousDeployed.name, previousDeployed.container.name)</description>
                 <script>uccm/aws/elasticbeanstalk/wait_for_down.py</script>
                 <jython-context>
                     <target_host expression="true">previousDeployed.container.account.awsHost</target_host>
-                    <stack_name expression="true">"{0}-{1}-{2}".format(previousDeployed.name, previousDeployedApplication.version.application.name, previousDeployedApplication.environment.name)</stack_name>
+                    <stack_name expression="true">"{0}-{1}-{2}-{3}".format(previousDeployedApplication.environment.name,previousDeployedApplication.version.application.name,previousDeployed.name, previousDeployed.container.name)</stack_name>
                     <attempts>100</attempts>
                 </jython-context>
             </jython>
+            <os-script>
+                <description expression="true">"Delete %s from %s in S3" % (previousDeployed.name, previousDeployed.container.name)</description>
+                <order>40</order>
+                <script>uccm/aws/elasticbeanstalk/s3_delete_file</script>
+                <target-host expression="true">previousDeployed.container.account.awsHost</target-host>
+            </os-script>
 
         </steps>
+    </rule>
+
+    <rule name="uccm.aws.elasticbeanstalk_test" scope="deployed">
+        <conditions>
+            <type>uccm.aws.BeanStalkWarArtifact</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+            <operation>NOOP</operation>
+        </conditions>
+        <planning-script-path>uccm/aws/elasticbeanstalk/planningScripts/operations.py</planning-script-path>
     </rule>
 
 

@@ -3,6 +3,10 @@ echo '
 ' > resource.json
 cat -n resource.json
 cp resource.json /tmp/cf.json
+####
+# https://github.com/jhipster/generator-jhipster/blob/4ce38d7d992a1f519fb6e579b7377409b978c80e/generators/aws/lib/eb.js
+#  "ApplicationName": "${application}",
+####
 
 <#if operation == "CREATE">
 <#assign command>create-stack</#assign>

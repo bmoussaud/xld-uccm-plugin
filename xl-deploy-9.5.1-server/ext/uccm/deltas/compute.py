@@ -8,7 +8,11 @@ class StepGenerator():
         print "-- create " + self
 
     def destroy(self, delta, deployed, sub):
-        print "-- destroy " + self
+        print "-- destroy.... "
+
+    def noop(self, delta, deployed, sub):
+        print "-- noop " + self
+
 
     def generate(self):
         for d in self.list_of_deltas:
@@ -17,6 +21,8 @@ class StepGenerator():
                 self.create(self.delta, self.delta.deployed, d[1])
             elif operation == "DESTROY":
                 self.destroy(self.delta, self.delta.previous, d[2])
+            elif operation == "NOOP":
+                self.noop(self.delta, self.delta.previous, d[1])
             elif operation == "MODIFY":
                 self.destroy(self.delta, self.delta.previous, d[2])
                 self.create(self.delta, self.delta.deployed, d[1])

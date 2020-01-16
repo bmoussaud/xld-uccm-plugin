@@ -24,12 +24,10 @@ def get_value_context(name):
 
 
 result=""
-resourceName=stack_name
 stack_status=""
-#aws cloudformation describe-stacks --stack-name petclinic-PetStalk-aws --query 'Stacks[0].StackStatus'
 command_line = "{0} cloudformation describe-stacks --stack-name {1} --region {2}".format('aws', stack_name,deployed.container.region)
 
-if get_value_context(resourceName) == None:
+if get_value_context(stack_name) == None:
     print command_line
 
 session = OverthereHostSession(target_host)
@@ -42,7 +40,7 @@ while True:
             raise Exception("Non zero Exit Code {0}".format(rc))
         else:
             data = json.loads(" ".join(response.stdout))
-            if get_value_context(resourceName) == None:
+            if get_value_context(stack_name) == None:
                 stack_id =  data['Stacks'][0]['StackId']
                 print stack_id
 
@@ -73,8 +71,8 @@ while True:
                 result="RETRY"
     finally:
         if result == "RETRY":
-            inc_context(resourceName)
-            cpt = get_value_context(resourceName)
+            inc_context(stack_name)
+            cpt = get_value_context(stack_name)
             #print "WAIT....{0}/{1}".format(cpt, attempts)
             if cpt < int(attempts):
                 result = "RETRY"
