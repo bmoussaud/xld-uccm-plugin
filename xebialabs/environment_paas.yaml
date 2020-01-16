@@ -1,0 +1,33 @@
+---
+apiVersion: xl-deploy/v1
+kind: Environments
+spec:
+- directory: Environments/paas
+  children:
+  - name: conf.prod
+    type: udm.Dictionary
+    entries:
+      aws.beanstalk.DeployedJavaArtifact.profile: production
+      env: prod
+  - name: conf.dev
+    type: udm.Dictionary
+    entries:
+      env: dev
+  - name: aws-dev
+    type: udm.Environment
+    members:
+    - Infrastructure/paas/aws-xl/paris-dev
+    - Infrastructure/paas/awshost/xl-aws-test
+    - Infrastructure/paas/aws-xl
+    dictionaries:
+    - Environments/paas/conf.dev
+    smtpServer: Configuration/defaultSmtpServer
+  - name: aws-prod
+    type: udm.Environment
+    members:
+    - Infrastructure/paas/aws-xl/usa-west-prod
+    - Infrastructure/paas/aws-xl/europ-prod
+    - Infrastructure/paas/aws-xl/usa-east-prod
+    dictionaries:
+    - Environments/paas/conf.prod
+    smtpServer: Configuration/defaultSmtpServer

@@ -1,0 +1,45 @@
+---
+apiVersion: xl-deploy/v1
+kind: Applications
+spec:
+- directory: Applications/paas
+  children:
+  - name: petclinic
+    type: udm.Application
+    children:
+    - name: "1.0"
+      type: udm.DeploymentPackage
+      deployables:
+      - name: petclinic
+        type: paas.JavaArtifact
+        solutionStackName: 64bit Amazon Linux 2018.03 v3.3.1 running Tomcat 8.5 Java
+          8
+        smoketests:
+        - name: test
+          type: paas.HttpRequestTest
+          expectedResponseText: PetClinic 1.0
+        file: !file "artifacts/Applications/PAAS/petweb/1.0/petclinic/PetClinic-1.0.war"
+    - name: "2.2"
+      type: udm.DeploymentPackage
+      deployables:
+      - name: petclinic
+        type: paas.JavaArtifact
+        solutionStackName: 64bit Amazon Linux 2018.03 v3.3.1 running Tomcat 8.5 Java
+          8
+        smoketests:
+        - name: test
+          type: paas.HttpRequestTest
+          expectedResponseText: PetClinic 2.0
+        file: !file "artifacts/Applications/PAAS/petweb/2.2/petclinic/PetClinic-2.0.war"
+    - name: "1.1"
+      type: udm.DeploymentPackage
+      deployables:
+      - name: petclinic
+        type: paas.JavaArtifact
+        solutionStackName: 64bit Amazon Linux 2018.03 v3.3.1 running Tomcat 8.5 Java
+          8
+        smoketests:
+        - name: test
+          type: paas.HttpRequestTest
+          expectedResponseText: PetClinic 1.0
+        file: !file "artifacts/Applications/PAAS/petweb/1.1/petclinic/PetClinic-1.0.war"

@@ -1,0 +1,31 @@
+---
+apiVersion: xl-deploy/v1
+kind: Applications
+spec:
+  - name: paas
+    type: core.Directory
+---
+apiVersion: xl-deploy/v1
+kind: Environments
+spec:
+  - name: xl-demo
+    type: core.Directory
+---
+apiVersion: xl-deploy/v1
+kind: Environments
+spec:
+  - name: paas
+    type: core.Directory
+---
+apiVersion: xl-deploy/v1
+kind: Infrastructure
+spec:
+  - name: xl-demo
+    type: core.Directory
+---
+apiVersion: xl-deploy/v1
+kind: Infrastructure
+spec:
+  - name: paas
+    type: core.Directory
+
