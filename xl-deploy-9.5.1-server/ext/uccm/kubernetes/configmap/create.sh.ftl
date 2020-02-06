@@ -1,4 +1,4 @@
-<#assign commandline = ["kubectl", "--namespace='${deployed.container.name}'"] />
+<#assign commandline = ["${deployed.container.container.kubectlPath}/kubectl", "--namespace='${deployed.container.name}'"] />
 <#if (deployed.container.container.kubeConfigContext??)>
     <#assign commandline = commandline + ["--context='${deployed.container.container.kubeConfigContext}'"]/>
 </#if>

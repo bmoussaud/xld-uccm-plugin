@@ -24,7 +24,7 @@ def get_value_context(name):
 
 
 def get_kubectl_command(container):
-    kubectl = 'kubectl --namespace={0}'.format(container.name)
+    kubectl = '{1}/kubectl --namespace={0}'.format(container.name,deployed.container.container.kubectlPath)
     if container.container.kubeConfigContext is not None:
         kubectl = kubectl + ' --context={0}'.format(deployed.container.container.kubeConfigContext)
     return kubectl
