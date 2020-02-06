@@ -97,23 +97,23 @@ Note: If you modify this file, you must restart the XL Deploy server.
         <property name="awsHost" required="false" category="uccm" kind="ci" referenced-type="overthere.Host"/>
     </type-modification>
 
-    <type type="uccm.aws.BeanStalkWarArtifact" extends="udm.BaseDeployedArtifact"
+    <type type="aws.beanstalk.DeployedJavaArtifact" extends="udm.BaseDeployedArtifact"
           container-type="aws.cloudformation.Stack"
-          deployable-type="uccm.aws.JavaArtifact">
-        <generate-deployable type="uccm.aws.JavaArtifact" extends="jee.War"/>
+          deployable-type="jee.War">
+        <generate-deployable type="paas.JavaArtifact" extends="jee.War"/>
         <property name="solutionStackName" default="64bit Amazon Linux 2018.03 v3.1.1 running Tomcat 8.5 Java 8"/>
         <property name="targetFileName" kind="string" required="false"
                   description="Name of the file on bucket along with extension."/>
         <property name="profile" default="default"/>
         <property name="smoketests" required="false" kind="set_of_ci"
-                  referenced-type="uccm.aws.eb.ExecutedHttpRequestTest" as-containment="true"
+                  referenced-type="aws.beanstalk.ExecutedHttpRequestTest" as-containment="true"
                   description="List of smoke tests"/>
         <property name="exposedUrl" category="output" required="false" />
     </type>
 
-    <type type="uccm.aws.eb.ExecutedHttpRequestTest" deployable-type="uccm.aws.eb.HttpRequestTest"
-          container-type="uccm.aws.BeanStalkWarArtifact" extends="udm.BaseEmbeddedDeployed" description="Smoke Test">
-        <generate-deployable type="uccm.aws.eb.HttpRequestTest" extends="udm.BaseEmbeddedDeployable"    description="Smoke Tests."/>
+    <type type="aws.beanstalk.ExecutedHttpRequestTest" deployable-type="paas.HttpRequestTest"
+          container-type="aws.beanstalk.DeployedJavaArtifact" extends="udm.BaseEmbeddedDeployed" description="Smoke Test">
+        <generate-deployable type="paas.HttpRequestTest" extends="udm.BaseEmbeddedDeployable"    description="Smoke Tests."/>
 
         <property name="expectedResponseText" size="large"
                   description="Text that is expected to be contained in the HTTP response body, if the response code is in the 200 range. A non-2xx response code will cause the test to fail irrespective of the response body"/>
@@ -131,9 +131,9 @@ Note: If you modify this file, you must restart the XL Deploy server.
         <property name="order" kind="integer" default="102" category="Options" description="The order of the test step in the step list"/>
     </type>
 
-    <type-modification type="uccm.aws.JavaArtifact">
+    <type-modification type="paas.JavaArtifact">
         <property name="smoketests" required="false" kind="set_of_ci"
-                  referenced-type="uccm.aws.eb.HttpRequestTest" as-containment="true"
+                  referenced-type="paas.HttpRequestTest" as-containment="true"
                   description="List of smoke tests"/>
     </type-modification>
 

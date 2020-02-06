@@ -12,8 +12,8 @@ spec:
       type: smoketest.Runner
   - name: aws-xl
     type: aws.Cloud
-    accesskey: AKIAJ7XVW74KQYJUMPMQ
-    accessSecret: !value "Infrastructure_paas_aws_xl_accessSecret"
+    accesskey: !value "aws_access_key_id"
+    accessSecret: !value "aws_secret_access_key"
     awsHost: Infrastructure/paas/awshost
     children:
     - name: europ-prod

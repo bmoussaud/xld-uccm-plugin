@@ -407,15 +407,15 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
 
 
     <!-- AWS -->
-    <rule name="uccm.aws.elasticbeanstalk.deploy" scope="deployed">
+    <rule name="aws.beanstalk.DeployedJavaArtifact_deploy" scope="deployed">
         <conditions>
-            <type>uccm.aws.BeanStalkWarArtifact</type>
+            <type>aws.beanstalk.DeployedJavaArtifact</type>
             <operation>CREATE</operation>
             <operation>MODIFY</operation>
         </conditions>
         <steps>
             <os-script>
-                <description expression="true">"Upload %s on %s in S3" % (deployed.name, deployed.container.name)</description>
+                <description expression="true">"Upload {0} on {1} in S3".format(deployed.name, deployed.container.name)</description>
                 <order>60</order>
                 <script>uccm/aws/elasticbeanstalk/s3_upload_file</script>
                 <target-host expression="true">deployed.container.account.awsHost</target-host>
@@ -457,9 +457,13 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         </steps>
     </rule>
 
-    <rule name="uccm.aws.elasticbeanstalk.undeploy" scope="deployed">
+
+
+
+
+    <rule name="aws.beanstalk.DeployedJavaArtifact_undeploy" scope="deployed">
         <conditions>
-            <type>uccm.aws.BeanStalkWarArtifact</type>
+            <type>aws.beanstalk.DeployedJavaArtifact</type>
             <operation>DESTROY</operation>
         </conditions>
         <steps>
@@ -493,9 +497,9 @@ Note: If you modify this file and automatic reloading is disabled in `planner.co
         </steps>
     </rule>
 
-    <rule name="uccm.aws.elasticbeanstalk_test" scope="deployed">
+    <rule name="aws.DeployedBeanstalkArtifac_test" scope="deployed">
         <conditions>
-            <type>uccm.aws.BeanStalkWarArtifact</type>
+            <type>aws.beanstalk.DeployedJavaArtifact</type>
             <operation>CREATE</operation>
             <operation>MODIFY</operation>
             <operation>NOOP</operation>
