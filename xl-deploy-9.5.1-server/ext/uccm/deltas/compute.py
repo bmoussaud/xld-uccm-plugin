@@ -5,13 +5,16 @@ class StepGenerator():
         self.delta = delta
 
     def create(self, delta, deployed, sub):
-        print "-- create " + self
+        self.default(delta)
 
     def destroy(self, delta, deployed, sub):
-        print "-- destroy.... "
+        self.default(delta)
 
     def noop(self, delta, deployed, sub):
-        print "-- noop " + self
+        self.default(delta)
+
+    def default(self, delta):
+        print ("StepGenerator : {0}".format(delta))
 
 
     def generate(self):
