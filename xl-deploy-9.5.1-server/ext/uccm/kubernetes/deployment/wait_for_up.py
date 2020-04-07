@@ -83,24 +83,29 @@ try:
         result = "RETRY"
     else:
         data = json.loads(" ".join(response.stdout))
-        condition = data['status']['conditions'][0]
-        print "Status {status} {reason}: {message}".format(**condition)
-        availableReplicas = get_available_replicas(data)
-        print "availableReplicas {0}/ replicas {1}".format(availableReplicas, ci.replicas)
-
-        if availableReplicas >= ci.replicas:
-            print "DONE replicas"
-            dump_events()
+        if not 'condition' in data['status']:
+            print data['status']
+            result = "RETRY"
         else:
-            inc_context(resourceName)
-            cpt = get_value_context(resourceName)
-            print "WAIT....{0}/{1}".format(cpt, attempts)
-            if cpt < int(attempts):
-                result = "RETRY"
-            else:
-                print "Too many attempts {0}".format(attempts)
+            for condition in data['status']:
+                print "Status {status} {reason}: {message}".format(**condition)
+
+            availableReplicas = get_available_replicas(data)
+            print "availableReplicas {0}/ replicas {1}".format(availableReplicas, ci.replicas)
+
+            if availableReplicas >= ci.replicas:
+                print "DONE replicas"
                 dump_events()
-                result = int(attempts)
+            else:
+                inc_context(resourceName)
+                cpt = get_value_context(resourceName)
+                print "WAIT....{0}/{1}".format(cpt, attempts)
+                if cpt < int(attempts):
+                    result = "RETRY"
+                else:
+                    print "Too many attempts {0}".format(attempts)
+                    dump_events()
+                    result = int(attempts)
 
 finally:
     session.close_conn()
